@@ -1,0 +1,6 @@
+applications:
+  - name: govuk-transition-checker
+    buildpacks:
+      - nodejs_buildpack
+    env:
+      USERNAME: betademo
