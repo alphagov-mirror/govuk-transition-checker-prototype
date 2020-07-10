@@ -29,6 +29,12 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
+{% from "govuk-pub/components/document-list/macro.njk"     import govukPubDocumentList %}
+{% from "govuk-pub/components/share-links/macro.njk"     import govukPubShareLinks %}
+{% from "govuk-pub/components/topic-list/macro.njk"     import govukPubTopicList %}
+
+{% from "./components/landing-page-header/macro.njk"  import appLandingPageHeader %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -42,10 +48,11 @@
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container govuk-header__container--no-border-bottom",
+    classes: "govuk-!-margin-bottom-0"
   }) }}
+  {{ appLandingPageHeader({}) }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
