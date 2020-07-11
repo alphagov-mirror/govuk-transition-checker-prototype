@@ -5,12 +5,7 @@
   <div class="govuk-width-container">
 
     {{ govukBreadcrumbs({
-      items: [
-        {
-          text: "Home",
-          href: "#"
-        }
-      ],
+      items: params.breadcrumbs.items,
       classes: "app-c-breadcrumbs--collapse-on-mobile app-c-breadcrumbs--inverse"
     }) }}
 
@@ -19,28 +14,23 @@
 
         {{ govukPubTranslationNavigation({
           inverse: true,
-          items: [{
-            href: '#',
-            text: 'English',
-            locale: 'en',
-            active: true
-          }, {
-            href: '#',
-            text: 'Cymraeg',
-            locale: 'cy'
-          }]
+          items: params.translations.items
         }) }}
 
       </div>
 
       <div class="govuk-grid-column-two-thirds">
         <h1 class="app-c-landing-page__page_title">
-          The UK has left the EU
+          {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
         </h1>
       </div>
 
       <div class="govuk-grid-column-two-thirds app-c-landing-page__intro">
-        <p>Find out what this means for you.</p>
+        {%- if params.description.html %}
+          {{ params.description.html | safe }}
+        {% else %}
+          <p>{{ params.description.text }}</p>
+        {% endif -%}
       </div>
     </div>
   </div>

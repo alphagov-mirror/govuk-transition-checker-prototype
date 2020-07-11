@@ -49,10 +49,34 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceUrl: "/",
-    containerClasses: "govuk-width-container govuk-header__container--no-border-bottom",
-    classes: "govuk-!-margin-bottom-0"
+    containerClasses: "govuk-width-container govuk-header__container--no-border-bottom"
   }) }}
-  {{ appLandingPageHeader({}) }}
+  {{ appLandingPageHeader({
+    heading: {
+      text: "The UK has left the EU"
+    },
+    description: {
+      text: "Find out what this means for you."
+    },
+    breadcrumbs: {
+      items: [{
+        text: "Home",
+        href: "#"
+      }]
+    },
+    translations: {
+      items: [{
+        href: '#',
+        text: 'English',
+        locale: 'en',
+        active: true
+      }, {
+        href: '#',
+        text: 'Cymraeg',
+        locale: 'cy'
+      }]
+    }
+  }) }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
