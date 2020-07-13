@@ -15,6 +15,7 @@
 {% from "govuk/components/error-summary/macro.njk"    import govukErrorSummary %}
 {% from "govuk/components/fieldset/macro.njk"         import govukFieldset %}
 {% from "govuk/components/file-upload/macro.njk"      import govukFileUpload %}
+{% from "govuk/components/hint/macro.njk"             import govukHint %}
 {% from "govuk/components/input/macro.njk"            import govukInput %}
 {% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
 {% from "govuk/components/panel/macro.njk"            import govukPanel %}
@@ -49,33 +50,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceUrl: "/",
-    containerClasses: "govuk-width-container govuk-header__container--no-border-bottom"
-  }) }}
-  {{ appLandingPageHeader({
-    heading: {
-      text: "The UK has left the EU"
-    },
-    description: {
-      text: "Find out what this means for you."
-    },
-    breadcrumbs: {
-      items: [{
-        text: "Home",
-        href: "#"
-      }]
-    },
-    translations: {
-      items: [{
-        href: '#',
-        text: 'English',
-        locale: 'en',
-        active: true
-      }, {
-        href: '#',
-        text: 'Cymraeg',
-        locale: 'cy'
-      }]
-    }
+    containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}
 
@@ -101,5 +76,4 @@
     {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
-  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
 {% endblock %}

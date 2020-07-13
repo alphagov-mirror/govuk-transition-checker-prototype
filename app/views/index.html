@@ -1,5 +1,5 @@
 
-{% extends "layout.html" %}
+{% extends "layout-home.html" %}
 
 {% block pageTitle %}
   {{ serviceName }}
@@ -21,7 +21,7 @@
       </p>
 
       <p class="govuk-body">
-        <a class="govuk-link govuk-!-font-weight-bold" href="#">
+        <a class="govuk-link govuk-!-font-weight-bold" href="{{ actions.start }}">
           Check what’s changing and sign up for email alerts
         </a>
       </p>

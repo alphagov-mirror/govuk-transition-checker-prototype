@@ -1,0 +1,16 @@
+{{ govukRadios({
+  idPrefix: question.key,
+  name: "answers[" + question.key + "]",
+  fieldset: {
+    legend: {
+      html: headingHtml | safe,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: false
+    }
+  },
+  hint: {
+    text: question.hint_text
+  } if question.hint_text,
+  errorMessage: errors | getErrorMessage(question.key),
+  items: question.options | optionsToItems
+}) }}

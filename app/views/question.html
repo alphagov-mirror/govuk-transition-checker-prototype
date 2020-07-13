@@ -1,0 +1,66 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ question.text }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) if actions.back | length }}
+{% endblock %}
+
+{% block content %}
+
+{% include "./partials/_error-summary.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set headingHtml %}
+      <span class="govuk-caption-xl">
+        {{- question.caption -}}
+      </span>
+      <h1 class="govuk-heading-xl">
+        {{- question.text -}}
+      </h1>
+      {{ question.description | safe }}
+    {% endset %}
+
+    <form action="{{ actions.next }}" method="post" accept-charset="utf-8" novalidate>
+
+      {%- if question.type == 'single' %}
+        {% include "./partials/_question-type-single.html" %}
+      {% endif -%}
+
+      {% if question.type == 'single_wrapped' %}
+        {% include "./partials/_question-type-single-wrapped.html" %}
+      {% endif %}
+
+      {%- if question.type == 'multiple' %}
+        {% include "./partials/_question-type-multiple.html" %}
+      {% endif -%}
+
+      {% if question.type == 'multiple_grouped' %}
+        {% include "./partials/_question-type-multiple-grouped.html" %}
+      {% endif %}
+
+      {{ govukDetails({
+        summaryText: "Why am I being asked this question?",
+        text: question.detail_text | safe
+      }) if question.detail_text }}
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-5"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
