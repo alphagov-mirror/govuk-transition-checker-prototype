@@ -121,9 +121,9 @@ filters.removeEmpty = items => {
   }
 
   // Handle arrys
-  if (_.isArray(items)){
+  if (_.isArray(items)) {
     var output = items.filter( item => {
-      return (item && (item !==""))
+      return (item && (item !== ''))
     })
     // Don't return emtpy arrays
     if (output.length) return output

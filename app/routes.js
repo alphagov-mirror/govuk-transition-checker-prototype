@@ -9,7 +9,7 @@ function checkHasAnswers (req, res, next) {
   if (req.session.data.answers === undefined) {
     res.redirect(req.baseUrl + '/')
   } else {
-    next();
+    next()
   }
 }
 
@@ -52,13 +52,13 @@ router.post('/nationality', checkHasAnswers, (req, res) => {
 
   let errors = []
 
-  // if (req.session.data.answers['nationality'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'nationality';
-  //   error.href = '#nationality';
-  //   error.text = 'Choose what nationality you are';
-  //   errors.push(error);
-  // }
+  if (req.session.data.answers['nationality'] === undefined) {
+    let error = {}
+    error.fieldName = 'nationality'
+    error.href = '#nationality'
+    error.text = 'Choose what nationality you are'
+    errors.push(error)
+  }
 
   if (errors.length) {
     res.render('question', {
@@ -96,11 +96,11 @@ router.post('/living', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['living'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'living';
-  //   error.href = '#living';
-  //   error.text = 'Choose where you live';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'living'
+  //   error.href = '#living'
+  //   error.text = 'Choose where you live'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -139,11 +139,11 @@ router.post('/employment', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['employment'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'employment';
-  //   error.href = '#employment';
-  //   error.text = 'Choose what you do';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'employment'
+  //   error.href = '#employment'
+  //   error.text = 'Choose what you do'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -182,11 +182,11 @@ router.post('/travelling-business', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['travelling-business'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'travelling-business';
-  //   error.href = '#travelling-business';
-  //   error.text = 'Choose whether you travel to the EU for business';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'travelling-business'
+  //   error.href = '#travelling-business'
+  //   error.text = 'Choose whether you travel to the EU for business'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -225,11 +225,11 @@ router.post('/driving', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['drive-in-eu'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'drive-in-eu';
-  //   error.href = '#drive-in-eu';
-  //   error.text = 'Choose whether you travel to the EU for business';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'drive-in-eu'
+  //   error.href = '#drive-in-eu'
+  //   error.text = 'Choose whether you travel to the EU for business'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -268,11 +268,11 @@ router.post('/travelling', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['travelling'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'travelling';
-  //   error.href = '#travelling';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'travelling'
+  //   error.href = '#travelling'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -311,11 +311,11 @@ router.post('/activities', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['activities'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'activities';
-  //   error.href = '#activities';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'activities'
+  //   error.href = '#activities'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -354,11 +354,11 @@ router.post('/move-eu', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['move-eu'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'move-eu';
-  //   error.href = '#move-eu';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'move-eu'
+  //   error.href = '#move-eu'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -397,11 +397,11 @@ router.post('/returning', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['returning'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'returning';
-  //   error.href = '#returning';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'returning'
+  //   error.href = '#returning'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -440,11 +440,11 @@ router.post('/family-eu', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['family-eu'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'family-eu';
-  //   error.href = '#family-eu';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'family-eu'
+  //   error.href = '#family-eu'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -483,11 +483,11 @@ router.post('/join-family-uk', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['join-family-uk'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'join-family-uk';
-  //   error.href = '#join-family-uk';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'join-family-uk'
+  //   error.href = '#join-family-uk'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {
@@ -526,11 +526,11 @@ router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
   let errors = []
 
   // if (req.session.data.answers['do-you-own-a-business'] === undefined) {
-  //   let error = {};
-  //   error.fieldName = 'do-you-own-a-business';
-  //   error.href = '#do-you-own-a-business';
-  //   error.text = 'Choose where you plan to travel for leisure and tourism';
-  //   errors.push(error);
+  //   let error = {}
+  //   error.fieldName = 'do-you-own-a-business'
+  //   error.href = '#do-you-own-a-business'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
   // }
 
   if (errors.length) {

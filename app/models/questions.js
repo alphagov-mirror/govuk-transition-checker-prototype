@@ -8,15 +8,15 @@ const directoryPath = path.join(__dirname, '../data/')
 const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'questions.yaml', 'utf8'))
 
 exports.findQuestionById = function (questionId) {
-  let question = {}
-  question = data.questions.filter( obj => obj.key === questionId )
+  const question = data.questions.filter(obj => obj.key === questionId)
   return question[0]
 }
 
 exports.question = function (questionId, answerValue) {
 
-  if (!questionId)
+  if (!questionId) {
     return null
+  }
 
   const question = this.findQuestionById(questionId)
 

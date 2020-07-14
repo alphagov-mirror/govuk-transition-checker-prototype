@@ -39,9 +39,9 @@ filters.debug = (item) => {
 
 filters.falsify = (input) => {
   if (_.isNumber(input)) return input
-  else if (input == false) return false
-  else if (input == 'true') return true
-  else if (input == 'false') return false
+  else if (input === false) return false
+  else if (input === 'true') return true
+  else if (input === 'false') return false
   return input
 }
 

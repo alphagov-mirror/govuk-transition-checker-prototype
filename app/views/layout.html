@@ -52,7 +52,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceUrl: "/",
-    containerClasses: "govuk-width-container" + (' ' + containerClasses) if containerClasses
+    containerClasses: "govuk-width-container {{- ' ' + containerClasses if containerClasses }}"
   }) }}
 {% endblock %}
 

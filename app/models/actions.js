@@ -8,7 +8,6 @@ const directoryPath = path.join(__dirname, '../data/')
 const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'actions.yaml', 'utf8'))
 
 exports.findActionById = function (actionId) {
-  let action = {}
-  question = data.actions.filter( obj => obj.id === actionId )
+  const action = data.actions.filter(obj => obj.id === actionId)
   return action[0]
 }

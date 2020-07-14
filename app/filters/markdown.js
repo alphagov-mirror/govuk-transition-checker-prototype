@@ -22,11 +22,11 @@ let filters = {}
 */
 
 filters.markdownToHtml = (markdown) => {
-  if (!markdown)
+  if (!markdown) {
     return null
+  }
   return html = marked(markdown)
 }
-
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

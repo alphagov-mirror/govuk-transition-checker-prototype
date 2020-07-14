@@ -2,7 +2,6 @@
 // Imports and setup
 // -------------------------------------------------------------------
 
-
 // Leave this filters line
 let filters = {}
 
@@ -18,8 +17,6 @@ let filters = {}
   [Usage here]
 
 */
-
-
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

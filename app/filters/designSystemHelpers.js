@@ -57,7 +57,7 @@ filters.arrayToGovukTable = (array) => {
     tableData.push(rowData)
   })
   // tableData = (tableData.length == 1) ? tableData[0] : tableData
-  return tableData;
+  return tableData
 }
 
 /*
@@ -85,9 +85,8 @@ filters.csvToArray = (csvString) => {
   array = CSV.parse(csvString)
   // Flatten nested array if it's only a single line
   array = (array.length == 1) ? array[0] : array
-  return array;
+  return array
 }
-
 
 /*
 ====================================================================
@@ -160,7 +159,7 @@ filters.arrayToSummaryList = array => {
     let key = row[0]  // required
     let value = row[1] // required
     let href = (row[2] != null) ? row[2] : false
-    let text = (row[3] != null ) ? row[3] : "Change"
+    let text = (row[3] != null ) ? row[3] : 'Change'
     let visuallyHiddenText = (row[4] != null ) ? row[4] : row[0].toLowerCase()
     let rowData = {
       key: {
@@ -171,7 +170,7 @@ filters.arrayToSummaryList = array => {
       }
     }
     // Action (optional)
-    if (href){
+    if (href) {
       let item = {
         href,
         text,
@@ -183,7 +182,7 @@ filters.arrayToSummaryList = array => {
     }
     arrData.push(rowData)
   })
-  return arrData;
+  return arrData
 }
 
 /*
@@ -202,7 +201,7 @@ filters.arrayToSummaryList = array => {
 filters.csvToSummaryList = (csvString) => {
   arr = CSV.parse(csvString)
   let arrData = filters.arrayToSummaryList(arr)
-  return arrData;
+  return arrData
 }
 
 // -------------------------------------------------------------------

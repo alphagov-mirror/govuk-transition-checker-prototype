@@ -66,23 +66,26 @@ filters.keepAttributes = (array, keysToKeep) => {
     // Re-orders and keeps only selected keys
 
     // Coerce string to array
-    if (_.isString(keysToKeep)) keysToKeep = [keysToKeep]
-
+    if (_.isString(keysToKeep)) {
+      keysToKeep = [keysToKeep]
+    }
 
     keysToKeep.forEach(key => {
       let objectKeys = Object.keys(theObject)
-      if (objectKeys.includes(key)){
+      if (objectKeys.includes(key)) {
         newObj[key] = theObject[key]
       }
     })
     return newObj
   }
   // Array of objects
-  if (_.isArray(array)){
+  if (_.isArray(array)) {
     return array.map(keepKeys)
   }
   // Single object
-  else return keepKeys(array)
+  else {
+    return keepKeys(array)
+  }
 }
 
 /*
@@ -142,17 +145,15 @@ filters.clearAttribute = (dictionary, key) => {
 filters.renameAttribute = (dictionary, oldKey, newKey) => {
   const keys = Object.keys(dictionary)
   const newObj = keys.reduce((acc, val) => {
-    if(val === oldKey){
-        acc[newKey] = dictionary[oldKey]
-    }
-    else {
-        acc[val] = dictionary[val]
+    if (val === oldKey) {
+      acc[newKey] = dictionary[oldKey]
+    } else {
+      acc[val] = dictionary[val]
     }
     return acc
   }, {})
-
   return newObj
-};
+}
 
 /*
   ====================================================================
@@ -220,7 +221,7 @@ filters.filterAttr = function (arr, attr, test) {
      return item[attr] === test
   })
   return result
-};
+}
 
 /*
   ====================================================================
@@ -241,7 +242,7 @@ filters.removeAttr = function (arr, attr, test) {
      return item[attr] !== test
   })
   return result
-};
+}
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

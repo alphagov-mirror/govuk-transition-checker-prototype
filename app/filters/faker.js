@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const faker = require("faker")
+const faker = require('faker')
 
 // Leave this filters line
 let filters = {}
@@ -24,7 +24,7 @@ filters.fakePerson = (string) => {
   let firstName = faker.name.firstName()
   let lastName = faker.name.lastName()
   let fullName = firstName + " " + lastName
-  let email = fullName.split(' ').join('.').toLowerCase() + "@example.com"
+  let email = fullName.split(' ').join('.').toLowerCase() + '@example.com'
   let user = {
     firstName: firstName,
     lastName: lastName,
@@ -48,7 +48,6 @@ filters.fakePerson = (string) => {
 */
 
 filters.fakeAddress = (string) => {
-
   return address
 }
 

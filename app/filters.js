@@ -14,13 +14,14 @@ module.exports = function (env) {
     example: {{ errors | getErrorMessage('title') }}
     outputs: "Enter a title"
   ------------------------------------------------------------------ */
-  filters.getErrorMessage = function(array, fieldName) {
-    if (!array || !fieldName)
-      return null;
+  filters.getErrorMessage = function (array, fieldName) {
+    if (!array || !fieldName) {
+      return null
+    }
 
-    let error = array.filter( (obj) =>
-      obj.fieldName == fieldName
-    )[0];
+    const error = array.filter( (obj) =>
+      obj.fieldName === fieldName
+    )[0]
 
     return error
   }
@@ -32,28 +33,22 @@ module.exports = function (env) {
     input: [{label: "Something", value: "something"}]
     output: [{text: "Something", value: "something"}]
   ------------------------------------------------------------------ */
-  filters.optionsToItems = function(options) {
-    if (!options)
+  filters.optionsToItems = function (options) {
+    if (!options) {
       return null
+    }
 
-    let items = []
+    const items = []
 
     options.forEach((option) => {
-      let item = {}
+      const item = {}
       item.text = option.label
       item.value = option.value
       item.checked = option.checked
-
-      // if (option.options !== undefined) {
-      //   console.log(option.options);
-      //
-      // }
-
       items.push(item)
     })
 
     return items
-
   }
 
   /* ------------------------------------------------------------------
