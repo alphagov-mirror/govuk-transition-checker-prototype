@@ -50,13 +50,13 @@ router.post('/nationality', checkHasAnswers, (req, res) => {
 
   let errors = [];
 
-  if (req.session.data.answers['nationality'] === undefined) {
-    let error = {};
-    error.fieldName = 'nationality';
-    error.href = '#nationality';
-    error.text = 'Choose what nationality you are';
-    errors.push(error);
-  }
+  // if (req.session.data.answers['nationality'] === undefined) {
+  //   let error = {};
+  //   error.fieldName = 'nationality';
+  //   error.href = '#nationality';
+  //   error.text = 'Choose what nationality you are';
+  //   errors.push(error);
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -94,13 +94,13 @@ router.post('/living', checkHasAnswers, (req, res) => {
 
   let errors = [];
 
-  if (req.session.data.answers['living'] === undefined) {
-    let error = {};
-    error.fieldName = 'living';
-    error.href = '#living';
-    error.text = 'Choose where you live';
-    errors.push(error);
-  }
+  // if (req.session.data.answers['living'] === undefined) {
+  //   let error = {};
+  //   error.fieldName = 'living';
+  //   error.href = '#living';
+  //   error.text = 'Choose where you live';
+  //   errors.push(error);
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -553,7 +553,11 @@ router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
       }
     });
   } else {
-    res.redirect(req.baseUrl + '/business-uk-or-eu');
+    if (req.session.data.answers['do-you-own-a-business'] == 'does-not-own-operate-business-organisation') {
+      res.redirect(req.baseUrl + '/results');
+    } else {
+      res.redirect(req.baseUrl + '/business-uk-or-eu');
+    }
   }
 
 });
@@ -890,7 +894,7 @@ router.get('/results', checkHasAnswers, (req, res) => {
 
   res.render('results', {
     actions: {
-      back: req.baseUrl + '/sector-business-area',
+      back: req.headers.referer,
       start: req.baseUrl + '/'
     }
   });

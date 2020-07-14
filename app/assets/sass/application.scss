@@ -16,7 +16,9 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Components that aren't in Frontend
 @import "components/breadcrumbs";
+@import "components/brexit-checker-results-page";
 @import "components/cookie-banner";
+@import "components/email-link";
 @import "components/landing-page-header";
 
 // Objects
