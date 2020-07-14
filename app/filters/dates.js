@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const moment = require("moment");
-const _ = require('lodash');
+const moment = require("moment")
+const _ = require('lodash')
 
 // Leave this filters line
 let filters = {}
@@ -23,7 +23,7 @@ let filters = {}
 */
 
 filters.date = function(timestamp, format) {
-  return moment(timestamp).format(format);
+  return moment(timestamp).format(format)
 }
 
 /*
@@ -144,7 +144,7 @@ filters.arrayToGovukDate = (array) => {
 
 filters.prettyMonth = (monthNumber) => {
   if (monthNumber){
-    return moment().month(monthNumber - 1).format("MMMM");
+    return moment().month(monthNumber - 1).format("MMMM")
   }
   else return ''
 }
@@ -215,10 +215,10 @@ filters.formatDate = (date, format, dateFormat) => {
   }
   // Check for valid date
   else if (dateFormat && moment(date, dateFormat).isValid()){
-    returnDate = moment(date, dateFormat);
+    returnDate = moment(date, dateFormat)
   }
   else if ( moment(date).isValid() ){
-    returnDate = moment(date);
+    returnDate = moment(date)
   }
   // Invalid date
   else {
@@ -229,19 +229,19 @@ filters.formatDate = (date, format, dateFormat) => {
     {
       // 2018-03-21
       case (format == 'dashDate'):
-        return returnDate.format('YYYY-MM-DD');
+        return returnDate.format('YYYY-MM-DD')
 
       // 2018/03/21
       case (format == 'slashDate'):
-        return returnDate.format('YYYY/MM/DD');
+        return returnDate.format('YYYY/MM/DD')
 
       // 2018/03
       case (format == 'yearMonth'):
-        return returnDate.format('YYYY/MM');
+        return returnDate.format('YYYY/MM')
 
       // 2018-03-21T00:00:00.000Z
       case (format == 'iso8601'):
-        return returnDate.toISOString();
+        return returnDate.toISOString()
 
       // a year ago
       case (format == 'relative'):
@@ -249,19 +249,19 @@ filters.formatDate = (date, format, dateFormat) => {
 
       // 21st March 2018
       case (format == 'pretty'):
-        return returnDate.format('Do MMMM YYYY');
+        return returnDate.format('Do MMMM YYYY')
 
       // 21st March 2018, 12:00:00 am
       case (format == 'full'):
-        return returnDate.format('Do MMMM YYYY, h:mm:ss a');
+        return returnDate.format('Do MMMM YYYY, h:mm:ss a')
 
       // pass format through to moment
       case _.isString(format):
-        return returnDate.format(format);
+        return returnDate.format(format)
 
       // Default
       default:
-        return returnDate.format();
+        return returnDate.format()
     }
 }
 
@@ -281,7 +281,7 @@ filters.formatDate = (date, format, dateFormat) => {
 */
 
 filters.dateAdd = function(date, num, unit='days') {
-  return moment(date).add(num, unit).toDate();
+  return moment(date).add(num, unit).toDate()
 }
 
 /*
@@ -298,7 +298,7 @@ filters.dateAdd = function(date, num, unit='days') {
 */
 
 filters.govDate = (timestamp) => {
-  return moment(timestamp).format('D MMMM YYYY');
+  return moment(timestamp).format('D MMMM YYYY')
 }
 
 /*
@@ -315,7 +315,7 @@ filters.govDate = (timestamp) => {
 */
 
 filters.govShortDate = (timestamp) => {
-  return moment(timestamp).format('D MMM YYYY');
+  return moment(timestamp).format('D MMM YYYY')
 }
 
 /*
@@ -332,11 +332,11 @@ filters.govShortDate = (timestamp) => {
 */
 
 filters.govTime = (timestamp) => {
-  let t = moment(timestamp);
+  let t = moment(timestamp)
   if(t.minutes() > 0) {
-    return t.format('h:mma');
+    return t.format('h:mma')
   } else {
-    return t.format('ha');
+    return t.format('ha')
   }
 }
 

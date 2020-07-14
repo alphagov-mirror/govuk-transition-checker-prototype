@@ -1,6 +1,8 @@
-const path = require('path');
-const fs = require('fs');
-const yaml = require('js-yaml');
+'use strict'
 
-const directoryPath = path.join(__dirname, '../data/');
-const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf8'));
+const path = require('path')
+const fs = require('fs')
+const yaml = require('js-yaml')
+
+const directoryPath = path.join(__dirname, '../data/')
+const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf8'))

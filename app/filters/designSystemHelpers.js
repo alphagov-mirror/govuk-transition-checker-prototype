@@ -82,7 +82,7 @@ let csvData =
 */
 
 filters.csvToArray = (csvString) => {
-  array = CSV.parse(csvString);
+  array = CSV.parse(csvString)
   // Flatten nested array if it's only a single line
   array = (array.length == 1) ? array[0] : array
   return array;
@@ -128,7 +128,7 @@ Usage:
 
 filters.csvToGovukTable = (csvString) => {
   let array = filters.csvToArray(csvString)
-  return filters.arrayToGovukTable(array);
+  return filters.arrayToGovukTable(array)
 }
 
 /*
@@ -200,7 +200,7 @@ filters.arrayToSummaryList = array => {
 */
 
 filters.csvToSummaryList = (csvString) => {
-  arr = CSV.parse(csvString);
+  arr = CSV.parse(csvString)
   let arrData = filters.arrayToSummaryList(arr)
   return arrData;
 }

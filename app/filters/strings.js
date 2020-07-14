@@ -2,7 +2,7 @@
 // Imports and setup
 // -------------------------------------------------------------------
 const string = require('string')
-const _ = require('lodash');
+const _ = require('lodash')
 
 // Leave this filters line
 let filters = {}
@@ -27,8 +27,8 @@ filters.isString = (obj) => {
 */
 
 filters.slugify = (input) => {
-  if (!input) throw "Error in slugify: no input", input;
-  else return string(input).slugify().toString();
+  if (!input) throw "Error in slugify: no input", input
+  else return string(input).slugify().toString()
 }
 
 /*
@@ -67,7 +67,7 @@ filters.kebabCase = (string) => {
 filters.sentenceCase = (input) => {
   if (!input) return '' // avoid printing false to client
   if (_.isString(input)){
-    return input.charAt(0).toUpperCase() + input.slice(1);
+    return input.charAt(0).toUpperCase() + input.slice(1)
   }
   else return input
 }

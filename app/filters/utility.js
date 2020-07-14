@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const _ = require('lodash');
+const _ = require('lodash')
 
 // Leave this filters line
 let filters = {}
@@ -42,7 +42,7 @@ filters.falsify = (input) => {
   else if (input == false) return false
   else if (input == 'true') return true
   else if (input == 'false') return false
-  return input;
+  return input
 }
 
 /*
@@ -59,10 +59,10 @@ filters.falsify = (input) => {
 */
 
 filters.addIndexCount = array => {
-  array.forEach((item, index) =>{
+  array.forEach((item, index) => {
     item.index = index
   })
-  return array;
+  return array
 }
 
 // -------------------------------------------------------------------

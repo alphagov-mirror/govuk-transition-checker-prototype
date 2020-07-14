@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const numeral = require('numeral');
+const numeral = require('numeral')
 
 // Leave this filters line
 let filters = {}
@@ -22,7 +22,7 @@ let filters = {}
 */
 
 filters.numeral = function(number, format) {
-  return numeral(number).format(format);
+  return numeral(number).format(format)
 }
 
 

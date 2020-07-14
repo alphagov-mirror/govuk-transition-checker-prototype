@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const _ = require('lodash');
+const _ = require('lodash')
 
 // Leave this filters line
 let filters = {}
@@ -100,9 +100,9 @@ filters.keepAttributes = (array, keysToKeep) => {
 */
 
 filters.setAttribute = (dictionary, key, value) => {
-  var newDictionary = Object.assign({}, dictionary);
-  newDictionary[key] = value;
-  return newDictionary;
+  const newDictionary = Object.assign({}, dictionary)
+  newDictionary[key] = value
+  return newDictionary
 }
 
 /*
@@ -120,9 +120,9 @@ filters.setAttribute = (dictionary, key, value) => {
 */
 
 filters.clearAttribute = (dictionary, key) => {
-  var newDictionary = Object.assign({}, dictionary);
-  newDictionary[key] = '';
-  return newDictionary;
+  var newDictionary = Object.assign({}, dictionary)
+  newDictionary[key] = ''
+  return newDictionary
 }
 
 /*
@@ -141,7 +141,7 @@ filters.clearAttribute = (dictionary, key) => {
 
 filters.renameAttribute = (dictionary, oldKey, newKey) => {
   const keys = Object.keys(dictionary)
-  const newObj = keys.reduce((acc, val)=>{
+  const newObj = keys.reduce((acc, val) => {
     if(val === oldKey){
         acc[newKey] = dictionary[oldKey]
     }
@@ -170,7 +170,7 @@ filters.renameAttribute = (dictionary, oldKey, newKey) => {
 
 filters.deleteAttribute = (dictionary, key) => {
   // Don't modify the original
-  var newDictionary = Object.assign({}, dictionary)
+  const newDictionary = Object.assign({}, dictionary)
   delete newDictionary[key]
   return newDictionary
 }
@@ -191,14 +191,14 @@ filters.deleteAttribute = (dictionary, key) => {
 
 filters.deleteBlankAttributes = (dictionary) => {
   // Don't modify the original
-  var newDictionary = Object.assign({}, dictionary)
+  const newDictionary = Object.assign({}, dictionary)
   var keys = Object.keys(newDictionary)
   keys.forEach(key => {
-    if (newDictionary[key] == ""){
+    if (newDictionary[key] == "") {
       delete newDictionary[key]
     }
   })
-  return newDictionary;
+  return newDictionary
 }
 
 /*
@@ -217,8 +217,8 @@ filters.deleteBlankAttributes = (dictionary) => {
 
 filters.filterAttr = function (arr, attr, test) {
   var result = arr.filter(function (item) {
-     return item[attr] === test;
-  });
+     return item[attr] === test
+  })
   return result
 };
 
@@ -238,8 +238,8 @@ filters.filterAttr = function (arr, attr, test) {
 
 filters.removeAttr = function (arr, attr, test) {
   var result = arr.filter(function (item) {
-     return item[attr] !== test;
-  });
+     return item[attr] !== test
+  })
   return result
 };
 

@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const _ = require('lodash');
+const _ = require('lodash')
 
 // Leave this filters line
 let filters = {}
@@ -22,8 +22,8 @@ let filters = {}
 */
 
 filters.arrayToList = function(array, join = ', ', final = ' and ') {
-  var arr = array.slice(0);
-  var last = arr.pop();
+  var arr = array.slice(0)
+  var last = arr.pop()
   if (array.length > 1) {
     return arr.join(join) + final + last;
   }
