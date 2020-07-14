@@ -227,7 +227,7 @@ filters.formatDate = (date, format, dateFormat) => {
 
     // a year ago
     case (format === 'relative'):
-      return timeAgoInDays(returnDate)
+      return returnDate.fromNow()
 
     // 21st March 2018
     case (format === 'pretty'):
