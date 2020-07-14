@@ -4,7 +4,7 @@
 const faker = require('faker')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================

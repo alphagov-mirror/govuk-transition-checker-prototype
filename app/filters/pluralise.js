@@ -4,7 +4,7 @@
 const moment = require('pluralize')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================

@@ -4,7 +4,7 @@
 const _ = require('lodash')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================
@@ -57,7 +57,6 @@ filters.objectArrayToArray = array => {
 
   [Usage here]
 
-
 */
 
 filters.keepAttributes = (array, keysToKeep) => {
@@ -99,7 +98,6 @@ filters.keepAttributes = (array, keysToKeep) => {
 
   [Usage here]
 
-
 */
 
 filters.setAttribute = (dictionary, key, value) => {
@@ -119,7 +117,6 @@ filters.setAttribute = (dictionary, key, value) => {
 
   [Usage here]
 
-
 */
 
 filters.clearAttribute = (dictionary, key) => {
@@ -138,7 +135,6 @@ filters.clearAttribute = (dictionary, key) => {
   Usage:
 
   [Usage here]
-
 
 */
 
@@ -166,7 +162,6 @@ filters.renameAttribute = (dictionary, oldKey, newKey) => {
 
   [Usage here]
 
-
 */
 
 filters.deleteAttribute = (dictionary, key) => {
@@ -187,7 +182,6 @@ filters.deleteAttribute = (dictionary, key) => {
 
   [Usage here]
 
-
 */
 
 filters.deleteBlankAttributes = (dictionary) => {
@@ -195,7 +189,7 @@ filters.deleteBlankAttributes = (dictionary) => {
   const newDictionary = Object.assign({}, dictionary)
   var keys = Object.keys(newDictionary)
   keys.forEach(key => {
-    if (newDictionary[key] == "") {
+    if (newDictionary[key] === '') {
       delete newDictionary[key]
     }
   })
@@ -212,7 +206,6 @@ filters.deleteBlankAttributes = (dictionary) => {
   Usage:
 
   [Usage here]
-
 
 */
 
@@ -233,7 +226,6 @@ filters.filterAttr = function (arr, attr, test) {
   Usage:
 
   [Usage here]
-
 
 */
 

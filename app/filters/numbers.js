@@ -4,7 +4,7 @@
 const numeral = require('numeral')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================

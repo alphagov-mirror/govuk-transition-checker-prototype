@@ -5,7 +5,7 @@ const moment = require('moment')
 const _ = require('lodash')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================
@@ -22,7 +22,7 @@ let filters = {}
 
 */
 
-filters.date = function(timestamp, format) {
+filters.date = (timestamp, format) => {
   return moment(timestamp).format(format)
 }
 
@@ -42,7 +42,7 @@ filters.date = function(timestamp, format) {
 */
 
 filters.arrayToDateObject = (array) => {
-  return new Date(array[2], array[1] -1, array[0])
+  return new Date(array[2], array[1] - 1, array[0])
 }
 
 /*
@@ -99,7 +99,7 @@ filters.todayGovuk = () => {
 */
 
 filters.dateToGovukDate = (date) => {
-  let theDate = moment(date)
+  const theDate = moment(date)
   if (theDate.isValid()) {
     return theDate.format('D MMMM YYYY')
   } else {
@@ -123,8 +123,8 @@ filters.dateToGovukDate = (date) => {
 */
 
 filters.arrayToGovukDate = (array) => {
-  let dateObject = filters.arrayToDateObject(array)
-  let govukDate = filters.dateToGovukDate(dateObject)
+  const dateObject = filters.arrayToDateObject(array)
+  const govukDate = filters.dateToGovukDate(dateObject)
   return govukDate
 }
 
@@ -163,13 +163,13 @@ filters.prettyMonth = (monthNumber) => {
 */
 
 filters.sortDateArrays = (arr, reversed, attr) => {
-  let array = _.map(arr, v => v)
+  const array = _.map(arr, v => v)
   array.sort((a, b) => {
     let x = (attr) ? a[attr] : a
     let y = (attr) ? b[attr] : b
     // Convert arrays of 3 to date objects
-    x = (_.isArray(x) && (x.length == 3)) ? filters.arrayToDateObject(x) : x
-    y = (_.isArray(y) && (y.length == 3)) ? filters.arrayToDateObject(y) : y
+    x = (_.isArray(x) && (x.length === 3)) ? filters.arrayToDateObject(x) : x
+    y = (_.isArray(y) && (y.length === 3)) ? filters.arrayToDateObject(y) : y
     if (x < y) {
       return reversed ? 1 : -1
     } else if (x > y) {
@@ -192,11 +192,10 @@ filters.sortDateArrays = (arr, reversed, attr) => {
 
   [Usage here]
 
-
 */
 
 filters.formatDate = (date, format, dateFormat) => {
-  var returnDate
+  let returnDate
   // No date provided.
   if (!date) {
     // console.log('error for', date, 'format', format)
@@ -268,7 +267,7 @@ filters.formatDate = (date, format, dateFormat) => {
 
 */
 
-filters.dateAdd = function(date, num, unit = 'days') {
+filters.dateAdd = (date, num, unit = 'days') => {
   return moment(date).add(num, unit).toDate()
 }
 
@@ -280,8 +279,6 @@ filters.dateAdd = function(date, num, unit = 'days') {
   ====================================================================
 
   Usage:
-
-
 
 */
 
@@ -298,8 +295,6 @@ filters.govDate = (timestamp) => {
 
   Usage:
 
-
-
 */
 
 filters.govShortDate = (timestamp) => {
@@ -315,12 +310,10 @@ filters.govShortDate = (timestamp) => {
 
   Usage:
 
-
-
 */
 
 filters.govTime = (timestamp) => {
-  let t = moment(timestamp)
+  const t = moment(timestamp)
   if (t.minutes() > 0) {
     return t.format('h:mma')
   } else {

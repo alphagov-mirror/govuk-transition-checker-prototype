@@ -4,7 +4,7 @@
 const CSV = require('csv-string')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
 ====================================================================

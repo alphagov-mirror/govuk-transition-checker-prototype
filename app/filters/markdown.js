@@ -4,7 +4,7 @@
 const marked = require('marked')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 /*
   ====================================================================

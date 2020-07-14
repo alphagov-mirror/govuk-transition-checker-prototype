@@ -7,7 +7,7 @@ module.exports = function (env) {
    * gov.uk core filters by creating filter methods of the same name.
    * @type {Object}
    */
-  let filters = {}
+  const filters = {}
 
   /* ------------------------------------------------------------------
     utility function to get an error for a component
@@ -19,7 +19,7 @@ module.exports = function (env) {
       return null
     }
 
-    const error = array.filter( (obj) =>
+    const error = array.filter((obj) =>
       obj.fieldName === fieldName
     )[0]
 

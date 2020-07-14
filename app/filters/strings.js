@@ -5,7 +5,7 @@ const string = require('string')
 const _ = require('lodash')
 
 // Leave this filters line
-let filters = {}
+const filters = {}
 
 filters.isString = (obj) => {
   return typeof obj == 'string';
@@ -63,7 +63,6 @@ filters.kebabCase = (string) => {
   Usage:
 
   [Usage here]
-
 
 */
 
