@@ -199,18 +199,13 @@ filters.formatDate = (date, format, dateFormat) => {
   // No date provided.
   if (!date) {
     // console.log('error for', date, 'format', format)
-    throw 'Error in formatDate: no date provided'
-  }
-  // Check for valid date
-  else if (dateFormat && moment(date, dateFormat).isValid()) {
+    return 'Error in formatDate: no date provided'
+  } else if (dateFormat && moment(date, dateFormat).isValid()) { // Check for valid date
     returnDate = moment(date, dateFormat)
-  }
-  else if (moment(date).isValid()) {
+  } else if (moment(date).isValid()) {
     returnDate = moment(date)
-  }
-  // Invalid date
-  else {
-    throw 'Error in formatDate: invalid date'
+  } else { // Invalid date
+    return 'Error in formatDate: invalid date'
   }
 
   switch (true) {

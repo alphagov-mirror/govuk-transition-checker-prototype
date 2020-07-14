@@ -25,7 +25,8 @@ filters.markdownToHtml = (markdown) => {
   if (!markdown) {
     return null
   }
-  return html = marked(markdown)
+  const html = marked(markdown)
+  return html
 }
 
 // -------------------------------------------------------------------

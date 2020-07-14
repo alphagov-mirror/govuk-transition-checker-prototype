@@ -126,21 +126,17 @@ filters.removeEmpty = items => {
   if (_.isString(items)) {
     if (items != null && items !== '') {
       return items
-    } else {
-      return
     }
   }
 
   // Handle arrys
   if (_.isArray(items)) {
-    var output = items.filter( item => {
+    var output = items.filter(item => {
       return (item && (item !== ''))
     })
     // Don't return emtpy arrays
     if (output.length) {
       return output
-    } else {
-      return
     }
   }
 }

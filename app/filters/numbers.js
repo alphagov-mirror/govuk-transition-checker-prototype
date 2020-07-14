@@ -21,10 +21,9 @@ const filters = {}
 
 */
 
-filters.numeral = function(number, format) {
+filters.numeral = (number, format) => {
   return numeral(number).format(format)
 }
-
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

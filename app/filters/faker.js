@@ -52,7 +52,6 @@ filters.fakeAddress = (string) => {
   return address
 }
 
-
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------

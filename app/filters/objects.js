@@ -35,9 +35,9 @@ const filters = {}
 */
 
 filters.objectArrayToArray = array => {
-  let newArray = []
+  const newArray = []
   array.forEach(item => {
-    let newItem = []
+    const newItem = []
     Object.keys(item).forEach(part => {
       newItem.push(item[part])
     })
@@ -61,7 +61,7 @@ filters.objectArrayToArray = array => {
 
 filters.keepAttributes = (array, keysToKeep) => {
   const keepKeys = theObject => {
-    let newObj = {}
+    const newObj = {}
     // Re-orders and keeps only selected keys
 
     // Coerce string to array
@@ -70,7 +70,7 @@ filters.keepAttributes = (array, keysToKeep) => {
     }
 
     keysToKeep.forEach(key => {
-      let objectKeys = Object.keys(theObject)
+      const objectKeys = Object.keys(theObject)
       if (objectKeys.includes(key)) {
         newObj[key] = theObject[key]
       }
@@ -80,9 +80,7 @@ filters.keepAttributes = (array, keysToKeep) => {
   // Array of objects
   if (_.isArray(array)) {
     return array.map(keepKeys)
-  }
-  // Single object
-  else {
+  } else { // Single object
     return keepKeys(array)
   }
 }
@@ -120,7 +118,7 @@ filters.setAttribute = (dictionary, key, value) => {
 */
 
 filters.clearAttribute = (dictionary, key) => {
-  var newDictionary = Object.assign({}, dictionary)
+  const newDictionary = Object.assign({}, dictionary)
   newDictionary[key] = ''
   return newDictionary
 }
@@ -187,7 +185,7 @@ filters.deleteAttribute = (dictionary, key) => {
 filters.deleteBlankAttributes = (dictionary) => {
   // Don't modify the original
   const newDictionary = Object.assign({}, dictionary)
-  var keys = Object.keys(newDictionary)
+  const keys = Object.keys(newDictionary)
   keys.forEach(key => {
     if (newDictionary[key] === '') {
       delete newDictionary[key]
@@ -210,8 +208,8 @@ filters.deleteBlankAttributes = (dictionary) => {
 */
 
 filters.filterAttr = function (arr, attr, test) {
-  var result = arr.filter(function (item) {
-     return item[attr] === test
+  const result = arr.filter(function (item) {
+    return item[attr] === test
   })
   return result
 }
@@ -230,8 +228,8 @@ filters.filterAttr = function (arr, attr, test) {
 */
 
 filters.removeAttr = function (arr, attr, test) {
-  var result = arr.filter(function (item) {
-     return item[attr] !== test
+  const result = arr.filter(function (item) {
+    return item[attr] !== test
   })
   return result
 }

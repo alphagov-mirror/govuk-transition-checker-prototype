@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
-const moment = require('pluralize')
+const pluralize = require('pluralize')
 
 // Leave this filters line
 const filters = {}

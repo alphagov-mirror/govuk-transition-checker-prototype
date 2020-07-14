@@ -1,4 +1,4 @@
-exports.find = function(answers) {
+exports.find = function (answers) {
   if (!answers) {
     return null
   }
@@ -16,8 +16,6 @@ exports.find = function(answers) {
   //   }
   //
   // }
-
-
 
   return actions
 }

@@ -21,7 +21,7 @@ const filters = {}
 
 filters.debug = (item) => {
   console.log('Debug', item)
-  return item;
+  return item
 }
 
 /*
