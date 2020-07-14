@@ -6,3 +6,7 @@ const yaml = require('js-yaml')
 
 const directoryPath = path.join(__dirname, '../data/')
 const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf8'))
+
+exports.find = function () {
+  return data.criteria
+}

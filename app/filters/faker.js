@@ -21,11 +21,11 @@ let filters = {}
 
 filters.fakePerson = (string) => {
   // faker.seed(123)
-  let firstName = faker.name.firstName()
-  let lastName = faker.name.lastName()
-  let fullName = firstName + " " + lastName
-  let email = fullName.split(' ').join('.').toLowerCase() + '@example.com'
-  let user = {
+  const firstName = faker.name.firstName()
+  const lastName = faker.name.lastName()
+  const fullName = firstName + ' ' + lastName
+  const email = fullName.split(' ').join('.').toLowerCase() + '@example.com'
+  const user = {
     firstName: firstName,
     lastName: lastName,
     fullName: fullName,
@@ -48,6 +48,7 @@ filters.fakePerson = (string) => {
 */
 
 filters.fakeAddress = (string) => {
+  const address = faker.address
   return address
 }
 
