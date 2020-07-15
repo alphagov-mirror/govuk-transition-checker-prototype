@@ -894,8 +894,7 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // Results
 // --------------------------------------------------
 
-router.get('/results', (req, res) => {
-  // console.log(Helpers.flattenObject(req.session.data.answers))
+router.get('/results', checkHasAnswers, (req, res) => {
   res.render('results', {
     results: {
       citizens: Actions.findActionsByAudience('citizen')
