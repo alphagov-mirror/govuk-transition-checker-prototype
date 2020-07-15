@@ -3,14 +3,73 @@
 const express = require('express')
 const router = express.Router()
 
-const Questions = require('./models/questions')
 const Actions = require('./models/actions')
-// const Criteria = require('./models/criteria')
+const Questions = require('./models/questions')
+const Rules = require('./models/rules')
 
-console.log('Actions', Actions.find().length)
+const Helpers = require('./models/helpers')
 
-console.log('Action', Actions.findActionById('S003').criteria)
-// console.log('Criteria', Criteria.find())
+// function flattenArray (data) {
+//   return Array.isArray(data) ? [].concat.apply([], data.map(flattenArray)) : data;
+// 	// return data.reduce((r, a) => {
+// 	// 	if (a === null) {
+// 	// 		return r;
+// 	// 	}
+// 	// 	if (Array.isArray(a)) {
+// 	// 		return a.reduce(iter, r);
+// 	// 	}
+// 	// 	if (typeof a === 'object') {
+// 	// 		return Object.keys(a).map(k => a[k]).reduce(iter, r);
+// 	// 	}
+// 	// 	return r.concat(a);
+// 	// }, []);
+// }
+
+// var flatten = a => Array.isArray(a) ? [].concat(...a.map(flatten)) : a;
+
+// var flattenObject = function(ob) {
+//
+//   return Object.keys(ob).reduce((toReturn, k) => {
+//
+//     if (Object.prototype.toString.call(ob[k]) === '[object Date]') {
+//       toReturn[k] = ob[k].toString();
+//     }
+//     else if ((typeof ob[k]) === 'object' && ob[k]) {
+//       let flatObject = flattenObject(ob[k]);
+//       Object.keys(flatObject).forEach((k2) => {
+//         toReturn[k + '.' + k2] = flatObject[k2];
+//       });
+//     }
+//     else {
+//       toReturn[k] = ob[k];
+//     }
+//
+//     return toReturn;
+//   }, {});
+// };
+
+// var flattenObject = function(data) {
+//
+//   const r = []
+//
+//   return Object.keys(data).reduce((toReturn, key) => {
+//
+//     if (Object.prototype.toString.call(data[key]) === '[object Date]') {
+//       r.push(data[key].toString())
+//     }
+//     else if ((typeof data[key]) === 'object' && data[key]) {
+//       let flatObject = flattenObject(data[key]);
+//       Object.keys(flatObject).forEach((k2) => {
+//         r.push(flatObject[k2])
+//       })
+//     }
+//     else {
+//       r.push(data[key])
+//     }
+//
+//     return r
+//   }, {})
+// }
 
 function checkHasAnswers (req, res, next) {
   if (req.session.data.answers === undefined) {
@@ -835,8 +894,13 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // Results
 // --------------------------------------------------
 
-router.get('/results', checkHasAnswers, (req, res) => {
+router.get('/results', (req, res) => {
+  // console.log(Helpers.flattenObject(req.session.data.answers))
   res.render('results', {
+    results: {
+      citizens: Actions.findActionsByAudience('citizen')
+    },
+    rules: Rules.find(req.session.data.answers),
     actions: {
       back: req.headers.referer,
       start: req.baseUrl + '/'

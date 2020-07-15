@@ -50,7 +50,7 @@
   <section class="brexit-checker-audience">
     <section class="brexit-checker-actions__group">
       <div class="govuk-grid-row">
-        <aside class="govuk-grid-column-one-third" aria-label="you-and-your-family-actions-group-common-travel-area-criteria">
+        <aside class="govuk-grid-column-one-third">
           <h3 class="govuk-heading-m">Common Travel Area</h3>
           <p class="govuk-body brexit-checker__critera_explaination">
             Because you said:
@@ -62,22 +62,40 @@
           </ul>
         </aside>
         <div class="govuk-grid-column-two-thirds">
-          <div class="govuk-grid-row brexit-checker__action">
-            <div class="brexit-checker__content-wrapper">
-              <p class="govuk-body brexit-checker__action_title">
-                Find out your right to live, work or study in the Common Travel Area if you're an Irish or UK national
-              </p>
-              <p class="govuk-body">
-                You can continue to live, work or study within the Common Travel Area.
-              </p>
-              <p class="govuk-body-s govuk-!-margin-bottom-0">
-                More information:
-              </p>
-              <p class="govuk-body-s">
-                <a href="https://www.gov.uk/government/publications/common-travel-area-guidance" class="govuk-link">Common travel area: rights of UK and Irish citizens</a>
-              </p>
-            </div>
-          </div>
+
+          {%- for action in results.citizens %}
+
+            {%- if action.id in rules %}
+
+              <div class="govuk-grid-row brexit-checker__action">
+                <div class="brexit-checker__content-wrapper">
+                  {% if action.title_url %}
+                    <p class="govuk-body brexit-checker__action_title">
+                      <a class="govuk-link" href="{{ action.title_url }}">
+                        {{- action.title -}}
+                      </a>
+                    </p>
+                  {% else %}
+                    <p class="govuk-body brexit-checker__action_title">
+                      {{- action.title -}}
+                    </p>
+                  {% endif %}
+                  <p class="govuk-body">
+                    {{- action.consequence -}}
+                  </p>
+                  <p class="govuk-body-s govuk-!-margin-bottom-0">
+                    {{- action.guidance_prompt + ':' -}}
+                  </p>
+                  <p class="govuk-body-s">
+                    <a href="{{ action.guidance_url }}" class="govuk-link">{{ action.guidance_link_text }}</a>
+                  </p>
+                </div>
+              </div>
+
+            {% endif -%}
+
+          {% endfor -%}
+
         </div>
       </div>
     </section>

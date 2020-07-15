@@ -22,11 +22,17 @@ const filters = {}
 */
 
 filters.arrayToList = (array, join = ', ', final = ' and ') => {
-  var arr = array.slice(0)
-  var last = arr.pop()
+  if (!Array.isArray(array)) {
+    return null
+  }
+
+  const arr = array.slice(0)
+  const last = arr.pop()
+
   if (array.length > 1) {
     return arr.join(join) + final + last
   }
+
   return last
 }
 
