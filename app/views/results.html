@@ -41,109 +41,21 @@
   </div>
 </div>
 
-<section class="brexit-checker-actions">
-  <header>
-    <h2 class="govuk-heading-l action-audience__heading">
-      You and your family
-    </h2>
-  </header>
-  <section class="brexit-checker-audience">
-    <section class="brexit-checker-actions__group">
-      <div class="govuk-grid-row">
-        <aside class="govuk-grid-column-one-third">
-          <h3 class="govuk-heading-m">Common Travel Area</h3>
-          <p class="govuk-body brexit-checker__critera_explaination">
-            Because you said:
-          </p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li class="brexit-checker__criterion">
-              You are a British national
-            </li>
-          </ul>
-        </aside>
-        <div class="govuk-grid-column-two-thirds">
+{% if data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation' %}
+  {% include "./partials/_results-business.html" %}
+{% endif %}
 
-          {%- for action in results.citizens %}
+{% include "./partials/_results-citizens.html" %}
 
-            {%- if action.id in rules %}
-
-              <div class="govuk-grid-row brexit-checker__action">
-                <div class="brexit-checker__content-wrapper">
-                  {% if action.title_url %}
-                    <p class="govuk-body brexit-checker__action_title">
-                      <a class="govuk-link" href="{{ action.title_url }}">
-                        {{- action.title -}}
-                      </a>
-                    </p>
-                  {% else %}
-                    <p class="govuk-body brexit-checker__action_title">
-                      {{- action.title -}}
-                    </p>
-                  {% endif %}
-                  <p class="govuk-body">
-                    {{- action.consequence -}}
-                  </p>
-                  <p class="govuk-body-s govuk-!-margin-bottom-0">
-                    {{- action.guidance_prompt + ':' -}}
-                  </p>
-                  <p class="govuk-body-s">
-                    <a href="{{ action.guidance_url }}" class="govuk-link">{{ action.guidance_link_text }}</a>
-                  </p>
-                </div>
-              </div>
-
-            {% endif -%}
-
-          {% endfor -%}
-
-        </div>
-      </div>
-    </section>
-  </section>
-</section>
-
-<h2 class="govuk-heading-m stay-updated__heading">
-  What you need to do may change
-</h2>
-
-<p class="stay-updated_description">
-  Subscribe to updates about changes that may affect you and get a link to your results.
-</p>
-
-<a class="govuk-button" role="button" href="https://www.gov.uk/transition-check/email-signup">Subscribe</a>
+{% include "./partials/_stay-up-to-date.html" %}
 
 <section class="brexit-checker__share">
   <h2 class="govuk-heading-m">
     Share your results
   </h2>
-  {{ govukPubShareLinks({
-    items: [{
-      text: 'Facebook',
-      icon: 'facebook',
-      href: 'https://www.facebook.com/sharer/sharer.php?u='
-    },{
-      text: 'Twitter',
-      icon: 'twitter',
-      href: 'https://www.twitter.com/share?url='
-    },{
-      text: 'Email',
-      icon: 'email',
-      href: 'mailto:?body='
-    },{
-      text: 'WhatsApp',
-      icon: 'whatsapp',
-      href: 'https://api.whatsapp.com/send?text='
-    },{
-      text: 'LinkedIn',
-      icon: 'linkedin',
-      href: 'https://www.linkedin.com/shareArticle?url='
-    }]
-  }) }}
+  {% include "./partials/_share-links.html" %}
 </section>
 
-{{ govukPubPrintLink({
-  href: "?print",
-  text: 'Print your results'
-}) }}
+{% include "./partials/_print-link.html" %}
 
 {% endblock %}

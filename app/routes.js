@@ -895,14 +895,23 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/results', checkHasAnswers, (req, res) => {
+  const results = {}
+  results.citizens = Actions.findActionsByAudience('citizen')
+  results.business = Actions.findActionsByAudience('business')
+
+  console.log(Helpers.flattenObject(req.session.data.answers));
+
+  let back = `${req.baseUrl}/sector-business-area`
+  if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {
+    back = `${req.baseUrl}/do-you-own-a-business`
+  }
+
   res.render('results', {
-    results: {
-      citizens: Actions.findActionsByAudience('citizen')
-    },
+    results: results,
     rules: Rules.find(req.session.data.answers),
     actions: {
-      back: req.headers.referer,
-      start: req.baseUrl + '/'
+      back: back,
+      start: `${req.baseUrl}/`
     }
   })
 })

@@ -234,29 +234,7 @@
 
     <div class="app-c-landing-page__share">
       <h3 class="govuk-heading-s govuk-!-font-weight-regular govuk-!-font-size-16">Share this page</h3>
-      {{ govukPubShareLinks({
-        items: [{
-          text: 'Facebook',
-          icon: 'facebook',
-          href: 'https://www.facebook.com/sharer/sharer.php?u='
-        },{
-          text: 'Twitter',
-          icon: 'twitter',
-          href: 'https://www.twitter.com/share?url='
-        },{
-          text: 'Email',
-          icon: 'email',
-          href: 'mailto:?body='
-        },{
-          text: 'WhatsApp',
-          icon: 'whatsapp',
-          href: 'https://api.whatsapp.com/send?text='
-        },{
-          text: 'LinkedIn',
-          icon: 'linkedin',
-          href: 'https://www.linkedin.com/shareArticle?url='
-        }]
-      }) }}
+      {% include "./partials/_share-links.html" %}
     </div>
   </div>
 
