@@ -9,68 +9,6 @@ const Rules = require('./models/rules')
 
 const Helpers = require('./models/helpers')
 
-// function flattenArray (data) {
-//   return Array.isArray(data) ? [].concat.apply([], data.map(flattenArray)) : data;
-// 	// return data.reduce((r, a) => {
-// 	// 	if (a === null) {
-// 	// 		return r;
-// 	// 	}
-// 	// 	if (Array.isArray(a)) {
-// 	// 		return a.reduce(iter, r);
-// 	// 	}
-// 	// 	if (typeof a === 'object') {
-// 	// 		return Object.keys(a).map(k => a[k]).reduce(iter, r);
-// 	// 	}
-// 	// 	return r.concat(a);
-// 	// }, []);
-// }
-
-// var flatten = a => Array.isArray(a) ? [].concat(...a.map(flatten)) : a;
-
-// var flattenObject = function(ob) {
-//
-//   return Object.keys(ob).reduce((toReturn, k) => {
-//
-//     if (Object.prototype.toString.call(ob[k]) === '[object Date]') {
-//       toReturn[k] = ob[k].toString();
-//     }
-//     else if ((typeof ob[k]) === 'object' && ob[k]) {
-//       let flatObject = flattenObject(ob[k]);
-//       Object.keys(flatObject).forEach((k2) => {
-//         toReturn[k + '.' + k2] = flatObject[k2];
-//       });
-//     }
-//     else {
-//       toReturn[k] = ob[k];
-//     }
-//
-//     return toReturn;
-//   }, {});
-// };
-
-// var flattenObject = function(data) {
-//
-//   const r = []
-//
-//   return Object.keys(data).reduce((toReturn, key) => {
-//
-//     if (Object.prototype.toString.call(data[key]) === '[object Date]') {
-//       r.push(data[key].toString())
-//     }
-//     else if ((typeof data[key]) === 'object' && data[key]) {
-//       let flatObject = flattenObject(data[key]);
-//       Object.keys(flatObject).forEach((k2) => {
-//         r.push(flatObject[k2])
-//       })
-//     }
-//     else {
-//       r.push(data[key])
-//     }
-//
-//     return r
-//   }, {})
-// }
-
 function checkHasAnswers (req, res, next) {
   if (req.session.data.answers === undefined) {
     res.redirect(req.baseUrl + '/')
@@ -899,7 +837,7 @@ router.get('/results', checkHasAnswers, (req, res) => {
   results.citizens = Actions.findActionsByAudience('citizen')
   results.business = Actions.findActionsByAudience('business')
 
-  console.log(Helpers.flattenObject(req.session.data.answers));
+  console.log(Helpers.flattenObject(req.session.data.answers))
 
   let back = `${req.baseUrl}/sector-business-area`
   if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {

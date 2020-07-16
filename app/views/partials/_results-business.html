@@ -21,7 +21,7 @@
 
           {%- for action in results.business %}
 
-            {#%- if action.id in rules %#}
+            {%- if action.id in rules %}
 
               <div class="govuk-grid-row brexit-checker__action">
                 <div class="brexit-checker__content-wrapper">
@@ -54,7 +54,7 @@
                 </div>
               </div>
 
-            {#% endif -%#}
+            {% endif -%}
 
           {% endfor -%}
 
