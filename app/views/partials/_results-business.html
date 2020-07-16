@@ -23,6 +23,23 @@
 
             {%- if action.id in rules %}
 
+              {{ appCheckerAction({
+                heading: {
+                  href: action.title_url,
+                  text: action.title
+                },
+                consequence: {
+                  text: action.consequence
+                },
+                guidance: {
+                  prompt: {
+                    text: action.guidance_prompt + ':'
+                  },
+                  href: action.guidance_url,
+                  text: action.guidance_link_text
+                }
+              }) }}
+
               <div class="brexit-checker__action">
                 <div class="brexit-checker__content-wrapper">
                   {% if action.title_url %}

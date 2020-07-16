@@ -24,36 +24,22 @@
 
             {%- if action.id in rules %}
 
-              <div class="brexit-checker__action">
-                <div class="brexit-checker__content-wrapper">
-                  {% if action.title_url %}
-                    <p class="brexit-checker__action_title">
-                      <a class="govuk-link" href="{{ action.title_url }}">
-                        {{- action.title -}}
-                      </a>
-                    </p>
-                  {% else %}
-                    <p class="brexit-checker__action_title">
-                      {{- action.title -}}
-                    </p>
-                  {% endif %}
-                  {%- if action.consequence %}
-                    <p class="govuk-body">
-                      {{- action.consequence -}}
-                    </p>
-                  {% endif -%}
-                  {%- if action.guidance_prompt %}
-                    <p class="govuk-body-s govuk-!-margin-bottom-0">
-                      {{- action.guidance_prompt + ':' -}}
-                    </p>
-                  {% endif -%}
-                  {%- if action.guidance_link_text and action.guidance_url %}
-                    <p class="govuk-body-s">
-                      <a href="{{ action.guidance_url }}" class="govuk-link">{{ action.guidance_link_text }}</a>
-                    </p>
-                  {% endif -%}
-                </div>
-              </div>
+              {{ appCheckerAction({
+                heading: {
+                  href: action.title_url,
+                  text: action.title
+                },
+                consequence: {
+                  text: action.consequence
+                },
+                guidance: {
+                  prompt: {
+                    text: action.guidance_prompt + ':'
+                  },
+                  href: action.guidance_url,
+                  text: action.guidance_link_text
+                }
+              }) }}
 
             {% endif -%}
 
