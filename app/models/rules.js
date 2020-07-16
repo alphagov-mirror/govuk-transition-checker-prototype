@@ -59,7 +59,7 @@ exports.find = (answers) => {
   }
 
   if (answers.nationality !== undefined &&
-      answers.studying !== undefined) {
+      answers.employment !== undefined) {
     if (answers.nationality === 'nationality-uk' &&
         (answers.employment === 'studying-eu' ||
         answers.employment === 'studying-ie')) {
@@ -145,9 +145,9 @@ exports.find = (answers) => {
   }
 
   if (answers.nationality !== undefined &&
-      answers.studying !== undefined) {
+      answers.employment !== undefined) {
     if (answers.nationality === 'nationality-uk' &&
-        answers.studying === 'studying-eu') {
+        answers.employment === 'studying-eu') {
       actions.push('S026')
     }
   }

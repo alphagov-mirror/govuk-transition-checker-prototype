@@ -23,16 +23,16 @@
 
             {%- if action.id in rules %}
 
-              <div class="govuk-grid-row brexit-checker__action">
+              <div class="brexit-checker__action">
                 <div class="brexit-checker__content-wrapper">
                   {% if action.title_url %}
-                    <p class="govuk-body brexit-checker__action_title">
+                    <p class="brexit-checker__action_title">
                       <a class="govuk-link" href="{{ action.title_url }}">
                         {{- action.title -}}
                       </a>
                     </p>
                   {% else %}
-                    <p class="govuk-body brexit-checker__action_title">
+                    <p class="brexit-checker__action_title">
                       {{- action.title -}}
                     </p>
                   {% endif %}
