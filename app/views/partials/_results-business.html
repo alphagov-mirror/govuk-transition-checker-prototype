@@ -8,13 +8,17 @@
     <section class="brexit-checker-actions__group">
       <div class="govuk-grid-row">
         <aside class="govuk-grid-column-one-third">
-          <p class="govuk-body brexit-checker__critera_explaination">
+          <p class="brexit-checker__critera_explaination">
             Because you said:
           </p>
           <ul class="govuk-list govuk-list--bullet">
-            <li class="brexit-checker__criterion">
-              You are a British national
-            </li>
+            {% for criterion in criteria.business %}
+              {% if criterion.key in answers %}
+                <li class="brexit-checker__criterion">
+                  {{- criterion.text -}}
+                </li>
+              {% endif %}
+            {% endfor %}
           </ul>
         </aside>
         <div class="govuk-grid-column-two-thirds">
@@ -39,37 +43,6 @@
                   text: action.guidance_link_text
                 }
               }) }}
-
-              <div class="brexit-checker__action">
-                <div class="brexit-checker__content-wrapper">
-                  {% if action.title_url %}
-                    <p class="brexit-checker__action_title">
-                      <a class="govuk-link" href="{{ action.title_url }}">
-                        {{- action.title -}}
-                      </a>
-                    </p>
-                  {% else %}
-                    <p class="brexit-checker__action_title">
-                      {{- action.title -}}
-                    </p>
-                  {% endif %}
-                  {%- if action.consequence %}
-                    <p class="govuk-body">
-                      {{- action.consequence -}}
-                    </p>
-                  {% endif -%}
-                  {%- if action.guidance_prompt %}
-                    <p class="govuk-body-s govuk-!-margin-bottom-0">
-                      {{- action.guidance_prompt + ':' -}}
-                    </p>
-                  {% endif -%}
-                  {%- if action.guidance_link_text and action.guidance_url %}
-                    <p class="govuk-body-s">
-                      <a href="{{ action.guidance_url }}" class="govuk-link">{{ action.guidance_link_text }}</a>
-                    </p>
-                  {% endif -%}
-                </div>
-              </div>
 
             {% endif -%}
 

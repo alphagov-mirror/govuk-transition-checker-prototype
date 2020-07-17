@@ -10,3 +10,8 @@ const data = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf
 exports.find = function () {
   return data.criteria
 }
+
+exports.findCriteriaByAudience = (audience) => {
+  const criteria = data.criteria.filter(obj => obj.audience === audience)
+  return criteria
+}

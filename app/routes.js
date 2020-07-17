@@ -4,10 +4,13 @@ const express = require('express')
 const router = express.Router()
 
 const Actions = require('./models/actions')
+const Criteria = require('./models/criteria')
 const Questions = require('./models/questions')
 const Rules = require('./models/rules')
 
 const Helpers = require('./models/helpers')
+
+// console.log(Criteria.findCriteriaByAudience('business'))
 
 function checkHasAnswers (req, res, next) {
   if (req.session.data.answers === undefined) {
@@ -835,9 +838,19 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 router.get('/results', checkHasAnswers, (req, res) => {
   const results = {}
   results.citizens = Actions.findActionsByAudience('citizen')
-  results.business = Actions.findActionsByAudience('business')
 
-  console.log(Helpers.flattenObject(req.session.data.answers))
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    results.business = Actions.findActionsByAudience('business')
+  }
+
+  const criteria = {}
+  criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    criteria.business = Criteria.findCriteriaByAudience('business')
+  }
+
+  // console.log(Helpers.flattenObject(req.session.data.answers))
 
   let back = `${req.baseUrl}/sector-business-area`
   if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {
@@ -846,6 +859,8 @@ router.get('/results', checkHasAnswers, (req, res) => {
 
   res.render('results', {
     results: results,
+    criteria: criteria,
+    answers: Helpers.flattenObject(req.session.data.answers),
     rules: Rules.find(req.session.data.answers),
     actions: {
       back: back,
