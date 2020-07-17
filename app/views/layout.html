@@ -31,6 +31,7 @@
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
 {% from "govuk-pub/components/document-list/macro.njk"     import govukPubDocumentList %}
+{% from "govuk-pub/components/feedback/macro.njk"          import govukPubFeedback %}
 {% from "govuk-pub/components/print-link/macro.njk"        import govukPubPrintLink %}
 {% from "govuk-pub/components/share-links/macro.njk"       import govukPubShareLinks %}
 {% from "govuk-pub/components/topic-list/macro.njk"        import govukPubTopicList %}
@@ -61,6 +62,12 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
+    {{ govukPubFeedback({
+      attributes: {
+        id: 'feedback'
+      },
+      classes: "govuk-width-container"
+    }) }}
     {{ govukFooter({
       meta: {
         items: [
