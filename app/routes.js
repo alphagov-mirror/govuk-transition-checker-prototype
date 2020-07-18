@@ -97,13 +97,13 @@ router.get('/living', checkHasAnswers, (req, res) => {
 router.post('/living', checkHasAnswers, (req, res) => {
   const errors = []
 
-  // if (req.session.data.answers.living === undefined) {
-  //   const error = {}
-  //   error.fieldName = 'living'
-  //   error.href = '#living'
-  //   error.text = 'Choose where you live'
-  //   errors.push(error)
-  // }
+  if (req.session.data.answers.living === undefined) {
+    const error = {}
+    error.fieldName = 'living'
+    error.href = '#living'
+    error.text = 'Choose where you live'
+    errors.push(error)
+  }
 
   if (errors.length) {
     res.render('question', {
@@ -138,13 +138,13 @@ router.get('/employment', checkHasAnswers, (req, res) => {
 router.post('/employment', checkHasAnswers, (req, res) => {
   const errors = []
 
-  // if (req.session.data.answers.employment === undefined) {
-  //   const error = {}
-  //   error.fieldName = 'employment'
-  //   error.href = '#employment'
-  //   error.text = 'Choose what you do'
-  //   errors.push(error)
-  // }
+  if (req.session.data.answers.employment === undefined) {
+    const error = {}
+    error.fieldName = 'employment'
+    error.href = '#employment'
+    error.text = 'Choose what you do'
+    errors.push(error)
+  }
 
   if (errors.length) {
     res.render('question', {
@@ -166,14 +166,19 @@ router.post('/employment', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/travelling-business', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('travelling-business', req.session.data.answers['travelling-business']),
-    actions: {
-      save: req.baseUrl + '/travelling-business',
-      back: req.baseUrl + '/employment',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.living === 'living-uk') {
+    res.render('question', {
+      question: Questions.question('travelling-business', req.session.data.answers['travelling-business']),
+      actions: {
+        save: req.baseUrl + '/travelling-business',
+        back: req.baseUrl + '/employment',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers['travelling-business']
+    res.redirect(`${req.baseUrl}/driving`)
+  }
 })
 
 router.post('/travelling-business', checkHasAnswers, (req, res) => {
@@ -207,14 +212,20 @@ router.post('/travelling-business', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/driving', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('drive-in-eu', req.session.data.answers['drive-in-eu']),
-    actions: {
-      save: req.baseUrl + '/driving',
-      back: req.baseUrl + '/travelling-business',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.nationality === 'nationality-uk' &&
+      req.session.data.answers.living === 'living-eu') {
+    res.render('question', {
+      question: Questions.question('drive-in-eu', req.session.data.answers['drive-in-eu']),
+      actions: {
+        save: req.baseUrl + '/driving',
+        back: req.baseUrl + '/travelling-business',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers['drive-in-eu']
+    res.redirect(`${req.baseUrl}/travelling`)
+  }
 })
 
 router.post('/driving', checkHasAnswers, (req, res) => {
@@ -289,14 +300,22 @@ router.post('/travelling', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/activities', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('activities', req.session.data.answers.activities),
-    actions: {
-      save: req.baseUrl + '/activities',
-      back: req.baseUrl + '/travelling',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.visiting === 'visiting-eu' ||
+      req.session.data.answers.visiting === 'visiting-ie' ||
+      req.session.data.answers.visiting === 'visiting-uk' ||
+      req.session.data.answers['travelling-business'] === 'travel-eu-business') {
+    res.render('question', {
+      question: Questions.question('activities', req.session.data.answers.activities),
+      actions: {
+        save: req.baseUrl + '/activities',
+        back: req.baseUrl + '/travelling',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers.activities
+    res.redirect(`${req.baseUrl}/move-eu`)
+  }
 })
 
 router.post('/activities', checkHasAnswers, (req, res) => {
@@ -330,14 +349,23 @@ router.post('/activities', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/move-eu', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('move-eu', req.session.data.answers['move-eu']),
-    actions: {
-      save: req.baseUrl + '/move-eu',
-      back: req.baseUrl + '/activities',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.nationality === 'nationality-uk' &&
+      (req.session.data.answers.living === 'living-uk' ||
+      req.session.data.answers.living === 'living-ie' ||
+      req.session.data.answers.living === 'living-row')) {
+    res.render('question', {
+      question: Questions.question('move-eu', req.session.data.answers['move-eu']),
+      actions: {
+        save: req.baseUrl + '/move-eu',
+        back: req.baseUrl + '/activities',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers['move-eu']
+    res.redirect(`${req.baseUrl}/returning`)
+  }
+
 })
 
 router.post('/move-eu', checkHasAnswers, (req, res) => {
@@ -371,14 +399,21 @@ router.post('/move-eu', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/returning', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('returning', req.session.data.answers.returning),
-    actions: {
-      save: req.baseUrl + '/returning',
-      back: req.baseUrl + '/move-eu',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.nationality === 'nationality-uk' &&
+      (req.session.data.answers.living === 'living-eu' ||
+      req.session.data.answers.living === 'living-row')) {
+    res.render('question', {
+      question: Questions.question('returning', req.session.data.answers.returning),
+      actions: {
+        save: req.baseUrl + '/returning',
+        back: req.baseUrl + '/move-eu',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers.returning
+    res.redirect(`${req.baseUrl}/family-eu`)
+  }
 })
 
 router.post('/returning', checkHasAnswers, (req, res) => {
@@ -412,14 +447,20 @@ router.post('/returning', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/family-eu', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('family-eu', req.session.data.answers['family-eu']),
-    actions: {
-      save: req.baseUrl + '/family-eu',
-      back: req.baseUrl + '/returning',
-      start: req.baseUrl + '/'
-    }
-  })
+  if (req.session.data.answers.nationality === 'nationality-row' &&
+      req.session.data.answers.living === 'living-uk') {
+    res.render('question', {
+      question: Questions.question('family-eu', req.session.data.answers['family-eu']),
+      actions: {
+        save: req.baseUrl + '/family-eu',
+        back: req.baseUrl + '/returning',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers['family-eu']
+    res.redirect(`${req.baseUrl}/join-family-uk`)
+  }
 })
 
 router.post('/family-eu', checkHasAnswers, (req, res) => {
@@ -453,14 +494,22 @@ router.post('/family-eu', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/join-family-uk', checkHasAnswers, (req, res) => {
-  res.render('question', {
-    question: Questions.question('join-family-uk', req.session.data.answers['join-family-uk']),
-    actions: {
-      save: req.baseUrl + '/join-family-uk',
-      back: req.baseUrl + '/family-eu',
-      start: req.baseUrl + '/'
-    }
-  })
+  if ((req.session.data.answers.nationality === 'nationality-eu' ||
+      req.session.data.answers.nationality === 'nationality-row') &&
+      (req.session.data.answers.living === 'living-eu' ||
+      req.session.data.answers.living === 'living-row')) {
+    res.render('question', {
+      question: Questions.question('join-family-uk', req.session.data.answers['join-family-uk']),
+      actions: {
+        save: req.baseUrl + '/join-family-uk',
+        back: req.baseUrl + '/family-eu',
+        start: req.baseUrl + '/'
+      }
+    })
+  } else {
+    delete req.session.data.answers['join-family-uk']
+    res.redirect(`${req.baseUrl}/do-you-own-a-business`);
+  }
 })
 
 router.post('/join-family-uk', checkHasAnswers, (req, res) => {

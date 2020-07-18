@@ -1,3 +1,7 @@
+{% set error = errors | getErrorMessage(question.key) %}
+
+<div class="govuk-form-group {{- ' govuk-form-group--error' if error}}">
+
 {% call govukFieldset({
   legend: {
     html: headingHtml | safe,
@@ -9,6 +13,10 @@
   {{ govukHint({
     text: question.hint_text
   }) if question.hint_text | length }}
+
+  {{ govukErrorMessage({
+    text: error.text
+  }) if error.text | length }}
 
   {% for option in question.options %}
 
@@ -28,3 +36,5 @@
   {% endfor %}
 
 {% endcall %}
+
+</div>
