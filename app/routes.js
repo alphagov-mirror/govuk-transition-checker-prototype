@@ -24,8 +24,6 @@ function checkHasAnswers (req, res, next) {
 
 router.get('/', (req, res) => {
   delete req.session.data
-  // console.log(Actions.findActionsByAudienceAndGroup('citizen','visiting-eu'))
-  console.log(Criteria.findCriteriaByAudience('citizen'));
   res.render('index', {
     actions: {
       start: `${req.baseUrl}/nationality`

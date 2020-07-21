@@ -31,47 +31,6 @@ exports.findActionsByAudienceAndGroup = (audience, group) => {
   return actions
 }
 
-// -----------------------------------------------------------------------------
-// Action groups
-// -----------------------------------------------------------------------------
-
-// Business does not have grouping criteria
-// exports.findActionsByGroup = (group) => {
-//   let actions = []
-//   actions = this.find().filter(obj => obj.grouping_criteria.includes(group))
-//   return actions
-// }
-
-// exports.findGroupActions = () => {
-//   const actions = {}
-//
-//   groups.find().forEach((group) => {
-//     actions[group.key] = this.findActionsByAudienceAndGroup('citizen', group.key)
-//   })
-//
-//   return actions
-// }
-
-// exports.findActionsByAnswers = (answers, rules) => {
-//
-// }
-
-// exports.findGroupActionsByAnswers = (answers, rules) => {
-//   const actions = {}
-//
-//   console.log('Rules', rules);
-//
-//   groups.find().forEach((group) => {
-//
-//     if (answers.indexOf(group.key) !== -1) {
-//       actions[group.key] = this.findActionsByAudienceAndGroup('citizen', group.key)
-//     }
-//
-//   })
-//
-//   return actions
-// }
-
 exports.findCitizenActionsByAnswers = (answers, rules) => {
   const actions = []
   const results = {}
