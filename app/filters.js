@@ -1,5 +1,12 @@
 'use strict'
 
+const path = require('path')
+const fs = require('fs')
+const yaml = require('js-yaml')
+
+const directoryPath = path.join(__dirname, './data/')
+const groups = yaml.safeLoad(fs.readFileSync(directoryPath + 'groups.yaml', 'utf8'))
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -49,6 +56,17 @@ module.exports = function (env) {
     })
 
     return items
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to parse group heading
+    example: {{ 'living-eu' | getGroupHeading }}
+    output: 'Living in the EU'
+  ------------------------------------------------------------------ */
+  filters.getGroupHeading = function (group) {
+    let result = []
+    result = groups.groups.filter(obj => obj.key === group)
+    return result[0].heading
   }
 
   /* ------------------------------------------------------------------

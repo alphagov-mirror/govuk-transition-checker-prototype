@@ -38,7 +38,7 @@
                 guidance: {
                   prompt: {
                     text: action.guidance_prompt + ':'
-                  },
+                  } if action.guidance_prompt,
                   href: action.guidance_url,
                   text: action.guidance_link_text
                 }

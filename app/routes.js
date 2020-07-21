@@ -10,8 +10,6 @@ const Rules = require('./models/rules')
 
 const Helpers = require('./models/helpers')
 
-// console.log(Criteria.findCriteriaByAudience('business'))
-
 function checkHasAnswers (req, res, next) {
   if (req.session.data.answers === undefined) {
     res.redirect(req.baseUrl + '/')
@@ -26,7 +24,8 @@ function checkHasAnswers (req, res, next) {
 
 router.get('/', (req, res) => {
   delete req.session.data
-
+  // console.log(Actions.findActionsByAudienceAndGroup('citizen','visiting-eu'))
+  console.log(Criteria.findCriteriaByAudience('citizen'));
   res.render('index', {
     actions: {
       start: `${req.baseUrl}/nationality`
@@ -212,18 +211,13 @@ router.post('/travelling-business', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/driving', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/employment`
-  if (req.session.data.answers.living === 'living-uk') {
-    back = `${req.baseUrl}/travelling-business`
-  }
-
   if (req.session.data.answers.nationality === 'nationality-uk' &&
       req.session.data.answers.living === 'living-eu') {
     res.render('question', {
       question: Questions.question('drive-in-eu', req.session.data.answers['drive-in-eu']),
       actions: {
         save: `${req.baseUrl}/driving`,
-        back: back,
+        back: `${req.baseUrl}/travelling-business`,
         start: `${req.baseUrl}/`
       }
     })
@@ -234,11 +228,6 @@ router.get('/driving', checkHasAnswers, (req, res) => {
 })
 
 router.post('/driving', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/employment`
-  if (req.session.data.answers.living === 'living-uk') {
-    back = `${req.baseUrl}/travelling-business`
-  }
-
   const errors = []
 
   if (req.session.data.answers['drive-in-eu'] === undefined) {
@@ -255,7 +244,7 @@ router.post('/driving', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/driving`,
-        back: back,
+        back: `${req.baseUrl}/travelling-business`,
         start: `${req.baseUrl}/`
       }
     })
@@ -359,14 +348,6 @@ router.post('/activities', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/move-eu', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/travelling`
-  if (req.session.data.answers.visiting === 'visiting-eu' ||
-      req.session.data.answers.visiting === 'visiting-ie' ||
-      req.session.data.answers.visiting === 'visiting-uk' ||
-      req.session.data.answers['travelling-business'] === 'travel-eu-business') {
-    back = `${req.baseUrl}/activities`
-  }
-
   if (req.session.data.answers.nationality === 'nationality-uk' &&
       (req.session.data.answers.living === 'living-uk' ||
       req.session.data.answers.living === 'living-ie' ||
@@ -375,7 +356,7 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
       question: Questions.question('move-eu', req.session.data.answers['move-eu']),
       actions: {
         save: `${req.baseUrl}/move-eu`,
-        back: back,
+        back: `${req.baseUrl}/activities`,
         start: `${req.baseUrl}/`
       }
     })
@@ -387,14 +368,6 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
 })
 
 router.post('/move-eu', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/travelling`
-  if (req.session.data.answers.visiting === 'visiting-eu' ||
-      req.session.data.answers.visiting === 'visiting-ie' ||
-      req.session.data.answers.visiting === 'visiting-uk' ||
-      req.session.data.answers['travelling-business'] === 'travel-eu-business') {
-    back = `${req.baseUrl}/activities`
-  }
-
   const errors = []
 
   if (req.session.data.answers['move-eu'] === undefined) {
@@ -411,7 +384,7 @@ router.post('/move-eu', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/move-eu`,
-        back: back,
+        back: `${req.baseUrl}/activities`,
         start: `${req.baseUrl}/`
       }
     })
@@ -425,14 +398,6 @@ router.post('/move-eu', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/returning', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/activities`
-  if (req.session.data.answers.nationality === 'nationality-uk' &&
-      (req.session.data.answers.living === 'living-uk' ||
-      req.session.data.answers.living === 'living-ie' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/move-eu`
-  }
-
   if (req.session.data.answers.nationality === 'nationality-uk' &&
       (req.session.data.answers.living === 'living-eu' ||
       req.session.data.answers.living === 'living-row')) {
@@ -440,7 +405,7 @@ router.get('/returning', checkHasAnswers, (req, res) => {
       question: Questions.question('returning', req.session.data.answers.returning),
       actions: {
         save: `${req.baseUrl}/returning`,
-        back: back,
+        back: `${req.baseUrl}/move-eu`,
         start: `${req.baseUrl}/`
       }
     })
@@ -451,14 +416,6 @@ router.get('/returning', checkHasAnswers, (req, res) => {
 })
 
 router.post('/returning', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/activities`
-  if (req.session.data.answers.nationality === 'nationality-uk' &&
-      (req.session.data.answers.living === 'living-uk' ||
-      req.session.data.answers.living === 'living-ie' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/mov-eu`
-  }
-
   const errors = []
 
   if (req.session.data.answers.returning === undefined) {
@@ -475,7 +432,7 @@ router.post('/returning', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/returning`,
-        back: back,
+        back: `${req.baseUrl}/move-eu`,
         start: `${req.baseUrl}/`
       }
     })
@@ -489,20 +446,13 @@ router.post('/returning', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/family-eu', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/move-eu`
-  if (req.session.data.answers.nationality === 'nationality-uk' &&
-      (req.session.data.answers.living === 'living-eu' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/returning`
-  }
-
   if (req.session.data.answers.nationality === 'nationality-row' &&
       req.session.data.answers.living === 'living-uk') {
     res.render('question', {
       question: Questions.question('family-eu', req.session.data.answers['family-eu']),
       actions: {
         save: `${req.baseUrl}/family-eu`,
-        back: back,
+        back: `${req.baseUrl}/returning`,
         start: `${req.baseUrl}/`
       }
     })
@@ -513,13 +463,6 @@ router.get('/family-eu', checkHasAnswers, (req, res) => {
 })
 
 router.post('/family-eu', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/move-eu`
-  if (req.session.data.answers.nationality === 'nationality-uk' &&
-      (req.session.data.answers.living === 'living-eu' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/returning`
-  }
-
   const errors = []
 
   if (req.session.data.answers['family-eu'] === undefined) {
@@ -536,7 +479,7 @@ router.post('/family-eu', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/family-eu`,
-        back: back,
+        back: `${req.baseUrl}/returning`,
         start: `${req.baseUrl}/`
       }
     })
@@ -550,12 +493,6 @@ router.post('/family-eu', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/join-family-uk', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/returning`
-  if (req.session.data.answers.nationality === 'nationality-row' &&
-      req.session.data.answers.living === 'living-uk') {
-    back = `${req.baseUrl}/family-eu`
-  }
-
   if ((req.session.data.answers.nationality === 'nationality-eu' ||
       req.session.data.answers.nationality === 'nationality-row') &&
       (req.session.data.answers.living === 'living-eu' ||
@@ -564,7 +501,7 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
       question: Questions.question('join-family-uk', req.session.data.answers['join-family-uk']),
       actions: {
         save: `${req.baseUrl}/join-family-uk`,
-        back: back,
+        back: `${req.baseUrl}/family-eu`,
         start: `${req.baseUrl}/`
       }
     })
@@ -575,12 +512,6 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
 })
 
 router.post('/join-family-uk', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/returning`
-  if (req.session.data.answers.nationality === 'nationality-row' &&
-      req.session.data.answers.living === 'living-uk') {
-    back = `${req.baseUrl}/family-eu`
-  }
-
   const errors = []
 
   if (req.session.data.answers['join-family-uk'] === undefined) {
@@ -597,7 +528,7 @@ router.post('/join-family-uk', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/join-family-uk`,
-        back: back,
+        back: `${req.baseUrl}/family-eu`,
         start: `${req.baseUrl}/`
       }
     })
@@ -611,33 +542,17 @@ router.post('/join-family-uk', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/do-you-own-a-business', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/family-eu`
-  if ((req.session.data.answers.nationality === 'nationality-eu' ||
-      req.session.data.answers.nationality === 'nationality-row') &&
-      (req.session.data.answers.living === 'living-eu' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/join-family-uk`
-  }
-
   res.render('question', {
     question: Questions.question('do-you-own-a-business', req.session.data.answers['do-you-own-a-business']),
     actions: {
       save: `${req.baseUrl}/do-you-own-a-business`,
-      back: back,
+      back: `${req.baseUrl}/join-family-uk`,
       start: `${req.baseUrl}/`
     }
   })
 })
 
 router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
-  let back = `${req.baseUrl}/family-eu`
-  if ((req.session.data.answers.nationality === 'nationality-eu' ||
-      req.session.data.answers.nationality === 'nationality-row') &&
-      (req.session.data.answers.living === 'living-eu' ||
-      req.session.data.answers.living === 'living-row')) {
-    back = `${req.baseUrl}/join-family-uk`
-  }
-
   const errors = []
 
   if (req.session.data.answers['do-you-own-a-business'] === undefined) {
@@ -654,7 +569,7 @@ router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/do-you-own-a-business`,
-        back: back,
+        back: `${req.baseUrl}/join-family-uk`,
         start: `${req.baseUrl}/`
       }
     })
@@ -969,8 +884,76 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/results', checkHasAnswers, (req, res) => {
+
+  // req.session.data.answers = {
+  //   'nationality': 'nationality-uk',
+  //   'living': 'living-eu',
+  //   'employment': [
+  //     'working-uk',
+  //     'working-eu',
+  //     'studying-uk',
+  //     'studying-eu'
+  //   ],
+  //   'drive-in-eu': 'living-driving-eu',
+  //   'travelling': [
+  //     'visiting-uk',
+  //     'visiting-ie',
+  //     'visiting-eu',
+  //     'visiting-row'
+  //   ],
+  //   'returning': 'return-to-uk',
+  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
+  // }
+
+  // req.session.data.answers = {
+  //   "nationality": "nationality-uk",
+  //   "living": "living-uk",
+  //   "employment": [
+  //     "working-uk"
+  //   ],
+  //   "travelling-business": "travel-eu-business",
+  //   "travelling": [
+  //     "visiting-uk",
+  //     "visiting-eu"
+  //   ],
+  //   "activities": [
+  //     "visiting-driving"
+  //   ],
+  //   "move-eu": "move-to-eu",
+  //   "do-you-own-a-business": "owns-operates-business-organisation",
+  //   "business-uk-or-eu": "owns-operates-business-organisation-uk",
+  //   "employ-eu-citizens": "do-not-employ-eu-citizens",
+  //   "personal-data-options": [
+  //     "personal-eu-org-provide"
+  //   ],
+  //   "personal-data": "personal-eu-org",
+  //   "eu-uk-government-funding": "do-not-eu-uk-funding",
+  //   "public-sector-procurement-options": [
+  //     "sell-public-sector-contracts"
+  //   ],
+  //   "public-sector-procurement": "sell-public-sector",
+  //   "intellectual-property-options": [
+  //     "ip-copyright",
+  //     "ip-trade-marks",
+  //     "ip-designs"
+  //   ],
+  //   "intellectual-property": "ip",
+  //   "eu-domain": "eu-domain-no",
+  //   "sector-business-area": [
+  //     "creative",
+  //     "digital"
+  //   ]
+  // }
+
+
+  let answers = []
+  answers = Helpers.flattenObject(req.session.data.answers)
+
+  let rules = []
+  rules = Rules.find(req.session.data.answers)
+
   const results = {}
-  results.citizens = Actions.findActionsByAudience('citizen')
+  results.citizens = Actions.findCitizenActionsByAnswers(answers, rules)
 
   if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
     results.business = Actions.findActionsByAudience('business')
@@ -991,8 +974,8 @@ router.get('/results', checkHasAnswers, (req, res) => {
   res.render('results', {
     results: results,
     criteria: criteria,
-    answers: Helpers.flattenObject(req.session.data.answers),
-    rules: Rules.find(req.session.data.answers),
+    answers: answers,
+    rules: rules,
     actions: {
       back: back,
       start: `${req.baseUrl}/`

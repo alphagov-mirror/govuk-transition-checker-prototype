@@ -41,7 +41,7 @@
   </div>
 </div>
 
-{% if data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation' %}
+{% if results.business | length %}
   {% include "./partials/_results-business.html" %}
 {% endif %}
 
