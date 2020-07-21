@@ -881,27 +881,27 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // Results
 // --------------------------------------------------
 
-router.get('/results', checkHasAnswers, (req, res) => {
+router.get('/results', (req, res) => {
 
-  // req.session.data.answers = {
-  //   'nationality': 'nationality-uk',
-  //   'living': 'living-eu',
-  //   'employment': [
-  //     'working-uk',
-  //     'working-eu',
-  //     'studying-uk',
-  //     'studying-eu'
-  //   ],
-  //   'drive-in-eu': 'living-driving-eu',
-  //   'travelling': [
-  //     'visiting-uk',
-  //     'visiting-ie',
-  //     'visiting-eu',
-  //     'visiting-row'
-  //   ],
-  //   'returning': 'return-to-uk',
-  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
-  // }
+  req.session.data.answers = {
+    'nationality': 'nationality-uk',
+    'living': 'living-eu',
+    'employment': [
+      'working-uk',
+      'working-eu',
+      'studying-uk',
+      'studying-eu'
+    ],
+    'drive-in-eu': 'living-driving-eu',
+    'travelling': [
+      'visiting-uk',
+      'visiting-ie',
+      'visiting-eu',
+      'visiting-row'
+    ],
+    'returning': 'return-to-uk',
+    'do-you-own-a-business': 'does-not-own-operate-business-organisation'
+  }
 
   // req.session.data.answers = {
   //   "nationality": "nationality-uk",
@@ -943,7 +943,6 @@ router.get('/results', checkHasAnswers, (req, res) => {
   //   ]
   // }
 
-
   let answers = []
   answers = Helpers.flattenObject(req.session.data.answers)
 
@@ -958,7 +957,8 @@ router.get('/results', checkHasAnswers, (req, res) => {
   }
 
   const criteria = {}
-  criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
 
   if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
     criteria.business = Criteria.findCriteriaByAudience('business')

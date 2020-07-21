@@ -4,7 +4,8 @@ const path = require('path')
 const fs = require('fs')
 const yaml = require('js-yaml')
 
-const groups = require('./groups');
+const Groups = require('./groups')
+const Helpers = require('./helpers')
 
 const directoryPath = path.join(__dirname, '../data/')
 const actions = yaml.safeLoad(fs.readFileSync(directoryPath + 'actions.yaml', 'utf8'))
@@ -41,9 +42,43 @@ exports.findCitizenActionsByAnswers = (answers, rules) => {
     }
   })
 
-  groups.find().forEach((group) => {
+  Groups.find().forEach((group) => {
     results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))
   })
 
   return results
+}
+
+exports.findCitizenActionGroupCriteria = (answers, rules) => {
+  const actions = []
+  const results = {}
+  const criteria = {}
+
+  this.find().forEach((action) => {
+    if (rules.indexOf(action.id) !== -1) {
+      actions.push(action)
+    }
+  })
+
+  Groups.find().forEach((group) => {
+
+    results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))
+
+    criteria[group.key] = []
+
+    results[group.key].forEach((item) => {
+
+      let c = Helpers.flattenObject(item.criteria)
+
+      c.forEach((criterion) => {
+        if (answers.indexOf(criterion) !== -1 && criteria[group.key].indexOf(criterion) === -1) {
+          criteria[group.key].push(criterion)
+        }
+      })
+
+    })
+
+  })
+
+  return criteria
 }

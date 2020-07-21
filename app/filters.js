@@ -5,6 +5,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 
 const directoryPath = path.join(__dirname, './data/')
+const criteria = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf8'))
 const groups = yaml.safeLoad(fs.readFileSync(directoryPath + 'groups.yaml', 'utf8'))
 
 module.exports = function (env) {
@@ -67,6 +68,17 @@ module.exports = function (env) {
     let result = []
     result = groups.groups.filter(obj => obj.key === group)
     return result[0].heading
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to parse criterion text
+    example: {{ 'nationality-uk' | getCriterionText }}
+    output: 'You are a British national'
+  ------------------------------------------------------------------ */
+  filters.getCriterionText = function (criterion) {
+    let result = []
+    result = criteria.criteria.filter(obj => obj.key === criterion)
+    return result[0].text
   }
 
   /* ------------------------------------------------------------------
