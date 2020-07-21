@@ -1,0 +1,40 @@
+{% set error = errors | getErrorMessage(question.key) %}
+
+<div class="govuk-form-group {{- ' govuk-form-group--error' if error}}">
+
+{% call govukFieldset({
+  legend: {
+    html: headingHtml | safe,
+    classes: "govuk-fieldset__legend--xl",
+    isPageHeading: false
+  }
+}) %}
+
+  {{ govukHint({
+    text: question.hint_text
+  }) if question.hint_text | length }}
+
+  {{ govukErrorMessage({
+    text: error.text
+  }) if error.text | length }}
+
+  {% for option in question.options %}
+
+    {{ govukCheckboxes({
+      idPrefix: question.key,
+      name: "answers[" + question.key + "]",
+      fieldset: {
+        legend: {
+          text: option.label,
+          classes: "govuk-fieldset__legend--m",
+          isPageHeading: false
+        }
+      },
+      items: option.options | optionsToItems
+    }) }}
+
+  {% endfor %}
+
+{% endcall %}
+
+</div>

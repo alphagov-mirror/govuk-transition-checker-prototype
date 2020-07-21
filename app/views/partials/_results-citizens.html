@@ -1,0 +1,58 @@
+<section class="brexit-checker-actions">
+  <header>
+    <h2 class="govuk-heading-l action-audience__heading">
+      You and your family
+    </h2>
+  </header>
+  <section class="brexit-checker-audience">
+
+    {% for key, actions in results.citizens %}
+
+      {% if actions | length %}
+
+        <section class="brexit-checker-actions__group">
+          <div class="govuk-grid-row">
+            <aside class="govuk-grid-column-one-third">
+              <h3 class="govuk-heading-m">{{ key | getGroupHeading }}</h3>
+              <p class="govuk-body brexit-checker__critera_explaination">
+                Because you said:
+              </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li class="brexit-checker__criterion">
+                  You are a British national
+                </li>
+              </ul>
+            </aside>
+            <div class="govuk-grid-column-two-thirds">
+
+              {%- for action in actions %}
+
+                {{ appCheckerAction({
+                  heading: {
+                    href: action.title_url,
+                    text: action.title
+                  },
+                  consequence: {
+                    text: action.consequence
+                  },
+                  guidance: {
+                    prompt: {
+                      text: action.guidance_prompt + ':'
+                    } if action.guidance_prompt,
+                    href: action.guidance_url,
+                    text: action.guidance_link_text
+                  }
+                }) }}
+
+              {% endfor -%}
+
+            </div>
+          </div>
+        </section>
+
+      {% endif %}
+
+    {% endfor %}
+
+  </section>
+</section>

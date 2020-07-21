@@ -15,6 +15,7 @@
 {% from "govuk/components/error-summary/macro.njk"    import govukErrorSummary %}
 {% from "govuk/components/fieldset/macro.njk"         import govukFieldset %}
 {% from "govuk/components/file-upload/macro.njk"      import govukFileUpload %}
+{% from "govuk/components/hint/macro.njk"             import govukHint %}
 {% from "govuk/components/input/macro.njk"            import govukInput %}
 {% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
 {% from "govuk/components/panel/macro.njk"            import govukPanel %}
@@ -29,6 +30,16 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
+{% from "govuk-pub/components/document-list/macro.njk"     import govukPubDocumentList %}
+{% from "govuk-pub/components/feedback/macro.njk"          import govukPubFeedback %}
+{% from "govuk-pub/components/print-link/macro.njk"        import govukPubPrintLink %}
+{% from "govuk-pub/components/share-links/macro.njk"       import govukPubShareLinks %}
+{% from "govuk-pub/components/topic-list/macro.njk"        import govukPubTopicList %}
+
+{% from "./components/checker-action/macro.njk"       import appCheckerAction %}
+{% from "./components/email-link/macro.njk"           import appEmailLink %}
+{% from "./components/landing-page-header/macro.njk"  import appLandingPageHeader %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -42,9 +53,8 @@
   {# Set serviceName in config.js. #}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container {{- ' ' + containerClasses if containerClasses }}"
   }) }}
 {% endblock %}
 
@@ -52,6 +62,12 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
+    {{ govukPubFeedback({
+      attributes: {
+        id: 'feedback'
+      },
+      classes: "govuk-width-container"
+    }) }}
     {{ govukFooter({
       meta: {
         items: [
@@ -70,5 +86,4 @@
     {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
-  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
 {% endblock %}

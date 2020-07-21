@@ -1,0 +1,32 @@
+<div class="brexit-checker__action">
+  <div class="brexit-checker__content-wrapper">
+    {% if params.heading.href %}
+      <p class="brexit-checker__action_title">
+        <a class="govuk-link" href="{{ params.heading.href }}">
+          {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+        </a>
+      </p>
+    {% else %}
+      <p class="brexit-checker__action_title">
+        {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+      </p>
+    {% endif %}
+    {%- if params.consequence %}
+      <p class="govuk-body">
+        {{- params.consequence.html | safe if params.consequence.html else params.consequence.text -}}
+      </p>
+    {% endif -%}
+    {%- if params.guidance.prompt %}
+      <p class="govuk-body-s govuk-!-margin-bottom-0">
+        {{- params.guidance.prompt.html | safe if params.guidance.prompt.html else params.guidance.prompt.text -}}
+      </p>
+    {% endif -%}
+    {%- if (params.guidance.text or params.guidance.html) and params.guidance.href %}
+      <p class="govuk-body-s">
+        <a href="{{ params.guidance.href }}" class="govuk-link">
+          {{- params.guidance.html | safe if params.guidance.html else params.guidance.text -}}
+        </a>
+      </p>
+    {% endif -%}
+  </div>
+</div>

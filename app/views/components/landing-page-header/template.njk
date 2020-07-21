@@ -1,0 +1,37 @@
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk-pub/components/translation-navigation/macro.njk" import govukPubTranslationNavigation %}
+
+<header class="app-c-landing-page__header">
+  <div class="govuk-width-container">
+
+    {{ govukBreadcrumbs({
+      items: params.breadcrumbs.items,
+      classes: "app-c-breadcrumbs--collapse-on-mobile app-c-breadcrumbs--inverse"
+    }) }}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third app-c-landing-page__translation">
+
+        {{ govukPubTranslationNavigation({
+          inverse: true,
+          items: params.translations.items
+        }) }}
+
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="app-c-landing-page__page_title">
+          {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+        </h1>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds app-c-landing-page__intro">
+        {%- if params.description.html %}
+          {{ params.description.html | safe }}
+        {% else %}
+          <p>{{ params.description.text }}</p>
+        {% endif -%}
+      </div>
+    </div>
+  </div>
+</header>

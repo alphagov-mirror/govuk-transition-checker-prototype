@@ -1,0 +1,374 @@
+---
+criteria:
+- key: owns-operates-business-organisation
+  text: You own or run a business or organisation
+  audience: business
+- key: owns-operates-business-organisation-uk
+  text: You own or run a business or organisation in the UK
+  audience: business
+- key: owns-operates-business-organisation-eu
+  text: You own or run a business or organisation in the EU
+  audience: business
+- key: owns-operates-business-organisation-row
+  text: You own or run a business outside the UK and EU
+  audience: business
+- key: does-not-own-operate-business-organisation
+  text: You do not own or operate a business or organisation
+  audience: business
+- key: aero-space
+  text: You work in the aerospace and space industry
+  audience: business
+- key: automotive
+  text: You work in the automotive industry
+  audience: business
+- key: electronic-machinery
+  text: You work in electronics, parts and machinery
+  audience: business
+- key: install-service-repair
+  text: You work in installation, servicing and repair
+  audience: business
+- key: marine-transport
+  text: You work in the marine and marine transport industry
+  audience: business
+- key: rail-manufacture
+  text: You work in rail manufacturing
+  audience: business
+- key: agriculture-farm
+  text: You work in agriculture and farming
+  audience: business
+- key: animal-ex-food
+  text: You work with animals and animal products
+  audience: business
+- key: fish-inc-wholesale
+  text: You work in fisheries (including wholesale)
+  audience: business
+- key: forestry
+  text: You work in plants and forestry
+  audience: business
+- key: vet
+  text: You work in veterinary services
+  audience: business
+- key: personal-service
+  text: You work in personal services
+  audience: business
+- key: legal-service
+  text: You work in professional, legal and business services
+  audience: business
+- key: charity
+  text: You work in the charity sector
+  audience: business
+- key: voluntary
+  text: You work for voluntary and community organisations
+  audience: business
+- key: construction
+  text: You work in construction
+  audience: business
+- key: environment
+  text: You work in environmental services
+  audience: business
+- key: defence
+  text: You work in defence
+  audience: business
+- key: electricity
+  text: You work in electricity
+  audience: business
+- key: nuclear
+  text: You work in the nuclear industry
+  audience: business
+- key: oil-gas-coal
+  text: You work in oil, gas and coal
+  audience: business
+- key: renewables
+  text: You work in renewable energy
+  audience: business
+- key: media
+  text: You work in media and broadcasting
+  audience: business
+- key: creative
+  text: You work in the creative industries
+  audience: business
+- key: gamble
+  text: You work in the gambling sector
+  audience: business
+- key: sports
+  text: You work in sports and recreation
+  audience: business
+- key: culture
+  text: You work in arts, culture and heritage
+  audience: business
+- key: finance
+  text: You work in financial services
+  audience: business
+- key: insurance
+  text: You work in insurance
+  audience: business
+- key: real-estate
+  text: You work in real estate
+  audience: business
+- key: health
+  text: You work in health and social care services
+  audience: business
+- key: medical-tech
+  text: You work in medical technology
+  audience: business
+- key: pharma
+  text: You work in pharmaceuticals and clinical trials
+  audience: business
+- key: digital
+  text: You work in digital, technology and computer services
+  audience: business
+- key: telecoms
+  text: You work in telecoms and information services
+  audience: business
+- key: consumer-goods
+  text: You work in consumer goods manufacturing
+  audience: business
+- key: chemical
+  text: You work in the chemicals industry
+  audience: business
+- key: diamond
+  text: You work in the diamond industry
+  audience: business
+- key: metal
+  text: You work in metals manufacturing
+  audience: business
+- key: mining
+  text: You work in mining
+  audience: business
+- key: non-metal-material
+  text: You work in non-metal materials manufacturing
+  audience: business
+- key: justice-including-prisons
+  text: You work in the justice system (including prisons)
+  audience: business
+- key: public-administration
+  text: You work in public administration
+  audience: business
+- key: education
+  text: You work in education
+  audience: business
+- key: research
+  text: You work in research
+  audience: business
+- key: food-drink-tobacco
+  text: You work in the food, drink and tobacco industry
+  audience: business
+- key: motor-trade
+  text: You work in the motor trade
+  audience: business
+- key: retail-wholesale-x-food-drink-motors
+  text: You work in retail and wholesale (excluding food, drink and motors)
+  audience: business
+- key: accommodation
+  text: You work in accommodation
+  audience: business
+- key: restaurants-catering
+  text: You work in restaurants, bars and catering
+  audience: business
+- key: tourism
+  text: You work in tourism
+  audience: business
+- key: air-passenger-freight
+  text: You work in air freight and passenger services
+  audience: business
+- key: port-airports
+  text: You work in ports and airports
+  audience: business
+- key: postal-couriers
+  text: You work in postal and courier services
+  audience: business
+- key: rail-passenger-freight
+  text: You work in rail freight and passenger services
+  audience: business
+- key: road-passenger-freight
+  text: You work in road freight and passenger services
+  audience: business
+- key: warehouse-pipeline
+  text: You work in warehousing, services and pipelines
+  audience: business
+- key: import-from-eu
+  text: Your business imports goods from the EU
+  audience: business
+- key: export-to-eu
+  text: Your business exports goods to the EU
+  audience: business
+- key: provide-services-do-business-in-eu
+  text: Your business provides services in the EU
+  audience: business
+- key: haulage-goods-across-eu-borders
+  text: Your business transports goods across EU borders
+  audience: business
+- key: move-goods-ni
+  text: Your business moves goods into, out of, or through Northern Ireland
+  audience: business
+- key: export-to-row
+  text: Your business exports goods to the rest of the world
+  audience: business
+- key: trade-developing
+  text: Your business trades with developing countries
+  audience: business
+- key: employ-eu-citizens
+  text: You employ EU citizens
+  audience: business
+- key: do-not-employ-eu-citizens
+  text: You do not employ EU citizens
+  audience: business
+- key: personal-eu-org
+  text: You exchange personal data with EU organisations
+  audience: business
+- key: personal-eu-org-process
+  text: You process personal data from the EU
+  audience: business
+- key: personal-eu-org-use
+  text: You use websites or services hosted in the EU
+  audience: business
+- key: personal-eu-org-provide
+  text: You provide digital services to the EU
+  audience: business
+- key: do-not-personal-eu-org
+  text: You do not exchange personal data with EU organisations
+  audience: business
+- key: ip
+  text: You use or rely on intellectual property protection
+  audience: business
+- key: ip-copyright
+  text: You use or rely on IP copyright protection
+  audience: business
+- key: ip-trade-marks
+  text: You use or rely on trade mark protection
+  audience: business
+- key: ip-designs
+  text: You use or rely on design protection
+  audience: business
+- key: ip-patents
+  text: You use or rely on patents protection
+  audience: business
+- key: ip-exhaustion-rights
+  text: You use or rely on exhaustion of rights protection
+  audience: business
+- key: do-not-ip
+  text: You do not use or rely on intellectual property protection
+  audience: business
+- key: do-not-eu-uk-funding
+  text: You do not receive EU or UK government funding
+  audience: business
+- key: eu-uk-funding
+  text: You receive EU or UK government funding
+  audience: business
+- key: sell-public-sector
+  text: You sell products or services to the UK public sector
+  audience: business
+- key: sell-public-sector-contracts
+  text: You have UK public sector contracts
+  audience: business
+- key: sell-defence-contracts
+  text: You have UK defence contracts
+  audience: business
+- key: do-not-sell-to-public-sector
+  text: You do not sell products or services to the UK public sector
+  audience: business
+- key: nationality-uk
+  text: You are a British national
+  audience: citizen
+- key: nationality-ie
+  text: You are an Irish national
+  audience: citizen
+- key: nationality-eu
+  text: You are an EU national
+  audience: citizen
+- key: nationality-row
+  text: You are not an EU or British national
+  audience: citizen
+- key: living-row
+  text: You do not live in the UK or the EU
+  audience: citizen
+- key: living-uk
+  text: You live in the UK
+  audience: citizen
+- key: living-ie
+  text: You live in Ireland
+  audience: citizen
+- key: living-eu
+  text: You live in the EU
+  audience: citizen
+- key: working-eu
+  text: You are employed in the EU
+  audience: citizen
+- key: working-uk
+  text: You are employed in the UK
+  audience: citizen
+- key: working-ie
+  text: You are employed in Ireland
+  audience: citizen
+- key: studying-eu
+  text: You are studying in the EU
+  audience: citizen
+- key: studying-uk
+  text: You are studying in the UK
+  audience: citizen
+- key: studying-ie
+  text: You are studying in Ireland
+  audience: citizen
+- key: living-driving-eu
+  text: You drive in the EU using a UK licence
+  audience: citizen
+- key: living-driving-eu-no
+  text: You do not drive in the EU using a UK licence
+  audience: citizen
+- key: visiting-ie
+  text: You plan to travel to Ireland
+  audience: citizen
+- key: visiting-eu
+  text: You plan to travel to the EU
+  audience: citizen
+- key: visiting-row
+  text: You plan to travel to the rest of the world
+  audience: citizen
+- key: visiting-uk
+  text: You plan to travel to the UK
+  audience: citizen
+- key: visiting-bring-pet
+  text: You are travelling with a pet
+  audience: citizen
+- key: visiting-driving
+  text: You need to drive abroad
+  audience: citizen
+- key: return-to-uk
+  text: You are planning to move back to the UK
+  audience: citizen
+- key: return-to-uk-no
+  text: You are not planning to move back to the UK
+  audience: citizen
+- key: join-family-uk-no
+  text: You do not plan to join an EU or EEA family member in the UK
+  audience: citizen
+- key: join-family-uk-yes
+  text: You plan to join an EU or EEA family member in the UK
+  audience: citizen
+- key: family-eu
+  text: You are a family member of an EU, EEA or Swiss citizen
+  audience: citizen
+- key: family-eu-no
+  text: You are not a family member of an EU, EEA or Swiss citizen
+  audience: citizen
+- key: travel-eu-business
+  text: You travel to the EU for business
+  audience: citizen
+- key: travel-eu-business-no
+  text: You do not travel to the EU for business
+  audience: citizen
+- key: retired
+  text: You are retired or semi-retired
+  audience: citizen
+- key: eu-domain
+  text: You run a website with a .eu domain
+  audience: citizen
+- key: eu-domain-no
+  text: You do not run a website with a .eu domain
+  audience: citizen
+- key: move-to-eu
+  text: You plan to move to the EU
+  audience: citizen
+- key: move-to-eu-no
+  text: You do not plan to move to the EU
+  audience: citizen
