@@ -362,7 +362,6 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
     delete req.session.data.answers['move-eu']
     res.redirect(`${req.baseUrl}/returning`)
   }
-
 })
 
 router.post('/move-eu', checkHasAnswers, (req, res) => {
@@ -505,7 +504,7 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
     })
   } else {
     delete req.session.data.answers['join-family-uk']
-    res.redirect(`${req.baseUrl}/do-you-own-a-business`);
+    res.redirect(`${req.baseUrl}/do-you-own-a-business`)
   }
 })
 
@@ -881,27 +880,26 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // Results
 // --------------------------------------------------
 
-router.get('/results', (req, res) => {
-
-  req.session.data.answers = {
-    'nationality': 'nationality-uk',
-    'living': 'living-eu',
-    'employment': [
-      'working-uk',
-      'working-eu',
-      'studying-uk',
-      'studying-eu'
-    ],
-    'drive-in-eu': 'living-driving-eu',
-    'travelling': [
-      'visiting-uk',
-      'visiting-ie',
-      'visiting-eu',
-      'visiting-row'
-    ],
-    'returning': 'return-to-uk',
-    'do-you-own-a-business': 'does-not-own-operate-business-organisation'
-  }
+router.get('/results', checkHasAnswers, (req, res) => {
+  // req.session.data.answers = {
+  //   'nationality': 'nationality-uk',
+  //   'living': 'living-eu',
+  //   'employment': [
+  //     'working-uk',
+  //     'working-eu',
+  //     'studying-uk',
+  //     'studying-eu'
+  //   ],
+  //   'drive-in-eu': 'living-driving-eu',
+  //   'travelling': [
+  //     'visiting-uk',
+  //     'visiting-ie',
+  //     'visiting-eu',
+  //     'visiting-row'
+  //   ],
+  //   'returning': 'return-to-uk',
+  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
+  // }
 
   // req.session.data.answers = {
   //   "nationality": "nationality-uk",

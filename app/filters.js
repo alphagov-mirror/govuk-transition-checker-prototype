@@ -82,6 +82,32 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+    utility function to parse answers into a signup URL
+    example: {{ answers | parseSignupUrl }}
+    output: 'c%5B%5D=nationality-uk&c%5B%5D=living-eu&c%5B%5D=working-uk&
+    c%5B%5D=working-eu&c%5B%5D=studying-uk&c%5B%5D=studying-eu&
+    c%5B%5D=living-driving-eu&c%5B%5D=visiting-uk&c%5B%5D=visiting-ie&
+    c%5B%5D=visiting-eu&c%5B%5D=visiting-row&c%5B%5D=return-to-uk&
+    c%5B%5D=does-not-own-operate-business-organisation'
+  ------------------------------------------------------------------ */
+  filters.parseSignupUrl = function (answers) {
+    if (!Array.isArray(answers)) {
+      return null
+    }
+
+    let queryString = ''
+
+    answers.forEach((answer, i) => {
+      queryString += 'c%5B%5D=' + answer
+      if (i < (answers.length - 1)) {
+        queryString += '&'
+      }
+    })
+
+    return queryString
+  }
+
+  /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   return filters

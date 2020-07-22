@@ -61,23 +61,16 @@ exports.findCitizenActionGroupCriteria = (answers, rules) => {
   })
 
   Groups.find().forEach((group) => {
-
     results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))
-
     criteria[group.key] = []
-
     results[group.key].forEach((item) => {
-
-      let c = Helpers.flattenObject(item.criteria)
-
-      c.forEach((criterion) => {
+      const itemCriteria = Helpers.flattenObject(item.criteria)
+      itemCriteria.forEach((criterion) => {
         if (answers.indexOf(criterion) !== -1 && criteria[group.key].indexOf(criterion) === -1) {
           criteria[group.key].push(criterion)
         }
       })
-
     })
-
   })
 
   return criteria
