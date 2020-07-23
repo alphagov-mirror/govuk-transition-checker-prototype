@@ -1076,6 +1076,9 @@ router.get('/results-alt', (req, res) => {
     case 'accordion':
       layout = './partials/results/accordion/index'
       break;
+    case 'section':
+      layout = './partials/results/section/index'
+      break;
     default:
       layout = 'results'
   }
