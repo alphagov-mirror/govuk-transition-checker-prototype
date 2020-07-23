@@ -32,3 +32,11 @@ $govuk-assets-path: '/govuk/assets/';
 @import "utilities/overwrites";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.app-tag--prototype {
+  background-color: govuk-colour('red');
+}
+
+.brexit-checker__action--reassurance {
+  border-left: govuk-spacing(1) solid govuk-colour('mid-grey');
+  padding-left: govuk-spacing(2)
+}

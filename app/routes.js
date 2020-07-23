@@ -979,6 +979,119 @@ router.get('/results', checkHasAnswers, (req, res) => {
   })
 })
 
+router.get('/results-alt', (req, res) => {
+  // req.session.data.answers = {
+  //   'nationality': 'nationality-uk',
+  //   'living': 'living-eu',
+  //   'employment': [
+  //     'working-uk',
+  //     'working-eu',
+  //     'studying-uk',
+  //     'studying-eu'
+  //   ],
+  //   'drive-in-eu': 'living-driving-eu',
+  //   'travelling': [
+  //     'visiting-uk',
+  //     'visiting-ie',
+  //     'visiting-eu',
+  //     'visiting-row'
+  //   ],
+  //   'returning': 'return-to-uk',
+  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
+  // }
+
+  req.session.data.answers = {
+    "nationality": "nationality-uk",
+    "living": "living-uk",
+    "employment": [
+      "working-uk"
+    ],
+    "travelling-business": "travel-eu-business",
+    "travelling": [
+      "visiting-uk",
+      "visiting-eu"
+    ],
+    "activities": [
+      "visiting-driving"
+    ],
+    "move-eu": "move-to-eu",
+    "do-you-own-a-business": "owns-operates-business-organisation",
+    "business-uk-or-eu": "owns-operates-business-organisation-uk",
+    "employ-eu-citizens": "do-not-employ-eu-citizens",
+    "personal-data-options": [
+      "personal-eu-org-provide"
+    ],
+    "personal-data": "personal-eu-org",
+    "eu-uk-government-funding": "do-not-eu-uk-funding",
+    "public-sector-procurement-options": [
+      "sell-public-sector-contracts"
+    ],
+    "public-sector-procurement": "sell-public-sector",
+    "intellectual-property-options": [
+      "ip-copyright",
+      "ip-trade-marks",
+      "ip-designs"
+    ],
+    "intellectual-property": "ip",
+    "eu-domain": "eu-domain-no",
+    "sector-business-area": [
+      "creative",
+      "digital"
+    ]
+  }
+
+  let answers = []
+  answers = Helpers.flattenObject(req.session.data.answers)
+
+  let rules = []
+  rules = Rules.find(req.session.data.answers)
+
+  const results = {}
+  results.citizens = Actions.findCitizenActionsByAnswers(answers, rules)
+
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    results.business = Actions.findActionsByAudience('business')
+  }
+
+  const criteria = {}
+  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
+
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    criteria.business = Criteria.findCriteriaByAudience('business')
+  }
+
+  let back = `${req.baseUrl}/sector-business-area`
+  if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {
+    back = `${req.baseUrl}/do-you-own-a-business`
+  }
+
+  console.log(req.query.type)
+
+  let layout = ''
+  switch (req.query.type) {
+    case 'tabs':
+      layout = './partials/results/tabs/index'
+      break;
+    case 'accordion':
+      layout = './partials/results/accordion/index'
+      break;
+    default:
+      layout = 'results'
+  }
+
+  res.render(`${layout}`, {
+    results: results,
+    criteria: criteria,
+    answers: answers,
+    rules: rules,
+    actions: {
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
 // --------------------------------------------------
 // Add routes above this line
 // --------------------------------------------------

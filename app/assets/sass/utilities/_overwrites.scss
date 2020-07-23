@@ -20,3 +20,16 @@
 .govuk-footer {
   border-top: govuk-spacing(2) solid govuk-colour('blue');
 }
+
+.js-enabled {
+  .govuk-tabs__panel,
+  .app-c-tabs__panel--no-border {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+  }
+}
+
+.govuk-\!-border-bottom-none {
+  border-bottom: 0 !important;
+}
