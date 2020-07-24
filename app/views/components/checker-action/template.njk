@@ -17,12 +17,12 @@
       </p>
     {% endif -%}
     {%- if params.guidance.prompt %}
-      <p class="govuk-body-s govuk-!-margin-bottom-0">
+      <p class="govuk-body govuk-!-margin-bottom-0">
         {{- params.guidance.prompt.html | safe if params.guidance.prompt.html else params.guidance.prompt.text -}}
       </p>
     {% endif -%}
     {%- if (params.guidance.text or params.guidance.html) and params.guidance.href %}
-      <p class="govuk-body-s">
+      <p class="govuk-body">
         <a href="{{ params.guidance.href }}" class="govuk-link">
           {{- params.guidance.html | safe if params.guidance.html else params.guidance.text -}}
         </a>
