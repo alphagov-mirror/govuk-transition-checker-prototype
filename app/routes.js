@@ -881,66 +881,6 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/results', checkHasAnswers, (req, res) => {
-  // req.session.data.answers = {
-  //   'nationality': 'nationality-uk',
-  //   'living': 'living-eu',
-  //   'employment': [
-  //     'working-uk',
-  //     'working-eu',
-  //     'studying-uk',
-  //     'studying-eu'
-  //   ],
-  //   'drive-in-eu': 'living-driving-eu',
-  //   'travelling': [
-  //     'visiting-uk',
-  //     'visiting-ie',
-  //     'visiting-eu',
-  //     'visiting-row'
-  //   ],
-  //   'returning': 'return-to-uk',
-  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
-  // }
-
-  // req.session.data.answers = {
-  //   "nationality": "nationality-uk",
-  //   "living": "living-uk",
-  //   "employment": [
-  //     "working-uk"
-  //   ],
-  //   "travelling-business": "travel-eu-business",
-  //   "travelling": [
-  //     "visiting-uk",
-  //     "visiting-eu"
-  //   ],
-  //   "activities": [
-  //     "visiting-driving"
-  //   ],
-  //   "move-eu": "move-to-eu",
-  //   "do-you-own-a-business": "owns-operates-business-organisation",
-  //   "business-uk-or-eu": "owns-operates-business-organisation-uk",
-  //   "employ-eu-citizens": "do-not-employ-eu-citizens",
-  //   "personal-data-options": [
-  //     "personal-eu-org-provide"
-  //   ],
-  //   "personal-data": "personal-eu-org",
-  //   "eu-uk-government-funding": "do-not-eu-uk-funding",
-  //   "public-sector-procurement-options": [
-  //     "sell-public-sector-contracts"
-  //   ],
-  //   "public-sector-procurement": "sell-public-sector",
-  //   "intellectual-property-options": [
-  //     "ip-copyright",
-  //     "ip-trade-marks",
-  //     "ip-designs"
-  //   ],
-  //   "intellectual-property": "ip",
-  //   "eu-domain": "eu-domain-no",
-  //   "sector-business-area": [
-  //     "creative",
-  //     "digital"
-  //   ]
-  // }
-
   let answers = []
   answers = Helpers.flattenObject(req.session.data.answers)
 

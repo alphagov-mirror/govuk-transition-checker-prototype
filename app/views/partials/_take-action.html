@@ -1,0 +1,48 @@
+<div class="landing-page__section landing-page__section--light-grey">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">
+          Take action and sign up for emails
+        </h2>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-govspeak" data-module="govspeak">
+          <p>Answer a few questions to get a personalised list of actions for you, your family, and your business. Then sign up for emails to get updates when things change.</p>
+        </div>
+        <div class="landing-page__take-action-button">
+          {{ govukButton({
+            href: "/nationality",
+            text: "Start now",
+            isStartButton: true
+          }) }}
+        </div>
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <ul class="govuk-list landing-page__take-action-traffic-lights">
+          <li>
+            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-red.svg">
+            <span class="landing-page__take-action-traffic-lists-text">
+              Check
+            </span>
+          </li>
+          <li>
+            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-amber.svg">
+            <span class="landing-page__take-action-traffic-lists-text">
+              Change
+            </span>
+          </li>
+          <li>
+            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-green.svg">
+            <span class="landing-page__take-action-traffic-lists-text">
+              Go
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
