@@ -673,8 +673,8 @@ exports.find = (answers) => {
     }
 
     if (answers['business-uk-or-eu'] !== undefined) {
-      if (answers['business-uk-or-eu'] === 'owns-operates-business-organisation-eu' ||
-          answers['business-uk-or-eu'] === 'owns-operates-business-organisation-uk') {
+      if (answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-eu') !== -1 ||
+          answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-uk') !== -1) {
         actions.push('T102')
       }
     }

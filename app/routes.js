@@ -895,7 +895,6 @@ router.get('/results', checkHasAnswers, (req, res) => {
   }
 
   const criteria = {}
-  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
   criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
 
   if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {

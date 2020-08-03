@@ -53,6 +53,8 @@ module.exports = function (env) {
       item.text = option.label
       item.value = option.value
       item.checked = option.checked
+      item.hint = {}
+      item.hint.text = option.hint
       items.push(item)
     })
 
