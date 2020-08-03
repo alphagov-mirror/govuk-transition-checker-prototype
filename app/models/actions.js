@@ -4,7 +4,8 @@ const path = require('path')
 const fs = require('fs')
 const yaml = require('js-yaml')
 
-const groups = require('./groups');
+const Groups = require('./groups')
+const Helpers = require('./helpers')
 
 const directoryPath = path.join(__dirname, '../data/')
 const actions = yaml.safeLoad(fs.readFileSync(directoryPath + 'actions.yaml', 'utf8'))
@@ -31,47 +32,6 @@ exports.findActionsByAudienceAndGroup = (audience, group) => {
   return actions
 }
 
-// -----------------------------------------------------------------------------
-// Action groups
-// -----------------------------------------------------------------------------
-
-// Business does not have grouping criteria
-// exports.findActionsByGroup = (group) => {
-//   let actions = []
-//   actions = this.find().filter(obj => obj.grouping_criteria.includes(group))
-//   return actions
-// }
-
-// exports.findGroupActions = () => {
-//   const actions = {}
-//
-//   groups.find().forEach((group) => {
-//     actions[group.key] = this.findActionsByAudienceAndGroup('citizen', group.key)
-//   })
-//
-//   return actions
-// }
-
-// exports.findActionsByAnswers = (answers, rules) => {
-//
-// }
-
-// exports.findGroupActionsByAnswers = (answers, rules) => {
-//   const actions = {}
-//
-//   console.log('Rules', rules);
-//
-//   groups.find().forEach((group) => {
-//
-//     if (answers.indexOf(group.key) !== -1) {
-//       actions[group.key] = this.findActionsByAudienceAndGroup('citizen', group.key)
-//     }
-//
-//   })
-//
-//   return actions
-// }
-
 exports.findCitizenActionsByAnswers = (answers, rules) => {
   const actions = []
   const results = {}
@@ -82,9 +42,36 @@ exports.findCitizenActionsByAnswers = (answers, rules) => {
     }
   })
 
-  groups.find().forEach((group) => {
+  Groups.find().forEach((group) => {
     results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))
   })
 
   return results
+}
+
+exports.findCitizenActionGroupCriteria = (answers, rules) => {
+  const actions = []
+  const results = {}
+  const criteria = {}
+
+  this.find().forEach((action) => {
+    if (rules.indexOf(action.id) !== -1) {
+      actions.push(action)
+    }
+  })
+
+  Groups.find().forEach((group) => {
+    results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))
+    criteria[group.key] = []
+    results[group.key].forEach((item) => {
+      const itemCriteria = Helpers.flattenObject(item.criteria)
+      itemCriteria.forEach((criterion) => {
+        if (answers.indexOf(criterion) !== -1 && criteria[group.key].indexOf(criterion) === -1) {
+          criteria[group.key].push(criterion)
+        }
+      })
+    })
+  })
+
+  return criteria
 }

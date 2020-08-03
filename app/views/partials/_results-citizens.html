@@ -6,21 +6,25 @@
   </header>
   <section class="brexit-checker-audience">
 
-    {% for key, actions in results.citizens %}
+    {%- for key, actions in results.citizens %}
 
-      {% if actions | length %}
+      {%- if actions | length %}
 
         <section class="brexit-checker-actions__group">
           <div class="govuk-grid-row">
             <aside class="govuk-grid-column-one-third">
-              <h3 class="govuk-heading-m">{{ key | getGroupHeading }}</h3>
+              <h3 class="govuk-heading-m">
+                {{- key | getGroupHeading -}}
+              </h3>
               <p class="govuk-body brexit-checker__critera_explaination">
                 Because you said:
               </p>
               <ul class="govuk-list govuk-list--bullet">
-                <li class="brexit-checker__criterion">
-                  You are a British national
-                </li>
+                {%- for criterion in criteria.citizens[key] %}
+                  <li class="brexit-checker__criterion">
+                    {{- criterion | getCriterionText -}}
+                  </li>
+                {% endfor -%}
               </ul>
             </aside>
             <div class="govuk-grid-column-two-thirds">
@@ -46,13 +50,15 @@
 
               {% endfor -%}
 
+
+
             </div>
           </div>
         </section>
 
-      {% endif %}
+      {% endif -%}
 
-    {% endfor %}
+    {% endfor -%}
 
   </section>
 </section>

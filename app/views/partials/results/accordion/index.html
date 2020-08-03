@@ -38,21 +38,59 @@
   </div>
 </div>
 
-{% if results.business | length %}
-  {% include "./partials/_results-business.html" %}
-{% endif %}
+{% set businessHtml %}
+  {% include "./_results-business.html" %}
+{% endset %}
 
-{% include "./partials/_results-citizens.html" %}
+{% set familyHtml %}
+  {% include "./_results-citizens.html" %}
+{% endset %}
 
-{% include "./partials/_stay-up-to-date.html" %}
+{% set supportHtml %}
+  {% include "./_results-support.html" %}
+{% endset %}
+
+{{ govukAccordion({
+  id: "results-accordion",
+  items: [
+    {
+      heading: {
+        text: "You and your family"
+      },
+      content: {
+        html: familyHtml
+      },
+      expanded: true
+    },
+    {
+      heading: {
+        text: "Your business or organisation"
+      },
+      content: {
+        html: businessHtml
+      }
+    },
+    {
+      heading: {
+        text: "Support and advice"
+      },
+      content: {
+        html: supportHtml
+      }
+    }
+  ],
+  classes: "govuk-!-margin-top-5 govuk-!-border-bottom-none"
+}) }}
+
+{% include "../../_stay-up-to-date.html" %}
 
 <section class="brexit-checker__share">
   <h2 class="govuk-heading-m">
     Share your results
   </h2>
-  {% include "./partials/_share-links.html" %}
+  {% include "../../_share-links.html" %}
 </section>
 
-{% include "./partials/_print-link.html" %}
+{% include "../../_print-link.html" %}
 
 {% endblock %}

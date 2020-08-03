@@ -241,7 +241,6 @@ exports.find = (answers) => {
 
   if (answers['do-you-own-a-business'] !== undefined &&
       answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
-
     if (answers['employ-eu-citizens'] !== undefined &&
         answers['business-activity'] !== undefined) {
       if (answers['employ-eu-citizens'] === 'employ-eu-citizens' ||
@@ -724,7 +723,6 @@ exports.find = (answers) => {
         actions.push('T110')
       }
     }
-
   }
 
   return actions

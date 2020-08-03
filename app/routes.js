@@ -24,8 +24,6 @@ function checkHasAnswers (req, res, next) {
 
 router.get('/', (req, res) => {
   delete req.session.data
-  // console.log(Actions.findActionsByAudienceAndGroup('citizen','visiting-eu'))
-  console.log(Criteria.findCriteriaByAudience('citizen'));
   res.render('index', {
     actions: {
       start: `${req.baseUrl}/nationality`
@@ -364,7 +362,6 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
     delete req.session.data.answers['move-eu']
     res.redirect(`${req.baseUrl}/returning`)
   }
-
 })
 
 router.post('/move-eu', checkHasAnswers, (req, res) => {
@@ -507,7 +504,7 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
     })
   } else {
     delete req.session.data.answers['join-family-uk']
-    res.redirect(`${req.baseUrl}/do-you-own-a-business`);
+    res.redirect(`${req.baseUrl}/do-you-own-a-business`)
   }
 })
 
@@ -884,7 +881,45 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
 // --------------------------------------------------
 
 router.get('/results', checkHasAnswers, (req, res) => {
+  let answers = []
+  answers = Helpers.flattenObject(req.session.data.answers)
 
+  let rules = []
+  rules = Rules.find(req.session.data.answers)
+
+  const results = {}
+  results.citizens = Actions.findCitizenActionsByAnswers(answers, rules)
+
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    results.business = Actions.findActionsByAudience('business')
+  }
+
+  const criteria = {}
+  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
+
+  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
+    criteria.business = Criteria.findCriteriaByAudience('business')
+  }
+
+  let back = `${req.baseUrl}/sector-business-area`
+  if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {
+    back = `${req.baseUrl}/do-you-own-a-business`
+  }
+
+  res.render('results', {
+    results: results,
+    criteria: criteria,
+    answers: answers,
+    rules: rules,
+    actions: {
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.get('/results-alt', (req, res) => {
   // req.session.data.answers = {
   //   'nationality': 'nationality-uk',
   //   'living': 'living-eu',
@@ -905,46 +940,45 @@ router.get('/results', checkHasAnswers, (req, res) => {
   //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
   // }
 
-  // req.session.data.answers = {
-  //   "nationality": "nationality-uk",
-  //   "living": "living-uk",
-  //   "employment": [
-  //     "working-uk"
-  //   ],
-  //   "travelling-business": "travel-eu-business",
-  //   "travelling": [
-  //     "visiting-uk",
-  //     "visiting-eu"
-  //   ],
-  //   "activities": [
-  //     "visiting-driving"
-  //   ],
-  //   "move-eu": "move-to-eu",
-  //   "do-you-own-a-business": "owns-operates-business-organisation",
-  //   "business-uk-or-eu": "owns-operates-business-organisation-uk",
-  //   "employ-eu-citizens": "do-not-employ-eu-citizens",
-  //   "personal-data-options": [
-  //     "personal-eu-org-provide"
-  //   ],
-  //   "personal-data": "personal-eu-org",
-  //   "eu-uk-government-funding": "do-not-eu-uk-funding",
-  //   "public-sector-procurement-options": [
-  //     "sell-public-sector-contracts"
-  //   ],
-  //   "public-sector-procurement": "sell-public-sector",
-  //   "intellectual-property-options": [
-  //     "ip-copyright",
-  //     "ip-trade-marks",
-  //     "ip-designs"
-  //   ],
-  //   "intellectual-property": "ip",
-  //   "eu-domain": "eu-domain-no",
-  //   "sector-business-area": [
-  //     "creative",
-  //     "digital"
-  //   ]
-  // }
-
+  req.session.data.answers = {
+    "nationality": "nationality-uk",
+    "living": "living-uk",
+    "employment": [
+      "working-uk"
+    ],
+    "travelling-business": "travel-eu-business",
+    "travelling": [
+      "visiting-uk",
+      "visiting-eu"
+    ],
+    "activities": [
+      "visiting-driving"
+    ],
+    "move-eu": "move-to-eu",
+    "do-you-own-a-business": "owns-operates-business-organisation",
+    "business-uk-or-eu": "owns-operates-business-organisation-uk",
+    "employ-eu-citizens": "do-not-employ-eu-citizens",
+    "personal-data-options": [
+      "personal-eu-org-provide"
+    ],
+    "personal-data": "personal-eu-org",
+    "eu-uk-government-funding": "do-not-eu-uk-funding",
+    "public-sector-procurement-options": [
+      "sell-public-sector-contracts"
+    ],
+    "public-sector-procurement": "sell-public-sector",
+    "intellectual-property-options": [
+      "ip-copyright",
+      "ip-trade-marks",
+      "ip-designs"
+    ],
+    "intellectual-property": "ip",
+    "eu-domain": "eu-domain-no",
+    "sector-business-area": [
+      "creative",
+      "digital"
+    ]
+  }
 
   let answers = []
   answers = Helpers.flattenObject(req.session.data.answers)
@@ -960,7 +994,8 @@ router.get('/results', checkHasAnswers, (req, res) => {
   }
 
   const criteria = {}
-  criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
+  criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
 
   if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
     criteria.business = Criteria.findCriteriaByAudience('business')
@@ -971,7 +1006,24 @@ router.get('/results', checkHasAnswers, (req, res) => {
     back = `${req.baseUrl}/do-you-own-a-business`
   }
 
-  res.render('results', {
+  console.log(req.query.type)
+
+  let layout = ''
+  switch (req.query.type) {
+    case 'tabs':
+      layout = './partials/results/tabs/index'
+      break;
+    case 'accordion':
+      layout = './partials/results/accordion/index'
+      break;
+    case 'section':
+      layout = './partials/results/section/index'
+      break;
+    default:
+      layout = 'results'
+  }
+
+  res.render(`${layout}`, {
     results: results,
     criteria: criteria,
     answers: answers,

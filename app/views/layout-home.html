@@ -3,11 +3,13 @@
 
 {% extends "govuk/template.njk" %}
 
+{% from "govuk/components/button/macro.njk"           import govukButton %}
+{% from "govuk/components/details/macro.njk"          import govukDetails %}
+
 {% from "govuk-pub/components/document-list/macro.njk"      import govukPubDocumentList %}
 {% from "govuk-pub/components/share-links/macro.njk"        import govukPubShareLinks %}
 {% from "govuk-pub/components/topic-list/macro.njk"         import govukPubTopicList %}
-
-{% from "./components/landing-page-header/macro.njk"  import appLandingPageHeader %}
+{% from "govuk-pub/components/translation-navigation/macro.njk" import govukPubTranslationNavigation %}
 
 {% block head %}
   <style media="screen">
@@ -30,32 +32,9 @@
     serviceUrl: "/",
     containerClasses: "govuk-width-container govuk-header__container--no-border-bottom"
   }) }}
-  {{ appLandingPageHeader({
-    heading: {
-      text: "The UK has left the EU"
-    },
-    description: {
-      text: "Find out what this means for you."
-    },
-    breadcrumbs: {
-      items: [{
-        text: "Home",
-        href: "#"
-      }]
-    },
-    translations: {
-      items: [{
-        href: '#',
-        text: 'English',
-        locale: 'en',
-        active: true
-      }, {
-        href: '#',
-        text: 'Cymraeg',
-        locale: 'cy'
-      }]
-    }
-  }) }}
+  {% include "./partials/_landing-page-header.html" %}
+  {% include "./partials/_take-action.html" %}
+  {% include "./partials/_video.html" %}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

@@ -38,21 +38,21 @@
   </div>
 </div>
 
-{% if results.business | length %}
-  {% include "./partials/_results-business.html" %}
-{% endif %}
+{% include "./_results-citizens.html" %}
 
-{% include "./partials/_results-citizens.html" %}
+{% include "./_results-business.html" %}
 
-{% include "./partials/_stay-up-to-date.html" %}
+{% include "./_results-support.html" %}
+
+{% include "../../_stay-up-to-date.html" %}
 
 <section class="brexit-checker__share">
   <h2 class="govuk-heading-m">
     Share your results
   </h2>
-  {% include "./partials/_share-links.html" %}
+  {% include "../../_share-links.html" %}
 </section>
 
-{% include "./partials/_print-link.html" %}
+{% include "../../_print-link.html" %}
 
 {% endblock %}

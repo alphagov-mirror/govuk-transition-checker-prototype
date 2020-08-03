@@ -5,6 +5,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 
 const directoryPath = path.join(__dirname, './data/')
+const criteria = yaml.safeLoad(fs.readFileSync(directoryPath + 'criteria.yaml', 'utf8'))
 const groups = yaml.safeLoad(fs.readFileSync(directoryPath + 'groups.yaml', 'utf8'))
 
 module.exports = function (env) {
@@ -67,6 +68,43 @@ module.exports = function (env) {
     let result = []
     result = groups.groups.filter(obj => obj.key === group)
     return result[0].heading
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to parse criterion text
+    example: {{ 'nationality-uk' | getCriterionText }}
+    output: 'You are a British national'
+  ------------------------------------------------------------------ */
+  filters.getCriterionText = function (criterion) {
+    let result = []
+    result = criteria.criteria.filter(obj => obj.key === criterion)
+    return result[0].text
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to parse answers into a signup URL
+    example: {{ answers | parseSignupUrl }}
+    output: 'c%5B%5D=nationality-uk&c%5B%5D=living-eu&c%5B%5D=working-uk&
+    c%5B%5D=working-eu&c%5B%5D=studying-uk&c%5B%5D=studying-eu&
+    c%5B%5D=living-driving-eu&c%5B%5D=visiting-uk&c%5B%5D=visiting-ie&
+    c%5B%5D=visiting-eu&c%5B%5D=visiting-row&c%5B%5D=return-to-uk&
+    c%5B%5D=does-not-own-operate-business-organisation'
+  ------------------------------------------------------------------ */
+  filters.parseSignupUrl = function (answers) {
+    if (!Array.isArray(answers)) {
+      return null
+    }
+
+    let queryString = ''
+
+    answers.forEach((answer, i) => {
+      queryString += 'c%5B%5D=' + answer
+      if (i < (answers.length - 1)) {
+        queryString += '&'
+      }
+    })
+
+    return queryString
   }
 
   /* ------------------------------------------------------------------

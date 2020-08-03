@@ -55,7 +55,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.$pageIsNotUsefulButton.on('click', function (e) {
         var gaClientId
-        var dummyGaClientId = '111111111.1111111111'
+        // var dummyGaClientId = '111111111.1111111111'
         // if (window.GOVUK.cookie('_ga') === null || window.GOVUK.cookie('_ga') === '') {
         //   gaClientId = dummyGaClientId
         // } else {
