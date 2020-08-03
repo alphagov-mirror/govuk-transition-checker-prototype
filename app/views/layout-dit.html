@@ -1,0 +1,101 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+
+{% from "govuk-pub/components/document-list/macro.njk"            import govukPubDocumentList %}
+{% from "govuk-pub/components/share-links/macro.njk"              import govukPubShareLinks %}
+{% from "govuk-pub/components/topic-list/macro.njk"               import govukPubTopicList %}
+{%- from "govuk-pub/components/translation-navigation/macro.njk"  import govukPubTranslationNavigation %}
+
+{% from "./components/landing-page-header/macro.njk"  import appLandingPageHeader %}
+
+{% block head %}
+  <style media="screen">
+    .govuk-header {
+      border-bottom: 10px solid #FF003B !important;
+    }
+  </style>
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container govuk-header__container--no-border-bottom"
+  }) }}
+  {{ appLandingPageHeader({
+    heading: {
+      text: "Prepare for the end of the transition period: advice for EU businesses"
+    },
+    breadcrumbs: {
+      items: [{
+        text: "Home",
+        href: "#"
+      }]
+    },
+    translations: {
+      items: [{
+        href: '#',
+        text: 'English',
+        locale: 'en',
+        active: true
+      }, {
+        href: '#',
+        text: 'Français',
+        locale: 'fr'
+      }, {
+        href: '#',
+        text: 'Deutsche',
+        locale: 'de'
+      }, {
+        href: '#',
+        text: 'Italiano',
+        locale: 'it'
+      }, {
+        href: '#',
+        text: 'Español',
+        locale: 'es'
+      }, {
+        href: '#',
+        text: 'Nederlands',
+        locale: 'nl'
+      }, {
+        href: '#',
+        text: 'Polskie',
+        locale: 'pl'
+      }]
+    }
+  }) }}
+{% endblock %}
+
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% if useAutoStoreData %}
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}
+{% endif %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
