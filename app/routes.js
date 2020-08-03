@@ -53,13 +53,13 @@ router.get('/nationality', (req, res) => {
 router.post('/nationality', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.nationality === undefined) {
-    const error = {}
-    error.fieldName = 'nationality'
-    error.href = '#nationality'
-    error.text = 'Choose what nationality you are'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.nationality === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'nationality'
+  //   error.href = '#nationality'
+  //   error.text = 'Choose what nationality you are'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -94,13 +94,13 @@ router.get('/living', checkHasAnswers, (req, res) => {
 router.post('/living', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.living === undefined) {
-    const error = {}
-    error.fieldName = 'living'
-    error.href = '#living'
-    error.text = 'Choose where you live'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.living === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'living'
+  //   error.href = '#living'
+  //   error.text = 'Choose where you live'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -135,13 +135,13 @@ router.get('/employment', checkHasAnswers, (req, res) => {
 router.post('/employment', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.employment === undefined) {
-    const error = {}
-    error.fieldName = 'employment'
-    error.href = '#employment'
-    error.text = 'Choose what you do'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.employment === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'employment'
+  //   error.href = '#employment'
+  //   error.text = 'Choose what you do'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -181,13 +181,13 @@ router.get('/travelling-business', checkHasAnswers, (req, res) => {
 router.post('/travelling-business', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['travelling-business'] === undefined) {
-    const error = {}
-    error.fieldName = 'travelling-business'
-    error.href = '#travelling-business'
-    error.text = 'Choose whether you travel to the EU for business'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['travelling-business'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'travelling-business'
+  //   error.href = '#travelling-business'
+  //   error.text = 'Choose whether you travel to the EU for business'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -228,13 +228,13 @@ router.get('/driving', checkHasAnswers, (req, res) => {
 router.post('/driving', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['drive-in-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'drive-in-eu'
-    error.href = '#drive-in-eu'
-    error.text = 'Choose whether you drive in the EU using a UK licence'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['drive-in-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'drive-in-eu'
+  //   error.href = '#drive-in-eu'
+  //   error.text = 'Choose whether you drive in the EU using a UK licence'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -269,13 +269,13 @@ router.get('/travelling', checkHasAnswers, (req, res) => {
 router.post('/travelling', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.travelling === undefined) {
-    const error = {}
-    error.fieldName = 'travelling'
-    error.href = '#travelling'
-    error.text = 'Choose where you plan to travel for leisure and tourism'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.travelling === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'travelling'
+  //   error.href = '#travelling'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -318,13 +318,13 @@ router.get('/activities', checkHasAnswers, (req, res) => {
 router.post('/activities', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.activities === undefined) {
-    const error = {}
-    error.fieldName = 'activities'
-    error.href = '#activities'
-    error.text = 'Choose what you plan to do when travelling'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.activities === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'activities'
+  //   error.href = '#activities'
+  //   error.text = 'Choose what you plan to do when travelling'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -367,13 +367,13 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
 router.post('/move-eu', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['move-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'move-eu'
-    error.href = '#move-eu'
-    error.text = 'Choose whether you plan to move to the EU or visit for more than 90 days'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['move-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'move-eu'
+  //   error.href = '#move-eu'
+  //   error.text = 'Choose whether you plan to move to the EU or visit for more than 90 days'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -415,13 +415,13 @@ router.get('/returning', checkHasAnswers, (req, res) => {
 router.post('/returning', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.returning === undefined) {
-    const error = {}
-    error.fieldName = 'returning'
-    error.href = '#returning'
-    error.text = 'Choose where you are planning to move back to the UK'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.returning === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'returning'
+  //   error.href = '#returning'
+  //   error.text = 'Choose where you are planning to move back to the UK'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -462,13 +462,13 @@ router.get('/family-eu', checkHasAnswers, (req, res) => {
 router.post('/family-eu', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['family-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'family-eu'
-    error.href = '#family-eu'
-    error.text = 'Choose where you are a family member of an EU, EEA or Swiss citizen'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['family-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'family-eu'
+  //   error.href = '#family-eu'
+  //   error.text = 'Choose where you are a family member of an EU, EEA or Swiss citizen'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -511,13 +511,13 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
 router.post('/join-family-uk', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['join-family-uk'] === undefined) {
-    const error = {}
-    error.fieldName = 'join-family-uk'
-    error.href = '#join-family-uk'
-    error.text = 'Choose whether you plan to join a family member in the UK who’s from the UK, EU, Switzerland, Norway, Iceland or Liechtenstein'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['join-family-uk'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'join-family-uk'
+  //   error.href = '#join-family-uk'
+  //   error.text = 'Choose whether you plan to join a family member in the UK who’s from the UK, EU, Switzerland, Norway, Iceland or Liechtenstein'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -552,13 +552,13 @@ router.get('/do-you-own-a-business', checkHasAnswers, (req, res) => {
 router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['do-you-own-a-business'] === undefined) {
-    const error = {}
-    error.fieldName = 'do-you-own-a-business'
-    error.href = '#do-you-own-a-business'
-    error.text = 'Choose whether you own or help to run a business or organisation'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['do-you-own-a-business'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'do-you-own-a-business'
+  //   error.href = '#do-you-own-a-business'
+  //   error.text = 'Choose whether you own or help to run a business or organisation'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
