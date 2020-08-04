@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {{ question.text }} – {{ serviceName }}
+  {{ 'Error: ' if errors | length -}} {{ question.text }} – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
