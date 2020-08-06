@@ -4,8 +4,8 @@ questions:
     type: single
     caption: About you and your family
     text: 'What nationality are you?'
-    description: |
-      <p>**EXPLANATORY TEXT: Nationality**</p>
+    detail_text: |
+      <p>If you have dual nationality, choose one nationality and continue to get results for that nationality. You’ll need to start again to get results for your second nationality.</p>
     options:
       - label: British
         value: nationality-uk
@@ -344,24 +344,22 @@ questions:
     description: |
       <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
     options:
-      - label: GROUP 1
+      - label: Move goods to or from the EU or other countries
         options: 
         - label: "Import from the EU"
           value: import-from-eu
         - label: "Export to the EU"
           value: export-to-eu
-      - label: GROUP 2
+        - label: "Export to the rest of the world"
+          value: export-to-row
+        - label: "Move goods into, out of, or through Northern Ireland"
+          value: move-goods-ni
+        - label: "Transport goods across EU borders"
+          value: haulage-goods-across-eu-borders
+      - label: Do business or trade with the EU or other countries
         options:
         - label: "Provide services or do business in the EU"
           value: provide-services-do-business-in-eu
-        - label: "Transport goods across EU borders"
-          value: haulage-goods-across-eu-borders
-        - label: "Move goods into, out of, or through Northern Ireland"
-          value: move-goods-ni
-      - label: GROUP 3
-        options: 
-        - label: "Export to the rest of the world"
-          value: export-to-row
         - label: "Trade with developing countries"
           value: trade-developing
 
