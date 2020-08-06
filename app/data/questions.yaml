@@ -5,7 +5,7 @@ questions:
     caption: About you and your family
     text: 'What nationality are you?'
     detail_text: |
-      <p>If you have dual nationality, choose one nationality and continue to get results for that nationality. You’ll need to start again to get results for your second nationality.</p>
+      <p>If you have dual nationality, select one nationality and continue to get results for that nationality. You’ll need to start again to get results for your second nationality.</p>
     options:
       - label: British
         value: nationality-uk
@@ -343,6 +343,7 @@ questions:
     text: "Does your business or organisation do any of the following?"
     description: |
       <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
+    hint_text: Select all that apply.
     options:
       - label: Move goods to or from the EU or other countries
         options: 
