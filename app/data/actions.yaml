@@ -1440,3 +1440,217 @@ actions:
   criteria:
   - import-from-eu
   audience: business
+- id: R001
+  priority: 100
+  title: Currently, there are no new rules to prepare for if you work in accommodation
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - accommodation
+  audience: business
+- id: R002
+  priority: 101
+  title: Currently, there are no new rules to prepare for if you work in the charity
+    sector
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - charity
+  audience: business
+- id: R003
+  priority: 102
+  title: Currently, there are no new rules to prepare for if you work in education
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - education
+  audience: business
+- id: R004
+  priority: 103
+  title: Currently, there are no new rules to prepare for if you work in the gambling
+    sector
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - gamble
+  audience: business
+- id: R005
+  priority: 104
+  title: Currently, there are no new rules to prepare for if you work in installation,
+    servicing and repair
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - install-service-repair
+  audience: business
+- id: R006
+  priority: 105
+  title: Currently, there are no new rules to prepare for if you work in the justice
+    system (including prisons)
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - justice-including-prisons
+  audience: business
+- id: R007
+  priority: 106
+  title: Currently, there are no new rules to prepare for if you drive in the EU using
+    a UK licence
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - living-driving-eu
+  audience: citizen
+- id: R008
+  priority: 107
+  title: Currently, there are no new rules to prepare for if you plan to move to or
+    visit the EU for more than 90 days
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - move-to-eu
+  audience: citizen
+- id: R009
+  priority: 108
+  title: Currently, there are no new rules to prepare for if you work in personal
+    services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - personal-service
+  audience: business
+- id: R010
+  priority: 109
+  title: Currently, there are no new rules to prepare for if you work in public administration
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - public-administration
+  audience: business
+- id: R011
+  priority: 110
+  title: Currently, there are no new rules to prepare for if you work in rail freight
+    and passenger services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - rail-passenger-freight
+  audience: business
+- id: R012
+  priority: 111
+  title: Currently, there are no new rules to prepare for if you work in real estate
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - real-estate
+  audience: business
+- id: R013
+  priority: 112
+  title: Currently, there are no new rules to prepare for if you work in research
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - research
+  audience: business
+- id: R014
+  priority: 113
+  title: Currently, there are no new rules to prepare for if you work in restaurants,
+    bars and catering
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - restaurants-catering
+  audience: business
+- id: R015
+  priority: 114
+  title: Currently, there are no new rules to prepare for if you work in retail and
+    wholesale (excluding food, drink and motors)
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - retail-wholesale-x-food-drink-motors
+  audience: business
+- id: R016
+  priority: 115
+  title: Currently, there are no new rules to prepare for if you have defence contracts
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - sell-defence-contracts
+  audience: business
+- id: R017
+  priority: 116
+  title: Currently, there are no new rules to prepare for if your business trades
+    with developing countries
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - trade-developing
+  audience: business
+- id: R018
+  priority: 117
+  title: Currently, there are no new rules to prepare for if you work in veterinary
+    services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - vet
+  audience: business
+- id: R019
+  priority: 118
+  title: Currently, there are no new rules to prepare for if you plan to travel to
+    the rest of the world
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - visiting-row
+  audience: citizen
+- id: R020
+  priority: 119
+  title: Currently, there are no new rules to prepare for if you work for voluntary
+    and community organisations
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - voluntary
+  audience: business
+- id: R021
+  priority: 120
+  title: Currently, there are no new rules to prepare for if you work in warehousing,
+    services and pipelines
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - warehouse-pipeline
+  audience: business
+- id: R022
+  priority: 121
+  title: Currently, there are no new rules to prepare for if you are employed in Ireland
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/email-signup
+  criteria:
+  - working-ie
+  audience: citizen
+

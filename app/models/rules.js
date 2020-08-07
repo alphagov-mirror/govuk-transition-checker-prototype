@@ -723,6 +723,138 @@ exports.find = (answers) => {
         actions.push('T110')
       }
     }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('accommodation') !== -1) {
+        actions.push('R001')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('charity') !== -1) {
+        actions.push('R002')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('education') !== -1) {
+        actions.push('R003')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('gamble') !== -1) {
+        actions.push('R004')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('install-service-repair') !== -1) {
+        actions.push('R005')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('justice-including-prisons') !== -1) {
+        actions.push('R006')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('living-driving-eu') !== -1) {
+        actions.push('R007')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('move-to-eu') !== -1) {
+        actions.push('R008')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('personal-service') !== -1) {
+        actions.push('R009')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('public-administration') !== -1) {
+        actions.push('R010')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('rail-passenger-freight') !== -1) {
+        actions.push('R011')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('real-estate') !== -1) {
+        actions.push('R012')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('research') !== -1) {
+        actions.push('R013')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('restaurants-catering') !== -1) {
+        actions.push('R014')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('retail-wholesale-x-food-drink-motors') !== -1) {
+        actions.push('R015')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('sell-defence-contracts') !== -1) {
+        actions.push('R016')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('trade-developing') !== -1) {
+        actions.push('R017')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('vet') !== -1) {
+        actions.push('R018')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('visiting-row') !== -1) {
+        actions.push('R019')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('voluntary') !== -1) {
+        actions.push('R020')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('warehouse-pipeline') !== -1) {
+        actions.push('R021')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('working-ie') !== -1) {
+        actions.push('R022')
+      }
+    }
   }
 
   return actions
