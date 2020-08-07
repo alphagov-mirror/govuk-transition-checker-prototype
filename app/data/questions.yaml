@@ -219,8 +219,7 @@ questions:
     criteria:
       - owns-operates-business-organisation
     text: "Where is your business or organisation registered?"
-    description: |
-      <p>**EXPLANATORY TEXT: Business registration**</p>
+    hint_text: 'Select all that apply.'
     options:
       - label: "UK"
         value: owns-operates-business-organisation-uk
@@ -345,22 +344,24 @@ questions:
       <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
     hint_text: Select all that apply.
     options:
-      - label: Move goods to or from the EU or other countries
+      - label: EU
         options: 
         - label: "Import from the EU"
           value: import-from-eu
         - label: "Export to the EU"
           value: export-to-eu
-        - label: "Export to the rest of the world"
-          value: export-to-row
-        - label: "Move goods into, out of, or through Northern Ireland"
-          value: move-goods-ni
-        - label: "Transport goods across EU borders"
-          value: haulage-goods-across-eu-borders
-      - label: Do business or trade with the EU or other countries
-        options:
         - label: "Provide services or do business in the EU"
           value: provide-services-do-business-in-eu
+        - label: "Transport goods across EU borders"
+          value: haulage-goods-across-eu-borders
+      - label: Northern Ireland
+        options:
+        - label: "Move goods into, out of, or through Northern Ireland"
+          value: move-goods-ni
+      - label: Rest of world
+        options:
+        - label: "Export to countries outside the EU"
+          value: export-to-row
         - label: "Trade with developing countries"
           value: trade-developing
 
