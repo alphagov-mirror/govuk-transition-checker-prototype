@@ -345,14 +345,15 @@ questions:
     hint_text: Select all that apply.
     options:
       - label: EU
+        hint_text: This also includes Switzerland, Norway, Iceland or Liechtenstein but does not include Ireland
         options: 
-        - label: "Import from the EU"
+        - label: "Import from any of these countries"
           value: import-from-eu
-        - label: "Export to the EU"
+        - label: "Export to any of these countries"
           value: export-to-eu
-        - label: "Provide services or do business in the EU"
+        - label: "Provide services or do business in any of these countries"
           value: provide-services-do-business-in-eu
-        - label: "Transport goods across EU borders"
+        - label: "Transport goods across borders"
           value: haulage-goods-across-eu-borders
       - label: Northern Ireland
         options:
@@ -360,7 +361,7 @@ questions:
           value: move-goods-ni
       - label: Rest of world
         options:
-        - label: "Export to countries outside the EU"
+        - label: "Export to countries in the rest of the world"
           value: export-to-row
         - label: "Trade with developing countries"
           value: trade-developing

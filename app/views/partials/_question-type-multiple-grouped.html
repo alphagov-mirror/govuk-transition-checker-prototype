@@ -30,6 +30,9 @@
           isPageHeading: false
         }
       },
+      hint: {
+        text: option.hint_text
+      } if option.hint_text | length,
       items: option.options | optionsToItems
     }) }}
 
