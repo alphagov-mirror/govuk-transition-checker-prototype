@@ -31,6 +31,18 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/home-v2', (req, res) => {
+  delete req.session.data
+  res.render('index', {
+    hide: [
+      'actions'
+    ],
+    actions: {
+      start: `${req.baseUrl}/nationality`
+    }
+  })
+})
+
 // --------------------------------------------------
 // Nationality
 // --------------------------------------------------
