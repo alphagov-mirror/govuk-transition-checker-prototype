@@ -359,7 +359,7 @@ questions:
         options:
         - label: "Move goods into, out of, or through Northern Ireland"
           value: move-goods-ni
-      - label: Rest of world
+      - label: Rest of the world
         options:
         - label: "Export to countries in the rest of the world"
           value: export-to-row
