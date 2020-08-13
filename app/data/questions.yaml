@@ -434,6 +434,12 @@ questions:
         options:
           - value: construction
             label: Construction
+      - label: Education or research
+        options:
+          - value: education
+            label: Education
+          - value: research
+            label: Research
       - label: Energy or environmental services
         options:
           - value: electricity
@@ -516,12 +522,6 @@ questions:
         options:
           - value: real-estate
             label: Real estate
-      - label: Research or education
-        options:
-          - value: education
-            label: Education
-          - value: research
-            label: Research
       - label: Retail or goods you sell
         options:
           - value: food-drink-tobacco
