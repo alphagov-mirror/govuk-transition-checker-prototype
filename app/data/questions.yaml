@@ -374,159 +374,155 @@ questions:
     text: "What does your business or organisation do?"
     hint_text: "Select all that apply."
     options:
-      - label: "Advanced manufacturing and services"
+      - label: Agriculture, animals and plants
         options:
-          - label: Aerospace and space
-            value: aero-space
-            hint: HINT TEXT
-          - label: Automotive
-            value: automotive
-            hint: HINT TEXT
-          - label: Electronics, parts and machinery
-            value: electronic-machinery
-            hint: HINT TEXT
-          - label: Installation, servicing and repair
-            value: install-service-repair
-            hint: HINT TEXT
-          - label: Marine and marine transport
-            value: marine-transport
-            hint: HINT TEXT
-          - label: Rail (manufacture)
-            value: rail-manufacture
-            hint: HINT TEXT
-      - label: "Agriculture, animals, fisheries and forestry"
+          - value: agriculture-farm
+            label: Agriculture and farming
+          - value: animal-ex-food
+            label: Animals and animal products
+          - value: fish-inc-wholesale
+            label: Fish
+          - value: forestry
+            label: Plants or forestry
+          - value: vet
+            label: Veterinary
+      - label: Charities and voluntary organisations
         options:
-          - label: Agriculture and farming
-            value: agriculture-farm
-          - label: Animals and animal products
-            value: animal-ex-food
-          - label: Fisheries (including wholesale)
-            value: fish-inc-wholesale
-          - label: Plants and forestry
-            value: forestry
-          - label: Veterinary
-            value: vet
-      - label: "Business and personal services"
+          - value: charity
+            label: Charities
+          - value: voluntary
+            label: Voluntary and community organisations
+      - label: Chemicals, diamonds and mining
         options:
-          - label: Personal services
-            value: personal-service
-          - label: Professional, legal and business services
-            value: legal-service
-      - label: "Charities and voluntary organisation"
+          - value: chemical
+            label: Chemicals
+          - value: diamond
+            label: Diamonds
+          - value: mining
+            label: Mining
+      - label: Construction
         options:
-          - label: Charities
-            value: charity
-          - label: Voluntary and community organisations
-            value: voluntary
-      - label: "Construction and environmental services"
+          - value: construction
+            label: Construction
+      - label: Energy or environmental services
         options:
-          - label: Construction
-            value: construction
-          - label: Environmental services
-            value: environment
-      - label: "Defence"
+          - value: electricity
+            label: Electricity
+          - value: environment
+            label: Environmental services
+          - value: nuclear
+            label: Nuclear
+          - value: oil-gas-coal
+            label: Oil, coal and gas
+          - value: renewables
+            label: Renewable energy
+      - label: Finance and insurance
         options:
-          - label: Defence
-            value: defence
-      - label: "Energy"
+          - value: finance
+            label: Financial services
+          - value: insurance
+            label: Insurance
+      - label: Gambling
         options:
-          - label: Electricity
-            value: electricity
-          - label: Nuclear
-            value: nuclear
-          - label: Oil, gas and coal
-            value: oil-gas-coal
-          - label: Renewable energy
-            value: renewables
-      - label: "Entertainment"
+          - value: gamble
+            label: Gambling
+      - label: Government, defence and justice
         options:
-          - label: Media and broadcasting
-            value: media
-          - label: Creative industries
-            value: creative
-          - label: Gambling
-            value: gamble
-          - label: Sports and recreation
-            value: sports
-          - label: Arts, culture and heritage
-            value: culture
-      - label: "Finance, insurance and real estate"
+          - value: defence
+            label: Defence
+          - value: justice-including-prisons
+            label: Justice including prisons
+          - value: public-administration
+            label: Public administration
+      - label: Health and social care
         options:
-          - label: Financial services
-            value: finance
-          - label: Insurance
-            value: insurance
-          - label: Real estate
-            value: real-estate
-      - label: "Health and social care"
+          - value: health
+            label: Healthcare and social care
+          - value: medical-tech
+            label: Medical technology
+          - value: pharma
+            label: Pharmaceuticals or clinical trials
+      - label: Hospitality and tourism
         options:
-          - label: Health and social care services
-            value: health
-          - label: Medical technology
-            value: medical-tech
-          - label: Pharmaceuticals and clinical trials
-            value: pharma
-      - label: "Information and communications"
+          - value: accommodation
+            label: Accommodation
+          - value: restaurants-catering
+            label: Restaurants, bars and catering
+          - value: tourism
+            label: Tourism
+      - label: Information and communications
         options:
-          - label: Digital, technology and computer services
-            value: digital
-          - label: Telecoms and information services
-            value: telecoms
-      - label: "Manufacturing"
+          - value: digital
+            label: Digital, technology or computer services
+          - value: telecoms
+            label: Telecommunications
+      - label: Manufacturing
         options:
-          - label: Manufacturing of consumer goods
-            value: consumer-goods
-      - label: "Materials and mining"
+          - value: aero-space
+            label: Aerospace and space
+          - value: automotive
+            label: Automotive
+          - value: electronic-machinery
+            label: Electronic parts and machinery
+          - value: consumer-goods
+            label: Manufacture of consumer goods
+          - value: metal
+            label: Metals
+          - value: non-metal-material
+            label: Non-metal materials
+          - value: rail-manufacture
+            label: Rail
+      - label: Media, arts and sport
         options:
-          - label: Chemicals
-            value: chemical
-          - label: Diamonds
-            value: diamond
-          - label: Metals manufacture
-            value: metal
-          - label: Mining
-            value: mining
-          - label: Non-metal materials manufacture
-            value: non-metal-material
-      - label: "Public administration"
+          - value: culture
+            label: Arts, culture or museums
+          - value: creative
+            label: Creative industries
+          - value: media
+            label: Media and broadcasting
+          - value: sports
+            label: Sports and recreation
+      - label: Real estate
         options:
-          - label: Justice including prisons
-            value: justice-including-prisons
-          - label: Public administration
-            value: public-administration
-      - label: "Research and education"
+          - value: real-estate
+            label: Real estate
+      - label: Research or education
         options:
-          - label: Education
-            value: education
-          - label: Research
-            value: research
-      - label: "Retail, wholesale and consumer goods"
+          - value: education
+            label: Education
+          - value: research
+            label: Research
+      - label: Retail or goods you sell
         options:
-          - label: Food, drink and tobacco
-            value: food-drink-tobacco
-          - label: Motor trade
-            value: motor-trade
-          - label: Retail and wholesale (excluding food, drink and motors)
-            value: retail-wholesale-x-food-drink-motors
-      - label: "Tourism and hospitality"
+          - value: food-drink-tobacco
+            label: Food, drink and tobacco
+          - value: motor-trade
+            label: Motor trade
+          - value: retail-wholesale-x-food-drink-motors
+            label: Retail and wholesale (excluding food, drink and motors)
+      - label: Services
         options:
-          - label: Accommodation
-            value: accommodation
-          - label: Restaurants, bars and catering
-            value: restaurants-catering
-          - label: Tourism
-            value: tourism
-      - label: "Transport and logistics"
+          - value: install-service-repair
+            label: Installation, servicing and repair
+            hint: For example plumber, electrician
+          - value: legal-service
+            label: Legal or business services
+          - value: personal-service
+            label: Personal services
+            hint: For example catering, cleaning and hairdressing
+      - label: Transport and moving goods
         options:
-          - label: Air freight and air passenger services
-            value: air-passenger-freight
-          - label: Ports and airports
-            value: port-airports
-          - label: Postal and courier services
-            value: postal-couriers
-          - label: Rail (passengers and freight)
-            value: rail-passenger-freight
-          - label: Road (passengers and freight)
-            value: road-passenger-freight
-          - label: Warehousing, services and pipelines
-            value: warehouse-pipeline
+          - value: air-passenger-freight
+            label: Aeroplanes (passenger and freight)
+          - value: port-airports
+            label: Airports and ports
+          - value: warehouse-pipeline
+            label: Logistics (warehouses, pipelines)
+          - value: marine-transport
+            label: Marine and marine transport
+          - value: postal-couriers
+            label: Post and courier services
+          - value: road-passenger-freight
+            label: Road (passengers and freight)
+          - value: rail-passenger-freight
+            label: Tourism
