@@ -214,7 +214,7 @@ questions:
         value: does-not-own-operate-business-organisation
 
   - key: business-uk-or-eu
-    type: "multiple"
+    type: multiple
     caption: About your business
     criteria:
       - owns-operates-business-organisation
@@ -226,7 +226,7 @@ questions:
       - label: "EU"
         value: owns-operates-business-organisation-eu
       - label: "Somewhere else"
-    value: owns-operates-business-organisation-row
+        value: owns-operates-business-organisation-row
 
   - key: employ-eu-citizens
     caption: About your business
@@ -338,33 +338,63 @@ questions:
     criteria:
       - owns-operates-business-organisation-uk
     caption: About your business
-    type: "multiple_grouped"
-    text: "Does your business or organisation do any of the following?"
+    type: multiple
+    text: Which countries do you do business with?
+    hint_text: Select all that apply.
+    options:
+      - label: Ireland
+        value: business-activity-ie
+      - label: Other EU countries, Switzerland, Norway, Iceland or Liechtenstein
+        value: business-activity-eu
+      - label: Rest of the world
+        value: business-activity-row
+
+  - key: business-activity-eu
+    criteria:
+      - owns-operates-business-organisation-uk
+      - business-activity-eu
+    caption: About your business
+    type: multiple
+    text: Do you do any of the following with EU countries?
     description: |
+      <p>This also includes Switzerland, Norway, Iceland and Liechtenstein, but does not include Ireland.</p>
       <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
     hint_text: Select all that apply.
     options:
-      - label: EU
-        hint_text: This also includes Switzerland, Norway, Iceland or Liechtenstein but does not include Ireland
-        options: 
-        - label: "Import from any of these countries"
-          value: import-from-eu
-        - label: "Export to any of these countries"
-          value: export-to-eu
-        - label: "Provide services or do business in any of these countries"
-          value: provide-services-do-business-in-eu
-        - label: "Transport goods across borders"
-          value: haulage-goods-across-eu-borders
-      - label: Northern Ireland
-        options:
-        - label: "Move goods into, out of, or through Northern Ireland"
-          value: move-goods-ni
-      - label: Rest of the world
-        options:
-        - label: "Export to countries in the rest of the world"
-          value: export-to-row
-        - label: "Trade with developing countries"
-          value: trade-developing
+      - label: Import from EU countries
+        value: import-from-eu
+      - label: Export to EU countries
+        value: export-to-eu
+      - label: Provide services or do business in the EU
+        value: provide-services-do-business-in-eu
+      - label: Transport goods across EU borders
+        value: haulage-goods-across-eu-borders
+
+  - key: business-activity-row
+    criteria:
+      - owns-operates-business-organisation-uk
+      - business-activity-row
+    caption: About your business
+    type: multiple
+    text: Do you do any of the following?
+    hint_text: Select all that apply.
+    options:
+      - label: Export to countries in the rest of the world
+        value: export-to-row
+      - label: Trade with developing countries
+        value: trade-developing
+
+  - key: business-activity-ni
+    criteria:
+      - owns-operates-business-organisation-uk
+    caption: About your business
+    type: single
+    text: Do you move goods into, out of, or through Northern Ireland?
+    options:
+      - label: Yes
+        value: business-activity-ni-yes
+      - label: No
+        value: business-activity-ni-no
 
   - key: sector-business-area
     criteria:
@@ -522,7 +552,7 @@ questions:
             label: Marine and marine transport
           - value: postal-couriers
             label: Post and courier services
+          - value: rail-passenger-freight
+            label: Rail (passengers and freight)
           - value: road-passenger-freight
             label: Road (passengers and freight)
-          - value: rail-passenger-freight
-            label: Tourism

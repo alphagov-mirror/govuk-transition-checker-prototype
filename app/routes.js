@@ -620,7 +620,11 @@ router.post('/business-uk-or-eu', checkHasAnswers, (req, res) => {
       }
     })
   } else {
-    res.redirect(`${req.baseUrl}/employ-eu-citizens`)
+    if (req.session.data.answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-uk') !== -1) {
+      res.redirect(`${req.baseUrl}/employ-eu-citizens`)
+    } else {
+      res.redirect(`${req.baseUrl}/results`)
+    }
   }
 })
 
@@ -823,7 +827,7 @@ router.post('/eu-domain', checkHasAnswers, (req, res) => {
 })
 
 // --------------------------------------------------
-// Business activity
+// Business activity – Gate question
 // --------------------------------------------------
 
 router.get('/business-activity', checkHasAnswers, (req, res) => {
@@ -851,6 +855,139 @@ router.post('/business-activity', checkHasAnswers, (req, res) => {
       }
     })
   } else {
+    if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+      res.redirect(`${req.baseUrl}/business-activity-eu`)
+    } else if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+      res.redirect(`${req.baseUrl}/business-activity-row`)
+    } else {
+      res.redirect(`${req.baseUrl}/business-activity-ni`)
+    }
+  }
+})
+
+// --------------------------------------------------
+// Business activity – European Union
+// --------------------------------------------------
+
+router.get('/business-activity-eu', checkHasAnswers, (req, res) => {
+  res.render('question', {
+    question: Questions.question('business-activity-eu', req.session.data.answers['business-activity-eu']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-eu`,
+      back: `${req.baseUrl}/business-activity`,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-eu', checkHasAnswers, (req, res) => {
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-eu', req.session.data.answers['business-activity-eu']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-eu`,
+        back: `${req.baseUrl}/business-activity`,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
+    if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+      res.redirect(`${req.baseUrl}/business-activity-row`)
+    } else {
+      res.redirect(`${req.baseUrl}/business-activity-ni`)
+    }
+  }
+})
+
+// --------------------------------------------------
+// Business activity – Rest of the world
+// --------------------------------------------------
+
+router.get('/business-activity-row', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  res.render('question', {
+    question: Questions.question('business-activity-row', req.session.data.answers['business-activity-row']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-row`,
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-row', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-row', req.session.data.answers['business-activity-row']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-row`,
+        back: back,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
+    res.redirect(`${req.baseUrl}/business-activity-ni`)
+  }
+})
+
+// --------------------------------------------------
+// Business activity – Northern Ireland
+// --------------------------------------------------
+
+router.get('/business-activity-ni', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+    back = `${req.baseUrl}/business-activity-row`
+  } else if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  res.render('question', {
+    question: Questions.question('business-activity-ni', req.session.data.answers['business-activity-ni']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-ni`,
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-ni', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+    back = `${req.baseUrl}/business-activity-row`
+  } else if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-ni', req.session.data.answers['business-activity-ni']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-ni`,
+        back: back,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
     res.redirect(`${req.baseUrl}/sector-business-area`)
   }
 })
@@ -864,7 +1001,7 @@ router.get('/sector-business-area', checkHasAnswers, (req, res) => {
     question: Questions.question('sector-business-area', req.session.data.answers['sector-business-area']),
     actions: {
       save: `${req.baseUrl}/sector-business-area`,
-      back: `${req.baseUrl}/business-activity`,
+      back: `${req.baseUrl}/business-activity-ni`,
       start: `${req.baseUrl}/`
     }
   })
@@ -879,7 +1016,7 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/sector-business-area`,
-        back: `${req.baseUrl}/business-activity`,
+        back: `${req.baseUrl}/business-activity-ni`,
         start: `${req.baseUrl}/`
       }
     })
