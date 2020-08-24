@@ -1445,7 +1445,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you work in accommodation
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - accommodation
   audience: business
@@ -1455,7 +1455,7 @@ actions:
     sector
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - charity
   audience: business
@@ -1464,7 +1464,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you work in education
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - education
   audience: business
@@ -1474,7 +1474,7 @@ actions:
     sector
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - gamble
   audience: business
@@ -1484,7 +1484,7 @@ actions:
     servicing and repair
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - install-service-repair
   audience: business
@@ -1494,7 +1494,7 @@ actions:
     system (including prisons)
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - justice-including-prisons
   audience: business
@@ -1504,7 +1504,7 @@ actions:
     a UK licence
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - living-driving-eu
   audience: citizen
@@ -1514,7 +1514,7 @@ actions:
     visit the EU for more than 90 days
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - move-to-eu
   audience: citizen
@@ -1524,7 +1524,7 @@ actions:
     services
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - personal-service
   audience: business
@@ -1533,7 +1533,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you work in public administration
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - public-administration
   audience: business
@@ -1543,7 +1543,7 @@ actions:
     and passenger services
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - rail-passenger-freight
   audience: business
@@ -1552,7 +1552,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you work in real estate
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - real-estate
   audience: business
@@ -1561,7 +1561,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you work in research
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - research
   audience: business
@@ -1571,7 +1571,7 @@ actions:
     bars and catering
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - restaurants-catering
   audience: business
@@ -1581,7 +1581,7 @@ actions:
     wholesale (excluding food, drink and motors)
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - retail-wholesale-x-food-drink-motors
   audience: business
@@ -1590,7 +1590,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you have defence contracts
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - sell-defence-contracts
   audience: business
@@ -1600,7 +1600,7 @@ actions:
     with developing countries
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - trade-developing
   audience: business
@@ -1610,7 +1610,7 @@ actions:
     services
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - vet
   audience: business
@@ -1620,7 +1620,7 @@ actions:
     the rest of the world
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - visiting-row
   audience: citizen
@@ -1630,7 +1630,7 @@ actions:
     and community organisations
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - voluntary
   audience: business
@@ -1640,7 +1640,7 @@ actions:
     services and pipelines
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - warehouse-pipeline
   audience: business
@@ -1649,7 +1649,7 @@ actions:
   title: Currently, there are no new rules to prepare for if you are employed in Ireland
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/email-signup
+  guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - working-ie
   audience: citizen
