@@ -214,12 +214,11 @@ questions:
         value: does-not-own-operate-business-organisation
 
   - key: business-uk-or-eu
-    type: multiple
+    type: single
     caption: About your business
     criteria:
       - owns-operates-business-organisation
-    text: "Where is your business or organisation registered?"
-    hint_text: 'Select all that apply.'
+    text: "Where is your business or organisation based?"
     options:
       - label: "UK"
         value: owns-operates-business-organisation-uk
