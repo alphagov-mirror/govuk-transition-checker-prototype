@@ -1508,6 +1508,8 @@ actions:
   criteria:
   - living-driving-eu
   audience: citizen
+  grouping_criteria:
+  - visiting-eu
 - id: R008
   priority: 107
   title: Currently, there are no new rules to prepare for if you plan to move to or
@@ -1518,6 +1520,8 @@ actions:
   criteria:
   - move-to-eu
   audience: citizen
+  grouping_criteria:
+  - living-eu
 - id: R009
   priority: 108
   title: Currently, there are no new rules to prepare for if you work in personal
@@ -1653,6 +1657,8 @@ actions:
   criteria:
   - working-ie
   audience: citizen
+  grouping_criteria:
+  - working-eu
 - id: R023
   priority: 122
   title: You do not need to stockpile medication
@@ -1663,3 +1669,5 @@ actions:
   criteria:
   - living-uk
   audience: citizen
+  grouping_criteria:
+  - living-uk

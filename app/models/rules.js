@@ -235,6 +235,37 @@ exports.find = (answers) => {
     }
   }
 
+  if (answers['drive-in-eu'] !== undefined) {
+    if (answers['drive-in-eu'] === 'living-driving-eu') {
+      actions.push('R007')
+    }
+  }
+
+  if (answers['move-eu'] !== undefined) {
+    if (answers['move-eu'] === 'move-to-eu') {
+      actions.push('R008')
+    }
+  }
+
+  if (answers.visiting !== undefined) {
+    if (answers.visiting === 'visiting-row') {
+      actions.push('R019')
+    }
+  }
+
+  if (answers.employment !== undefined) {
+    if (answers.employment === 'working-eu' ||
+        answers.employment === 'working-ie') {
+      actions.push('R022')
+    }
+  }
+
+  if (answers.living !== undefined) {
+    if (answers.living === 'living-uk') {
+      actions.push('R023')
+    }
+  }
+
   // --------------------------------------------------
   // BUSINESS RULES
   // --------------------------------------------------
@@ -761,18 +792,6 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined) {
-      if (answers['sector-business-area'].indexOf('living-driving-eu') !== -1) {
-        actions.push('R007')
-      }
-    }
-
-    if (answers['sector-business-area'] !== undefined) {
-      if (answers['sector-business-area'].indexOf('move-to-eu') !== -1) {
-        actions.push('R008')
-      }
-    }
-
-    if (answers['sector-business-area'] !== undefined) {
       if (answers['sector-business-area'].indexOf('personal-service') !== -1) {
         actions.push('R009')
       }
@@ -833,12 +852,6 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined) {
-      if (answers['sector-business-area'].indexOf('visiting-row') !== -1) {
-        actions.push('R019')
-      }
-    }
-
-    if (answers['sector-business-area'] !== undefined) {
       if (answers['sector-business-area'].indexOf('voluntary') !== -1) {
         actions.push('R020')
       }
@@ -847,18 +860,6 @@ exports.find = (answers) => {
     if (answers['sector-business-area'] !== undefined) {
       if (answers['sector-business-area'].indexOf('warehouse-pipeline') !== -1) {
         actions.push('R021')
-      }
-    }
-
-    if (answers['sector-business-area'] !== undefined) {
-      if (answers['sector-business-area'].indexOf('working-ie') !== -1) {
-        actions.push('R022')
-      }
-    }
-
-    if (answers.living !== undefined) {
-      if (answers.living === 'living-uk') {
-        actions.push('R023')
       }
     }
   }
