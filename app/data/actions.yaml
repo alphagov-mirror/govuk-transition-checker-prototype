@@ -1653,4 +1653,13 @@ actions:
   criteria:
   - working-ie
   audience: citizen
-
+- id: R023
+  priority: 122
+  title: You do not need to stockpile medication
+  consequence: Continue to take medication as directed by your doctor or health professional.
+  guidance_prompt: More information
+  guidance_link_text: Supply of prescribed medicines from 1 January 2021
+  guidance_url: https://www.gov.uk/
+  criteria:
+  - living-uk
+  audience: citizen

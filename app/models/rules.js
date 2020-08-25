@@ -855,6 +855,12 @@ exports.find = (answers) => {
         actions.push('R022')
       }
     }
+
+    if (answers.living !== undefined) {
+      if (answers.living === 'living-uk') {
+        actions.push('R023')
+      }
+    }
   }
 
   return actions
