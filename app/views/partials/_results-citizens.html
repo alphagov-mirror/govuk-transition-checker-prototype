@@ -31,6 +31,8 @@
 
               {%- for action in actions %}
 
+                <!-- {{action.id}} -->
+
                 {{ appCheckerAction({
                   heading: {
                     href: action.title_url,
@@ -45,7 +47,8 @@
                     } if action.guidance_prompt,
                     href: action.guidance_url,
                     text: action.guidance_link_text
-                  }
+                  },
+                  classes: "app-action-reassurance" if action.id in ["R007","R008","R019","R022","R023","S039"]
                 }) }}
 
               {% endfor -%}

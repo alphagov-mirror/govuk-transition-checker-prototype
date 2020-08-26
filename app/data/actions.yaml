@@ -1311,9 +1311,7 @@ actions:
   - living-eu
 - id: S039
   priority: 1
-  title: Find out your right to live, work or study in the Common Travel Area if you're
-    an Irish or UK national
-  consequence: You can continue to live, work or study within the Common Travel Area.
+  title: If you're a British or Irish citizen, you will not have to take any action to protect your Common Travel Area rights
   guidance_prompt: More information
   guidance_link_text: 'Common travel area: rights of UK and Irish citizens'
   guidance_url: https://www.gov.uk/government/publications/common-travel-area-guidance

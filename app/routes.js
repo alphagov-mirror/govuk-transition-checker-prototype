@@ -18,6 +18,30 @@ function checkHasAnswers (req, res, next) {
   }
 }
 
+// TODO: Could this be made into middleware?
+function deleteAnswers (answers) {
+  if (answers['business-activity'] !== undefined) {
+    if (answers['business-activity'].indexOf('business-activity-eu') === -1) {
+      if (answers['business-activity-eu'] !== undefined) {
+        delete answers['business-activity-eu']
+      }
+    }
+    if (answers['business-activity'].indexOf('business-activity-row') === -1) {
+      if (answers['business-activity-row'] !== undefined) {
+        delete answers['business-activity-row']
+      }
+    }
+  } else {
+    if (answers['business-activity-eu'] !== undefined) {
+      delete answers['business-activity-eu']
+    }
+    if (answers['business-activity-row'] !== undefined) {
+      delete answers['business-activity-row']
+    }
+  }
+  return
+}
+
 // --------------------------------------------------
 // Start
 // --------------------------------------------------
@@ -855,10 +879,16 @@ router.post('/business-activity', checkHasAnswers, (req, res) => {
       }
     })
   } else {
-    if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
-      res.redirect(`${req.baseUrl}/business-activity-eu`)
-    } else if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
-      res.redirect(`${req.baseUrl}/business-activity-row`)
+    deleteAnswers(req.session.data.answers)
+
+    if (req.session.data.answers['business-activity'] !== undefined) {
+      if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+        res.redirect(`${req.baseUrl}/business-activity-eu`)
+      } else if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+        res.redirect(`${req.baseUrl}/business-activity-row`)
+      } else {
+        res.redirect(`${req.baseUrl}/business-activity-ni`)
+      }
     } else {
       res.redirect(`${req.baseUrl}/business-activity-ni`)
     }
@@ -894,7 +924,8 @@ router.post('/business-activity-eu', checkHasAnswers, (req, res) => {
       }
     })
   } else {
-    if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+    if (req.session.data.answers['business-activity'] !== undefined &&
+        req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
       res.redirect(`${req.baseUrl}/business-activity-row`)
     } else {
       res.redirect(`${req.baseUrl}/business-activity-ni`)
@@ -908,7 +939,8 @@ router.post('/business-activity-eu', checkHasAnswers, (req, res) => {
 
 router.get('/business-activity-row', checkHasAnswers, (req, res) => {
   let back = `${req.baseUrl}/business-activity`
-  if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
     back = `${req.baseUrl}/business-activity-eu`
   }
 
@@ -924,7 +956,8 @@ router.get('/business-activity-row', checkHasAnswers, (req, res) => {
 
 router.post('/business-activity-row', checkHasAnswers, (req, res) => {
   let back = `${req.baseUrl}/business-activity`
-  if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
     back = `${req.baseUrl}/business-activity-eu`
   }
 
@@ -951,9 +984,11 @@ router.post('/business-activity-row', checkHasAnswers, (req, res) => {
 
 router.get('/business-activity-ni', checkHasAnswers, (req, res) => {
   let back = `${req.baseUrl}/business-activity`
-  if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
     back = `${req.baseUrl}/business-activity-row`
-  } else if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+  } else if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
     back = `${req.baseUrl}/business-activity-eu`
   }
 
@@ -969,9 +1004,11 @@ router.get('/business-activity-ni', checkHasAnswers, (req, res) => {
 
 router.post('/business-activity-ni', checkHasAnswers, (req, res) => {
   let back = `${req.baseUrl}/business-activity`
-  if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
     back = `${req.baseUrl}/business-activity-row`
-  } else if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+  } else if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
     back = `${req.baseUrl}/business-activity-eu`
   }
 
