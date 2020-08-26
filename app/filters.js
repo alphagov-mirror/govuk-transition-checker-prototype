@@ -66,14 +66,9 @@ module.exports = function (env) {
       return null
     }
 
-    console.log(options);
-    console.log(optionValue);
-
     const items = options.filter((obj) =>
       obj.value !== optionValue
     )
-
-    console.log(items);
 
     return items
   }

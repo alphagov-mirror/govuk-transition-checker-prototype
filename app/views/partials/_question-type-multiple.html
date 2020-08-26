@@ -1,3 +1,7 @@
+{% if data.answers.living | length and question.key == "travelling" %}
+  {% set item = data.answers.living | replace('living','visiting') %}
+{% endif %}
+
 {{ govukCheckboxes({
   idPrefix: question.key,
   name: "answers[" + question.key + "]",
@@ -12,5 +16,5 @@
     text: question.hint_text
   } if question.hint_text,
   errorMessage: errors | getErrorMessage(question.key),
-  items: question.options | optionsToItems | removeItem('visiting-uk') if question.key == "travelling" and data.answers.living == "living-uk"
+  items: question.options | optionsToItems | removeItem(item) if question.key == "travelling"
 }) }}
