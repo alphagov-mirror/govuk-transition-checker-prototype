@@ -12,5 +12,5 @@
     text: question.hint_text
   } if question.hint_text,
   errorMessage: errors | getErrorMessage(question.key),
-  items: question.options | optionsToItems
+  items: question.options | optionsToItems | removeItem('visiting-uk') if question.key == "travelling" and data.answers.living == "living-uk"
 }) }}

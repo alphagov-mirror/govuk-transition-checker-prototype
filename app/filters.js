@@ -61,6 +61,23 @@ module.exports = function (env) {
     return items
   }
 
+  filters.removeItem = function (options, optionValue) {
+    if (!optionValue) {
+      return null
+    }
+
+    console.log(options);
+    console.log(optionValue);
+
+    const items = options.filter((obj) =>
+      obj.value !== optionValue
+    )
+
+    console.log(items);
+
+    return items
+  }
+
   /* ------------------------------------------------------------------
     utility function to parse group heading
     example: {{ 'living-eu' | getGroupHeading }}
