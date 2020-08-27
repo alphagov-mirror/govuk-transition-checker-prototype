@@ -340,7 +340,6 @@ actions:
   audience: citizen
   grouping_criteria:
   - living-eu
-  - living-ie
 - id: S031
   priority: 4
   title: Test your vehicle for roadworthiness in the EU country you live in
@@ -358,7 +357,6 @@ actions:
   audience: citizen
   grouping_criteria:
   - living-eu
-  - living-ie
 - id: S032
   priority: 4
   title: Contact your vet at least 4 months before travelling to make sure your pet
