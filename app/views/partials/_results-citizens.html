@@ -40,13 +40,13 @@
                   },
                   consequence: {
                     text: action.consequence
-                  },
+                  } if action.consequence | length,
                   exception: {
                     text: action.exception
-                  },
+                  } if action.exception | length,
                   leadTime: {
                     text: action.lead_time
-                  },
+                  } if action.lead_time | length,
                   guidance: {
                     prompt: {
                       text: action.guidance_prompt + ':'
