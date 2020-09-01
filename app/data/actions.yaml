@@ -340,6 +340,7 @@ actions:
   audience: citizen
   grouping_criteria:
   - living-eu
+  - living-ie
 - id: S031
   priority: 4
   title: Test your vehicle for roadworthiness in the EU country you live in
@@ -357,6 +358,7 @@ actions:
   audience: citizen
   grouping_criteria:
   - living-eu
+  - living-ie
 - id: S032
   priority: 4
   title: Contact your vet at least 4 months before travelling to make sure your pet
@@ -527,7 +529,6 @@ actions:
   priority: 5
   title: Register to use the open general export licence to export 'dual use' nuclear
     goods from the UK
-  title_url: https://www.gov.uk/guidance/exporting-nuclear-related-items-from-1-january-2021
   consequence: You will not be able to export 'dual use' nuclear goods from the UK
     if you have not registered.
   guidance_prompt: More information
@@ -594,7 +595,6 @@ actions:
   priority: 8
   title: Check if you need to change your contract to keep accessing personal data
     from the EU, Norway, Iceland or Liechtenstein
-  title_url: https://www.gov.uk/guidance/using-personal-data-after-brexit#what-you-need-to-do-before-a-no-deal-brexit
   consequence: You may not be able to access personal data from the EU without the
     right arrangements in place.
   guidance_prompt: More information
@@ -676,7 +676,7 @@ actions:
     do not follow the right rules.
   guidance_prompt: More information
   guidance_link_text: Importing and exporting plants and plant products from 2021
-  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-if-theres-no-withdrawal-deal
+  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-from-1-january-2021
   criteria:
   - all_of:
     - any_of:
@@ -1086,7 +1086,7 @@ actions:
   lead_time: It takes up to 7 days to get the certificate
   guidance_prompt: More information
   guidance_link_text: Importing and exporting plants and plant products from 2021
-  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-if-theres-no-withdrawal-deal
+  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-from-1-january-2021
   criteria:
   - any_of:
     - agriculture-farm
@@ -1287,7 +1287,7 @@ actions:
     do not pay the correct tariff.
   guidance_prompt: More information
   guidance_link_text: Check UK trade tariffs from 1 January 2021
-  guidance_url: https://www.gov.uk/check-tariffs-1-january-2021
+  guidance_url: https://www.gov.uk/guidance/uk-tariffs-from-1-january-2021
   criteria:
   - import-from-eu
   audience: business
@@ -1309,7 +1309,9 @@ actions:
   - living-eu
 - id: S039
   priority: 1
-  title: If you're a British or Irish citizen, you will not have to take any action to protect your Common Travel Area rights
+  title: Find out your right to live, work or study in the Common Travel Area if you're
+    an Irish or UK national
+  consequence: You can continue to live, work or study within the Common Travel Area.
   guidance_prompt: More information
   guidance_link_text: 'Common travel area: rights of UK and Irish citizens'
   guidance_url: https://www.gov.uk/government/publications/common-travel-area-guidance
@@ -1444,6 +1446,61 @@ actions:
   guidance_url: https://www.gov.uk/transition-check/email-signup
   criteria:
   - accommodation
+  audience: business
+- id: T111
+  priority: 6
+  title: Check if you need to replace your .eu domain name
+  title_url: https://www.gov.uk/guidance/eu-domain-names-what-you-need-to-do-to-get-ready-for-brexit
+  consequence: You may not be able to hold, register or renew a .eu domain name from 1 January 2021.
+  criteria:
+  - eu-domain
+  audience: business
+- id: T112
+  priority: 8
+  title: Register for the UK’s new Import of Products, Animals, Food and Feed System (IPAFFS)
+  title_url: https://www.gov.uk/guidance/importing-animals-animal-products-and-high-risk-food-and-feed-not-of-animal-origin-from-1-january-2021
+  consequence: You will not be able to import using the TRACES system from 1 January 2021.
+  criteria:
+  - all_of:
+    - import-from-eu
+    - any_of:
+      - animal-ex-food
+      - agriculture-farm
+      - food-drink-tobacco
+  audience: business
+- id: T113
+  priority: 2
+  title: Check the rules for reporting unfair trade practices using the UK's new trade remedies service
+  title_url: https://www.gov.uk/guidance/applying-for-a-trade-remedies-investigation
+  consequence: You risk being affected if imported goods are dumped on the UK market or are benefiting from subsidies – or if there is a sudden increase in imports to the UK of a certain product.
+  criteria:
+  - owns-operates-business-organisation-uk
+  audience: business
+- id: T114
+  priority: 2
+  title: Check if there's a trade agreement with any non-EU country you're planning to trade with from 1 January 2021
+  title_url: https://www.gov.uk/guidance/uk-trade-agreements-with-non-eu-countries
+  consequence: You risk disruption to your trading arrangements and unexpected costs.
+  criteria:
+  - any_of:
+    - trade-developing
+    - export-to-row
+  audience: business
+- id: T115
+  priority: 1
+  title: Register with HSE to find out when guidance on the duties for classifying, labelling and packaging chemicals for the GB market is available
+  title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
+  consequence: You must make sure chemicals are classified, labelled and packaged according to GB regulations.
+  criteria:
+  - chemical
+  audience: business
+- id: T116
+  priority: 1
+  title: Register with HSE to find out when guidance on processes for biocidal active substance approval and product authorisation is available
+  title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
+  consequence: You may have delays in getting access to the right materials to continue with your work.
+  criteria:
+  - chemical
   audience: business
 - id: R002
   priority: 101
