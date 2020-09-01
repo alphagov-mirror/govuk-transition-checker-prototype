@@ -83,7 +83,7 @@ exports.find = (answers) => {
         (answers.travelling.indexOf('visiting-eu') !== -1 ||
         answers.travelling.indexOf('visiting-ie') !== -1 ||
         answers['travelling-business'] === 'travel-eu-business') &&
-        answers.activities === 'visiting-bring-pet') {
+        answers.activities.indexOf('visiting-bring-pet') !== -1) {
       actions.push('S009')
     }
   }
@@ -126,7 +126,7 @@ exports.find = (answers) => {
     if (answers.living === 'living-uk' &&
         (answers.travelling.indexOf('visiting-eu') !== -1 ||
         answers['travelling-business'] === 'travel-eu-business') &&
-        answers.activities === 'visiting-driving') {
+        answers.activities.indexOf('visiting-driving') !== -1) {
       actions.push('S022')
       actions.push('S024')
     }
@@ -184,7 +184,7 @@ exports.find = (answers) => {
     if ((answers.living === 'living-eu' ||
         answers.living === 'living-ie') &&
         answers.travelling.indexOf('visiting-uk') !== -1 &&
-        answers.activities === 'visiting-bring-pet') {
+        answers.activities.indexOf('visiting-bring-pet') !== -1) {
       actions.push('S032')
     }
   }
@@ -198,7 +198,7 @@ exports.find = (answers) => {
   if (answers.travelling !== undefined &&
       answers.activities !== undefined) {
     if (answers.travelling.indexOf('visiting-uk') !== -1 &&
-        answers.activities === 'visiting-driving') {
+        answers.activities.indexOf('visiting-driving') !== -1) {
       actions.push('S036')
     }
   }
