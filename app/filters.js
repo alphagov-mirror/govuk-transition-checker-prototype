@@ -50,6 +50,7 @@ module.exports = function (env) {
 
     options.forEach((option) => {
       const item = {}
+      item.id = (option.id !== undefined) ? option.id : option.value
       item.text = option.label
       item.value = option.value
       item.checked = option.checked
