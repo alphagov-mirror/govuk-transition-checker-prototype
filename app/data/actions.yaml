@@ -1438,15 +1438,6 @@ actions:
   criteria:
   - import-from-eu
   audience: business
-- id: R001
-  priority: 100
-  title: Currently, there are no new rules to prepare for if you work in accommodation
-  guidance_prompt: This may change
-  guidance_link_text: Subscribe to updates about changes that may affect you
-  guidance_url: https://www.gov.uk/transition-check/email-signup
-  criteria:
-  - accommodation
-  audience: business
 - id: T111
   priority: 6
   title: Check if you need to replace your .eu domain name
@@ -1501,6 +1492,15 @@ actions:
   consequence: You may have delays in getting access to the right materials to continue with your work.
   criteria:
   - chemical
+  audience: business
+- id: R001
+  priority: 100
+  title: Currently, there are no new rules to prepare for if you work in accommodation
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - accommodation
   audience: business
 - id: R002
   priority: 101

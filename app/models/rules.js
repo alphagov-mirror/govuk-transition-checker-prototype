@@ -755,6 +755,42 @@ exports.find = (answers) => {
       }
     }
 
+    if (answers['eu-domain'] !== undefined) {
+      if (answers['eu-domain'] === 'eu-domain') {
+        actions.push('T111')
+      }
+    }
+
+    if (answers['business-activity-eu'] !== undefined &&
+        answers['sector-business-area'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('import-from-eu') !== -1 &&
+          (answers['sector-business-area'].indexOf('animal-ex-food') !== -1 ||
+          answers['sector-business-area'].indexOf('agriculture-farm') !== -1 ||
+          answers['sector-business-area'].indexOf('food-drink-tobacco') !== -1)) {
+        actions.push('T112')
+      }
+    }
+
+    if (answers['business-uk-or-eu'] !== undefined) {
+      if (answers['business-uk-or-eu'] === 'owns-operates-business-organisation-uk') {
+        actions.push('T113')
+      }
+    }
+
+    if (answers['business-activity-row'] !== undefined) {
+      if (answers['business-activity-row'].indexOf('export-to-row') !== -1 ||
+          answers['business-activity-row'].indexOf('trade-developing') !== -1) {
+        actions.push('T114')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('chemical') !== -1) {
+        actions.push('T115')
+        actions.push('T116')
+      }
+    }
+
     if (answers['sector-business-area'] !== undefined) {
       if (answers['sector-business-area'].indexOf('accommodation') !== -1) {
         actions.push('R001')
