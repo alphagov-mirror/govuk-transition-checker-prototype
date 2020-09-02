@@ -378,7 +378,7 @@ questions:
     text: Do you do any of the following?
     hint_text: Select all that apply.
     options:
-      - label: Export to countries in the rest of the world
+      - label: Send or take goods to the rest of the world (exporting)
         value: export-to-row
       - label: Trade with developing countries
         value: trade-developing
