@@ -4,6 +4,8 @@ questions:
     type: single
     caption: About you and your family
     text: 'What nationality are you?'
+    detail_text: |
+      <p>If you have dual nationality, select one nationality and continue to get results for that nationality. You’ll need to start again to get results for your second nationality.</p>
     options:
       - label: British
         value: nationality-uk
@@ -203,8 +205,8 @@ questions:
     description: |
       <p>This includes sole traders (self-employed), limited companies, and small and medium enterprises.</p>
     detail_text: |
-      <p>From 1 January 2021, rules for UK businesses and organisations will change.</p>
-      <p>We need to know if you own or help to run a UK business or organisation so we can show you what you need to do to prepare for the new rules.</p>
+      <p>From 1 January 2021, rules for businesses and organisations will change.</p>
+      <p>We need to know if you own or help to run a business or organisation so we can show you what you need to do to prepare for the new rules.</p>
     options:
       - label: "Yes"
         value: owns-operates-business-organisation
@@ -212,18 +214,18 @@ questions:
         value: does-not-own-operate-business-organisation
 
   - key: business-uk-or-eu
-    type: "single"
+    type: single
     caption: About your business
     criteria:
       - owns-operates-business-organisation
-    text: "Where is your business or organisation registered?"
+    text: "Where is your business or organisation based?"
     options:
       - label: "UK"
         value: owns-operates-business-organisation-uk
       - label: "EU"
         value: owns-operates-business-organisation-eu
       - label: "Somewhere else"
-    value: owns-operates-business-organisation-row
+        value: owns-operates-business-organisation-row
 
   - key: employ-eu-citizens
     caption: About your business
@@ -335,25 +337,63 @@ questions:
     criteria:
       - owns-operates-business-organisation-uk
     caption: About your business
-    type: "multiple"
-    text: "Does your business or organisation do any of the following?"
-    description: |
-      <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
+    type: multiple
+    text: Which countries do you do business with?
+    hint_text: Select all that apply.
     options:
-      - label: "Import from the EU"
+      - label: Ireland
+        value: business-activity-ie
+      - label: Other EU countries, Switzerland, Norway, Iceland or Liechtenstein
+        value: business-activity-eu
+      - label: Rest of the world
+        value: business-activity-row
+
+  - key: business-activity-eu
+    criteria:
+      - owns-operates-business-organisation-uk
+      - business-activity-eu
+    caption: About your business
+    type: multiple
+    text: Do you do any of the following with EU countries?
+    description: |
+      <p>This also includes Switzerland, Norway, Iceland and Liechtenstein, but does not include Ireland.</p>
+      <p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p>
+    hint_text: Select all that apply.
+    options:
+      - label: Bring or receive goods from EU countries (importing)
         value: import-from-eu
-      - label: "Export to the EU"
+      - label: Send or take goods to EU countries (exporting)
         value: export-to-eu
-      - label: "Provide services or do business in the EU"
+      - label: Provide services or do business in the EU
         value: provide-services-do-business-in-eu
-      - label: "Transport goods across EU borders"
+      - label: Transport goods across EU borders
         value: haulage-goods-across-eu-borders
-      - label: "Move goods into, out of, or through Northern Ireland"
-        value: move-goods-ni
-      - label: "Export to the rest of the world"
+
+  - key: business-activity-row
+    criteria:
+      - owns-operates-business-organisation-uk
+      - business-activity-row
+    caption: About your business
+    type: multiple
+    text: Do you do any of the following?
+    hint_text: Select all that apply.
+    options:
+      - label: Send or take goods to the rest of the world (exporting)
         value: export-to-row
-      - label: "Trade with developing countries"
+      - label: Trade with developing countries
         value: trade-developing
+
+  - key: business-activity-ni
+    criteria:
+      - owns-operates-business-organisation-uk
+    caption: About your business
+    type: single
+    text: Do you move goods into, out of, or through Northern Ireland?
+    options:
+      - label: Yes
+        value: business-activity-ni-yes
+      - label: No
+        value: business-activity-ni-no
 
   - key: sector-business-area
     criteria:
@@ -363,153 +403,155 @@ questions:
     text: "What does your business or organisation do?"
     hint_text: "Select all that apply."
     options:
-      - label: "Advanced manufacturing and services"
+      - label: Agriculture, animals and plants
         options:
-          - label: Aerospace and space
-            value: aero-space
-          - label: Automotive
-            value: automotive
-          - label: Electronics, parts and machinery
-            value: electronic-machinery
-          - label: Installation, servicing and repair
-            value: install-service-repair
-          - label: Marine and marine transport
-            value: marine-transport
-          - label: Rail (manufacture)
-            value: rail-manufacture
-      - label: "Agriculture, animals, fisheries and forestry"
+          - value: agriculture-farm
+            label: Agriculture and farming
+          - value: animal-ex-food
+            label: Animals and animal products
+          - value: fish-inc-wholesale
+            label: Fish
+          - value: forestry
+            label: Plants or forestry
+          - value: vet
+            label: Veterinary
+      - label: Charities and voluntary organisations
         options:
-          - label: Agriculture and farming
-            value: agriculture-farm
-          - label: Animals and animal products
-            value: animal-ex-food
-          - label: Fisheries (including wholesale)
-            value: fish-inc-wholesale
-          - label: Plants and forestry
-            value: forestry
-          - label: Veterinary
-            value: vet
-      - label: "Business and personal services"
+          - value: charity
+            label: Charities
+          - value: voluntary
+            label: Voluntary and community organisations
+      - label: Chemicals, diamonds and mining
         options:
-          - label: Personal services
-            value: personal-service
-          - label: Professional, legal and business services
-            value: legal-service
-      - label: "Charities and voluntary organisation"
+          - value: chemical
+            label: Chemicals
+          - value: diamond
+            label: Diamonds
+          - value: mining
+            label: Mining
+      - label: Construction
         options:
-          - label: Charities
-            value: charity
-          - label: Voluntary and community organisations
-            value: voluntary
-      - label: "Construction and environmental services"
+          - value: construction
+            label: Construction
+      - label: Education or research
         options:
-          - label: Construction
-            value: construction
-          - label: Environmental services
-            value: environment
-      - label: "Defence"
+          - value: education
+            label: Education
+          - value: research
+            label: Research
+      - label: Energy or environmental services
         options:
-          - label: Defence
-            value: defence
-      - label: "Energy"
+          - value: electricity
+            label: Electricity
+          - value: environment
+            label: Environmental services
+          - value: nuclear
+            label: Nuclear
+          - value: oil-gas-coal
+            label: Oil, coal and gas
+          - value: renewables
+            label: Renewable energy
+      - label: Finance and insurance
         options:
-          - label: Electricity
-            value: electricity
-          - label: Nuclear
-            value: nuclear
-          - label: Oil, gas and coal
-            value: oil-gas-coal
-          - label: Renewable energy
-            value: renewables
-      - label: "Entertainment"
+          - value: finance
+            label: Financial services
+          - value: insurance
+            label: Insurance
+      - label: Gambling
         options:
-          - label: Media and broadcasting
-            value: media
-          - label: Creative industries
-            value: creative
-          - label: Gambling
-            value: gamble
-          - label: Sports and recreation
-            value: sports
-          - label: Arts, culture and heritage
-            value: culture
-      - label: "Finance, insurance and real estate"
+          - value: gamble
+            label: Gambling
+      - label: Government, defence and justice
         options:
-          - label: Financial services
-            value: finance
-          - label: Insurance
-            value: insurance
-          - label: Real estate
-            value: real-estate
-      - label: "Health and social care"
+          - value: defence
+            label: Defence
+          - value: justice-including-prisons
+            label: Justice including prisons
+          - value: public-administration
+            label: Public administration
+      - label: Health and social care
         options:
-          - label: Health and social care services
-            value: health
-          - label: Medical technology
-            value: medical-tech
-          - label: Pharmaceuticals and clinical trials
-            value: pharma
-      - label: "Information and communications"
+          - value: health
+            label: Healthcare and social care
+          - value: medical-tech
+            label: Medical technology
+          - value: pharma
+            label: Pharmaceuticals or clinical trials
+      - label: Hospitality and tourism
         options:
-          - label: Digital, technology and computer services
-            value: digital
-          - label: Telecoms and information services
-            value: telecoms
-      - label: "Manufacturing"
+          - value: accommodation
+            label: Accommodation
+          - value: restaurants-catering
+            label: Restaurants, bars and catering
+          - value: tourism
+            label: Tourism
+      - label: Information and communications
         options:
-          - label: Manufacturing of consumer goods
-            value: consumer-goods
-      - label: "Materials and mining"
+          - value: digital
+            label: Digital, technology or computer services
+          - value: telecoms
+            label: Telecommunications
+      - label: Manufacturing
         options:
-          - label: Chemicals
-            value: chemical
-          - label: Diamonds
-            value: diamond
-          - label: Metals manufacture
-            value: metal
-          - label: Mining
-            value: mining
-          - label: Non-metal materials manufacture
-            value: non-metal-material
-      - label: "Public administration"
+          - value: aero-space
+            label: Aerospace and space
+          - value: automotive
+            label: Automotive
+          - value: electronic-machinery
+            label: Electronic parts and machinery
+          - value: consumer-goods
+            label: Manufacture of consumer goods
+          - value: metal
+            label: Metals
+          - value: non-metal-material
+            label: Non-metal materials
+          - value: rail-manufacture
+            label: Rail
+      - label: Media, arts and sport
         options:
-          - label: Justice including prisons
-            value: justice-including-prisons
-          - label: Public administration
-            value: public-administration
-      - label: "Research and education"
+          - value: culture
+            label: Arts, culture or museums
+          - value: creative
+            label: Creative industries
+          - value: media
+            label: Media and broadcasting
+          - value: sports
+            label: Sports and recreation
+      - label: Real estate
         options:
-          - label: Education
-            value: education
-          - label: Research
-            value: research
-      - label: "Retail, wholesale and consumer goods"
+          - value: real-estate
+            label: Real estate
+      - label: Retail or goods you sell
         options:
-          - label: Food, drink and tobacco
-            value: food-drink-tobacco
-          - label: Motor trade
-            value: motor-trade
-          - label: Retail and wholesale (excluding food, drink and motors)
-            value: retail-wholesale-x-food-drink-motors
-      - label: "Tourism and hospitality"
+          - value: food-drink-tobacco
+            label: Food, drink and tobacco
+          - value: motor-trade
+            label: Motor trade
+          - value: retail-wholesale-x-food-drink-motors
+            label: Retail and wholesale (excluding food, drink and motors)
+      - label: Services
         options:
-          - label: Accommodation
-            value: accommodation
-          - label: Restaurants, bars and catering
-            value: restaurants-catering
-          - label: Tourism
-            value: tourism
-      - label: "Transport and logistics"
+          - value: install-service-repair
+            label: Installation, servicing and repair
+            hint: For example plumber, electrician
+          - value: legal-service
+            label: Legal or business services
+          - value: personal-service
+            label: Personal services
+            hint: For example catering, cleaning and hairdressing
+      - label: Transport and moving goods
         options:
-          - label: Air freight and air passenger services
-            value: air-passenger-freight
-          - label: Ports and airports
-            value: port-airports
-          - label: Postal and courier services
-            value: postal-couriers
-          - label: Rail (passengers and freight)
-            value: rail-passenger-freight
-          - label: Road (passengers and freight)
-            value: road-passenger-freight
-          - label: Warehousing, services and pipelines
-            value: warehouse-pipeline
+          - value: air-passenger-freight
+            label: Aeroplanes (passenger and freight)
+          - value: port-airports
+            label: Airports and ports
+          - value: warehouse-pipeline
+            label: Logistics (warehouses, pipelines)
+          - value: marine-transport
+            label: Marine and marine transport
+          - value: postal-couriers
+            label: Post and courier services
+          - value: rail-passenger-freight
+            label: Rail (passengers and freight)
+          - value: road-passenger-freight
+            label: Road (passengers and freight)

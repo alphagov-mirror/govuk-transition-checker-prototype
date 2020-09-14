@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {{ question.text }} – {{ serviceName }}
+  {{ 'Error: ' if errors | length -}} {{ question.text }} – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -49,9 +49,9 @@
       {% endif %}
 
       {{ govukDetails({
-        summaryText: "Why am I being asked this question?",
+        summaryText: "What if I have dual nationality?" if question.key == 'nationality' else "Why am I being asked this question?",
         text: question.detail_text | safe
-      }) if question.detail_text }}
+      }) if question.detail_text | length }}
 
       {{ govukButton({
         text: "Continue",

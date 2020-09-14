@@ -18,7 +18,7 @@
         {% set inputName = "answers[" + question.key + "]" %}
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="{{ option.value }}-conditional" name="{{ inputName }}" type="radio" value="{{ option.value }}" data-aria-controls="conditional-{{ option.value }}-conditional" {% if option.value == data.answers[question.key] %}checked="checked"{% endif %}>
-          <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
+          <label class="govuk-label govuk-radios__label" for="{{ option.value }}-conditional">
             {{- option.label -}}
           </label>
         </div>
@@ -36,8 +36,8 @@
                 {% for option in option.options %}
                   {% set inputName = "answers[" + question.key + "-options]" %}
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="{{ question.key }}-options" name="{{ inputName }}" type="checkbox" value="{{ option.value }}" aria-describedby="{{ question.key }}-options-hint" {% if data.answers[question.key+'-options'] and option.value in data.answers[question.key+'-options'] %}checked="checked"{% endif %}>
-                    <label class="govuk-label govuk-checkboxes__label" for="{{ question.key }}-options">
+                    <input class="govuk-checkboxes__input" id="{{ question.key + '-' + option.value }}" name="{{ inputName }}" type="checkbox" value="{{ option.value }}" aria-describedby="{{ question.key }}-options-hint" {% if data.answers[question.key + '-options'] and option.value in data.answers[question.key + '-options'] %}checked="checked"{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="{{ question.key + '-' + option.value }}">
                       {{- option.label -}}
                     </label>
                   </div>

@@ -31,6 +31,8 @@
 
               {%- for action in actions %}
 
+                <!-- {{action.id}} -->
+
                 {{ appCheckerAction({
                   heading: {
                     href: action.title_url,
@@ -38,19 +40,24 @@
                   },
                   consequence: {
                     text: action.consequence
-                  },
+                  } if action.consequence | length,
+                  exception: {
+                    text: action.exception
+                  } if action.exception | length,
+                  leadTime: {
+                    text: action.lead_time
+                  } if action.lead_time | length,
                   guidance: {
                     prompt: {
                       text: action.guidance_prompt + ':'
                     } if action.guidance_prompt,
                     href: action.guidance_url,
                     text: action.guidance_link_text
-                  }
+                  },
+                  classes: "app-action-reassurance" if action.id in ["R007","R008","R019","R022","R023","S039"]
                 }) }}
 
               {% endfor -%}
-
-
 
             </div>
           </div>

@@ -1,3 +1,4 @@
+{% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
 <div class="brexit-checker__action {{- ' ' + params.classes if params.classes }}">
   <div class="brexit-checker__content-wrapper">
     {% if params.heading.href %}
@@ -11,9 +12,19 @@
         {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
       </p>
     {% endif %}
+    {%- if params.leadTime %}
+      {{ govukInsetText({
+        text: params.leadTime.text
+      }) if params.leadTime.text | length }}
+    {% endif -%}
     {%- if params.consequence %}
       <p class="govuk-body">
         {{- params.consequence.html | safe if params.consequence.html else params.consequence.text -}}
+      </p>
+    {% endif -%}
+    {%- if params.exception %}
+      <p class="govuk-body">
+        {{- params.exception.html | safe if params.exception.html else params.exception.text -}}
       </p>
     {% endif -%}
     {%- if params.guidance.prompt %}

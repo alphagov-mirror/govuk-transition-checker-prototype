@@ -50,11 +50,26 @@ module.exports = function (env) {
 
     options.forEach((option) => {
       const item = {}
+      item.id = (option.id !== undefined) ? option.id : option.value
       item.text = option.label
       item.value = option.value
       item.checked = option.checked
+      item.hint = {}
+      item.hint.text = option.hint
       items.push(item)
     })
+
+    return items
+  }
+
+  filters.removeItem = function (options, optionValue) {
+    if (!optionValue) {
+      return null
+    }
+
+    const items = options.filter((obj) =>
+      obj.value !== optionValue
+    )
 
     return items
   }

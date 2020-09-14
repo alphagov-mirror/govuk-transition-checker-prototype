@@ -18,6 +18,30 @@ function checkHasAnswers (req, res, next) {
   }
 }
 
+// TODO: Could this be made into middleware?
+function deleteAnswers (answers) {
+  if (answers['business-activity'] !== undefined) {
+    if (answers['business-activity'].indexOf('business-activity-eu') === -1) {
+      if (answers['business-activity-eu'] !== undefined) {
+        delete answers['business-activity-eu']
+      }
+    }
+    if (answers['business-activity'].indexOf('business-activity-row') === -1) {
+      if (answers['business-activity-row'] !== undefined) {
+        delete answers['business-activity-row']
+      }
+    }
+  } else {
+    if (answers['business-activity-eu'] !== undefined) {
+      delete answers['business-activity-eu']
+    }
+    if (answers['business-activity-row'] !== undefined) {
+      delete answers['business-activity-row']
+    }
+  }
+  return
+}
+
 // --------------------------------------------------
 // Start
 // --------------------------------------------------
@@ -25,6 +49,18 @@ function checkHasAnswers (req, res, next) {
 router.get('/', (req, res) => {
   delete req.session.data
   res.render('index', {
+    actions: {
+      start: `${req.baseUrl}/nationality`
+    }
+  })
+})
+
+router.get('/home-v2', (req, res) => {
+  delete req.session.data
+  res.render('index', {
+    hide: [
+      'actions'
+    ],
     actions: {
       start: `${req.baseUrl}/nationality`
     }
@@ -53,13 +89,13 @@ router.get('/nationality', (req, res) => {
 router.post('/nationality', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.nationality === undefined) {
-    const error = {}
-    error.fieldName = 'nationality'
-    error.href = '#nationality'
-    error.text = 'Choose what nationality you are'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.nationality === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'nationality'
+  //   error.href = '#nationality'
+  //   error.text = 'Choose what nationality you are'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -94,13 +130,13 @@ router.get('/living', checkHasAnswers, (req, res) => {
 router.post('/living', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.living === undefined) {
-    const error = {}
-    error.fieldName = 'living'
-    error.href = '#living'
-    error.text = 'Choose where you live'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.living === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'living'
+  //   error.href = '#living'
+  //   error.text = 'Choose where you live'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -135,13 +171,13 @@ router.get('/employment', checkHasAnswers, (req, res) => {
 router.post('/employment', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.employment === undefined) {
-    const error = {}
-    error.fieldName = 'employment'
-    error.href = '#employment'
-    error.text = 'Choose what you do'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.employment === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'employment'
+  //   error.href = '#employment'
+  //   error.text = 'Choose what you do'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -181,13 +217,13 @@ router.get('/travelling-business', checkHasAnswers, (req, res) => {
 router.post('/travelling-business', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['travelling-business'] === undefined) {
-    const error = {}
-    error.fieldName = 'travelling-business'
-    error.href = '#travelling-business'
-    error.text = 'Choose whether you travel to the EU for business'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['travelling-business'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'travelling-business'
+  //   error.href = '#travelling-business'
+  //   error.text = 'Choose whether you travel to the EU for business'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -228,13 +264,13 @@ router.get('/driving', checkHasAnswers, (req, res) => {
 router.post('/driving', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['drive-in-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'drive-in-eu'
-    error.href = '#drive-in-eu'
-    error.text = 'Choose whether you drive in the EU using a UK licence'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['drive-in-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'drive-in-eu'
+  //   error.href = '#drive-in-eu'
+  //   error.text = 'Choose whether you drive in the EU using a UK licence'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -269,13 +305,13 @@ router.get('/travelling', checkHasAnswers, (req, res) => {
 router.post('/travelling', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.travelling === undefined) {
-    const error = {}
-    error.fieldName = 'travelling'
-    error.href = '#travelling'
-    error.text = 'Choose where you plan to travel for leisure and tourism'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.travelling === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'travelling'
+  //   error.href = '#travelling'
+  //   error.text = 'Choose where you plan to travel for leisure and tourism'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -318,13 +354,13 @@ router.get('/activities', checkHasAnswers, (req, res) => {
 router.post('/activities', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.activities === undefined) {
-    const error = {}
-    error.fieldName = 'activities'
-    error.href = '#activities'
-    error.text = 'Choose what you plan to do when travelling'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.activities === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'activities'
+  //   error.href = '#activities'
+  //   error.text = 'Choose what you plan to do when travelling'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -367,13 +403,13 @@ router.get('/move-eu', checkHasAnswers, (req, res) => {
 router.post('/move-eu', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['move-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'move-eu'
-    error.href = '#move-eu'
-    error.text = 'Choose whether you plan to move to the EU or visit for more than 90 days'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['move-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'move-eu'
+  //   error.href = '#move-eu'
+  //   error.text = 'Choose whether you plan to move to the EU or visit for more than 90 days'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -415,13 +451,13 @@ router.get('/returning', checkHasAnswers, (req, res) => {
 router.post('/returning', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers.returning === undefined) {
-    const error = {}
-    error.fieldName = 'returning'
-    error.href = '#returning'
-    error.text = 'Choose where you are planning to move back to the UK'
-    errors.push(error)
-  }
+  // if (req.session.data.answers.returning === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'returning'
+  //   error.href = '#returning'
+  //   error.text = 'Choose where you are planning to move back to the UK'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -462,13 +498,13 @@ router.get('/family-eu', checkHasAnswers, (req, res) => {
 router.post('/family-eu', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['family-eu'] === undefined) {
-    const error = {}
-    error.fieldName = 'family-eu'
-    error.href = '#family-eu'
-    error.text = 'Choose where you are a family member of an EU, EEA or Swiss citizen'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['family-eu'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'family-eu'
+  //   error.href = '#family-eu'
+  //   error.text = 'Choose where you are a family member of an EU, EEA or Swiss citizen'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -511,13 +547,13 @@ router.get('/join-family-uk', checkHasAnswers, (req, res) => {
 router.post('/join-family-uk', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['join-family-uk'] === undefined) {
-    const error = {}
-    error.fieldName = 'join-family-uk'
-    error.href = '#join-family-uk'
-    error.text = 'Choose whether you plan to join a family member in the UK who’s from the UK, EU, Switzerland, Norway, Iceland or Liechtenstein'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['join-family-uk'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'join-family-uk'
+  //   error.href = '#join-family-uk'
+  //   error.text = 'Choose whether you plan to join a family member in the UK who’s from the UK, EU, Switzerland, Norway, Iceland or Liechtenstein'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -552,13 +588,13 @@ router.get('/do-you-own-a-business', checkHasAnswers, (req, res) => {
 router.post('/do-you-own-a-business', checkHasAnswers, (req, res) => {
   const errors = []
 
-  if (req.session.data.answers['do-you-own-a-business'] === undefined) {
-    const error = {}
-    error.fieldName = 'do-you-own-a-business'
-    error.href = '#do-you-own-a-business'
-    error.text = 'Choose whether you own or help to run a business or organisation'
-    errors.push(error)
-  }
+  // if (req.session.data.answers['do-you-own-a-business'] === undefined) {
+  //   const error = {}
+  //   error.fieldName = 'do-you-own-a-business'
+  //   error.href = '#do-you-own-a-business'
+  //   error.text = 'Choose whether you own or help to run a business or organisation'
+  //   errors.push(error)
+  // }
 
   if (errors.length) {
     res.render('question', {
@@ -608,7 +644,11 @@ router.post('/business-uk-or-eu', checkHasAnswers, (req, res) => {
       }
     })
   } else {
-    res.redirect(`${req.baseUrl}/employ-eu-citizens`)
+    if (req.session.data.answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-uk') !== -1) {
+      res.redirect(`${req.baseUrl}/employ-eu-citizens`)
+    } else {
+      res.redirect(`${req.baseUrl}/results`)
+    }
   }
 })
 
@@ -811,7 +851,7 @@ router.post('/eu-domain', checkHasAnswers, (req, res) => {
 })
 
 // --------------------------------------------------
-// Business activity
+// Business activity – Gate question
 // --------------------------------------------------
 
 router.get('/business-activity', checkHasAnswers, (req, res) => {
@@ -839,6 +879,152 @@ router.post('/business-activity', checkHasAnswers, (req, res) => {
       }
     })
   } else {
+    deleteAnswers(req.session.data.answers)
+
+    if (req.session.data.answers['business-activity'] !== undefined) {
+      if (req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+        res.redirect(`${req.baseUrl}/business-activity-eu`)
+      } else if (req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+        res.redirect(`${req.baseUrl}/business-activity-row`)
+      } else {
+        res.redirect(`${req.baseUrl}/business-activity-ni`)
+      }
+    } else {
+      res.redirect(`${req.baseUrl}/business-activity-ni`)
+    }
+  }
+})
+
+// --------------------------------------------------
+// Business activity – European Union
+// --------------------------------------------------
+
+router.get('/business-activity-eu', checkHasAnswers, (req, res) => {
+  res.render('question', {
+    question: Questions.question('business-activity-eu', req.session.data.answers['business-activity-eu']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-eu`,
+      back: `${req.baseUrl}/business-activity`,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-eu', checkHasAnswers, (req, res) => {
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-eu', req.session.data.answers['business-activity-eu']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-eu`,
+        back: `${req.baseUrl}/business-activity`,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
+    if (req.session.data.answers['business-activity'] !== undefined &&
+        req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+      res.redirect(`${req.baseUrl}/business-activity-row`)
+    } else {
+      res.redirect(`${req.baseUrl}/business-activity-ni`)
+    }
+  }
+})
+
+// --------------------------------------------------
+// Business activity – Rest of the world
+// --------------------------------------------------
+
+router.get('/business-activity-row', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  res.render('question', {
+    question: Questions.question('business-activity-row', req.session.data.answers['business-activity-row']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-row`,
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-row', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-row', req.session.data.answers['business-activity-row']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-row`,
+        back: back,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
+    res.redirect(`${req.baseUrl}/business-activity-ni`)
+  }
+})
+
+// --------------------------------------------------
+// Business activity – Northern Ireland
+// --------------------------------------------------
+
+router.get('/business-activity-ni', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+    back = `${req.baseUrl}/business-activity-row`
+  } else if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  res.render('question', {
+    question: Questions.question('business-activity-ni', req.session.data.answers['business-activity-ni']),
+    actions: {
+      save: `${req.baseUrl}/business-activity-ni`,
+      back: back,
+      start: `${req.baseUrl}/`
+    }
+  })
+})
+
+router.post('/business-activity-ni', checkHasAnswers, (req, res) => {
+  let back = `${req.baseUrl}/business-activity`
+  if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-row') !== -1) {
+    back = `${req.baseUrl}/business-activity-row`
+  } else if (req.session.data.answers['business-activity'] !== undefined &&
+      req.session.data.answers['business-activity'].indexOf('business-activity-eu') !== -1) {
+    back = `${req.baseUrl}/business-activity-eu`
+  }
+
+  const errors = []
+
+  if (errors.length) {
+    res.render('question', {
+      question: Questions.question('business-activity-ni', req.session.data.answers['business-activity-ni']),
+      errors: errors,
+      actions: {
+        save: `${req.baseUrl}/business-activity-ni`,
+        back: back,
+        start: `${req.baseUrl}/`
+      }
+    })
+  } else {
     res.redirect(`${req.baseUrl}/sector-business-area`)
   }
 })
@@ -852,7 +1038,7 @@ router.get('/sector-business-area', checkHasAnswers, (req, res) => {
     question: Questions.question('sector-business-area', req.session.data.answers['sector-business-area']),
     actions: {
       save: `${req.baseUrl}/sector-business-area`,
-      back: `${req.baseUrl}/business-activity`,
+      back: `${req.baseUrl}/business-activity-ni`,
       start: `${req.baseUrl}/`
     }
   })
@@ -867,7 +1053,7 @@ router.post('/sector-business-area', checkHasAnswers, (req, res) => {
       errors: errors,
       actions: {
         save: `${req.baseUrl}/sector-business-area`,
-        back: `${req.baseUrl}/business-activity`,
+        back: `${req.baseUrl}/business-activity-ni`,
         start: `${req.baseUrl}/`
       }
     })
@@ -895,7 +1081,6 @@ router.get('/results', checkHasAnswers, (req, res) => {
   }
 
   const criteria = {}
-  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
   criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
 
   if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
@@ -908,122 +1093,6 @@ router.get('/results', checkHasAnswers, (req, res) => {
   }
 
   res.render('results', {
-    results: results,
-    criteria: criteria,
-    answers: answers,
-    rules: rules,
-    actions: {
-      back: back,
-      start: `${req.baseUrl}/`
-    }
-  })
-})
-
-router.get('/results-alt', (req, res) => {
-  // req.session.data.answers = {
-  //   'nationality': 'nationality-uk',
-  //   'living': 'living-eu',
-  //   'employment': [
-  //     'working-uk',
-  //     'working-eu',
-  //     'studying-uk',
-  //     'studying-eu'
-  //   ],
-  //   'drive-in-eu': 'living-driving-eu',
-  //   'travelling': [
-  //     'visiting-uk',
-  //     'visiting-ie',
-  //     'visiting-eu',
-  //     'visiting-row'
-  //   ],
-  //   'returning': 'return-to-uk',
-  //   'do-you-own-a-business': 'does-not-own-operate-business-organisation'
-  // }
-
-  req.session.data.answers = {
-    "nationality": "nationality-uk",
-    "living": "living-uk",
-    "employment": [
-      "working-uk"
-    ],
-    "travelling-business": "travel-eu-business",
-    "travelling": [
-      "visiting-uk",
-      "visiting-eu"
-    ],
-    "activities": [
-      "visiting-driving"
-    ],
-    "move-eu": "move-to-eu",
-    "do-you-own-a-business": "owns-operates-business-organisation",
-    "business-uk-or-eu": "owns-operates-business-organisation-uk",
-    "employ-eu-citizens": "do-not-employ-eu-citizens",
-    "personal-data-options": [
-      "personal-eu-org-provide"
-    ],
-    "personal-data": "personal-eu-org",
-    "eu-uk-government-funding": "do-not-eu-uk-funding",
-    "public-sector-procurement-options": [
-      "sell-public-sector-contracts"
-    ],
-    "public-sector-procurement": "sell-public-sector",
-    "intellectual-property-options": [
-      "ip-copyright",
-      "ip-trade-marks",
-      "ip-designs"
-    ],
-    "intellectual-property": "ip",
-    "eu-domain": "eu-domain-no",
-    "sector-business-area": [
-      "creative",
-      "digital"
-    ]
-  }
-
-  let answers = []
-  answers = Helpers.flattenObject(req.session.data.answers)
-
-  let rules = []
-  rules = Rules.find(req.session.data.answers)
-
-  const results = {}
-  results.citizens = Actions.findCitizenActionsByAnswers(answers, rules)
-
-  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
-    results.business = Actions.findActionsByAudience('business')
-  }
-
-  const criteria = {}
-  // criteria.citizens = Criteria.findCriteriaByAudience('citizen')
-  criteria.citizens = Actions.findCitizenActionGroupCriteria(answers, rules)
-
-  if (req.session.data.answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
-    criteria.business = Criteria.findCriteriaByAudience('business')
-  }
-
-  let back = `${req.baseUrl}/sector-business-area`
-  if (req.session.data.answers['do-you-own-a-business'] === 'does-not-own-operate-business-organisation') {
-    back = `${req.baseUrl}/do-you-own-a-business`
-  }
-
-  console.log(req.query.type)
-
-  let layout = ''
-  switch (req.query.type) {
-    case 'tabs':
-      layout = './partials/results/tabs/index'
-      break;
-    case 'accordion':
-      layout = './partials/results/accordion/index'
-      break;
-    case 'section':
-      layout = './partials/results/section/index'
-      break;
-    default:
-      layout = 'results'
-  }
-
-  res.render(`${layout}`, {
     results: results,
     criteria: criteria,
     answers: answers,

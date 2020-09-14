@@ -41,9 +41,9 @@ exports.find = (answers) => {
   }
 
   if (answers.nationality !== undefined &&
-      answers.visiting !== undefined) {
+      answers.travelling !== undefined) {
     if (answers.nationality === 'nationality-row' &&
-        answers.visiting === 'visiting-uk') {
+        answers.travelling.indexOf('visiting-uk') !== -1) {
       actions.push('S004')
     }
   }
@@ -68,42 +68,42 @@ exports.find = (answers) => {
   }
 
   if (answers.nationality !== undefined &&
-      answers.visiting !== undefined) {
+      answers.travelling !== undefined) {
     if (answers.nationality === 'nationality-uk' &&
-        answers.visiting === 'visiting-eu') {
+        answers.travelling.indexOf('visiting-eu') !== -1) {
       actions.push('S008')
     }
   }
 
   if (answers.living !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers.activities !== undefined &&
       answers['travelling-business'] !== undefined) {
     if (answers.living === 'living-uk' &&
-        (answers.visiting === 'visiting-eu' ||
-        answers.visiting === 'visiting-ie' ||
+        (answers.travelling.indexOf('visiting-eu') !== -1 ||
+        answers.travelling.indexOf('visiting-ie') !== -1 ||
         answers['travelling-business'] === 'travel-eu-business') &&
-        answers.activities === 'visiting-bring-pet') {
+        answers.activities.indexOf('visiting-bring-pet') !== -1) {
       actions.push('S009')
     }
   }
 
   if (answers.living !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers['travelling-business'] !== undefined) {
     if (answers.living === 'living-uk' &&
-        (answers.visiting === 'visiting-eu' ||
-        answers.visiting === 'visiting-ie') &&
+        (answers.travelling.indexOf('visiting-eu') !== -1 ||
+        answers.travelling.indexOf('visiting-ie') !== -1) &&
         answers['travelling-business'] === 'travel-eu-business') {
       actions.push('S010')
     }
   }
 
   if (answers.nationality !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers['travelling-business'] !== undefined) {
     if (answers.nationality === 'nationality-uk' &&
-        (answers.visiting === 'visiting-eu' ||
+        (answers.travelling.indexOf('visiting-eu') !== -1 ||
         answers['travelling-business'] === 'travel-eu-business')) {
       actions.push('S011')
       actions.push('S013')
@@ -120,25 +120,25 @@ exports.find = (answers) => {
   }
 
   if (answers.living !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers['travelling-business'] !== undefined &&
       answers.activities !== undefined) {
     if (answers.living === 'living-uk' &&
-        (answers.visiting === 'visiting-eu' ||
+        (answers.travelling.indexOf('visiting-eu') !== -1 ||
         answers['travelling-business'] === 'travel-eu-business') &&
-        answers.activities === 'visiting-driving') {
+        answers.activities.indexOf('visiting-driving') !== -1) {
       actions.push('S022')
       actions.push('S024')
     }
   }
 
   if (answers.nationality !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers['travelling-business'] !== undefined) {
     if (((answers.nationality === 'nationality-uk' &&
-        answers.visiting === 'visiting-eu') ||
+        answers.travelling.indexOf('visiting-eu') !== -1) ||
         (answers.nationality === 'nationality-eu' &&
-        answers.visiting === 'visiting-uk')) &&
+        answers.travelling.indexOf('visiting-uk') !== -1)) &&
         answers['travelling-business'] === 'travel-eu-business') {
       actions.push('S025')
     }
@@ -179,12 +179,12 @@ exports.find = (answers) => {
   }
 
   if (answers.living !== undefined &&
-      answers.visiting !== undefined &&
+      answers.travelling !== undefined &&
       answers.activities !== undefined) {
     if ((answers.living === 'living-eu' ||
         answers.living === 'living-ie') &&
-        answers.visiting === 'visiting-uk' &&
-        answers.activities === 'visiting-bring-pet') {
+        answers.travelling.indexOf('visiting-uk') !== -1 &&
+        answers.activities.indexOf('visiting-bring-pet') !== -1) {
       actions.push('S032')
     }
   }
@@ -195,10 +195,10 @@ exports.find = (answers) => {
     }
   }
 
-  if (answers.visiting !== undefined &&
+  if (answers.travelling !== undefined &&
       answers.activities !== undefined) {
-    if (answers.visiting === 'visiting-uk' &&
-        answers.activities === 'visiting-driving') {
+    if (answers.travelling.indexOf('visiting-uk') !== -1 &&
+        answers.activities.indexOf('visiting-driving') !== -1) {
       actions.push('S036')
     }
   }
@@ -235,6 +235,37 @@ exports.find = (answers) => {
     }
   }
 
+  if (answers['drive-in-eu'] !== undefined) {
+    if (answers['drive-in-eu'] === 'living-driving-eu') {
+      actions.push('R007')
+    }
+  }
+
+  if (answers['move-eu'] !== undefined) {
+    if (answers['move-eu'] === 'move-to-eu') {
+      actions.push('R008')
+    }
+  }
+
+  if (answers.travelling !== undefined) {
+    if (answers.travelling === 'visiting-row') {
+      actions.push('R019')
+    }
+  }
+
+  if (answers.employment !== undefined) {
+    if (answers.employment === 'working-eu' ||
+        answers.employment === 'working-ie') {
+      actions.push('R022')
+    }
+  }
+
+  if (answers.living !== undefined) {
+    if (answers.living === 'living-uk') {
+      actions.push('R023')
+    }
+  }
+
   // --------------------------------------------------
   // BUSINESS RULES
   // --------------------------------------------------
@@ -242,15 +273,15 @@ exports.find = (answers) => {
   if (answers['do-you-own-a-business'] !== undefined &&
       answers['do-you-own-a-business'] === 'owns-operates-business-organisation') {
     if (answers['employ-eu-citizens'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if (answers['employ-eu-citizens'] === 'employ-eu-citizens' ||
-          answers['business-activity'] === 'provide-services-do-business-in-eu') {
+          answers['business-activity-eu'] === 'provide-services-do-business-in-eu') {
         actions.push('T006')
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'] === 'provide-services-do-business-in-eu') {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'] === 'provide-services-do-business-in-eu') {
         actions.push('T007')
       }
     }
@@ -276,10 +307,10 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined &&
+    if (answers['business-activity-eu'] !== undefined &&
         answers['intellectual-property'] !== undefined) {
-      if ((answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('haulage-goods-across-eu-borders') !== -1) &&
+      if ((answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('haulage-goods-across-eu-borders') !== -1) &&
           (answers['intellectual-property'] === 'ip' &&
           (answers['intellectual-property-options'].indexOf('ip-copyright') !== -1 ||
           answers['intellectual-property-options'].indexOf('ip-trade-marks') !== -1 ||
@@ -368,20 +399,20 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if ((answers['sector-business-area'].indexOf('agriculture-farm') !== -1 ||
           answers['sector-business-area'].indexOf('forestry') !== -1) &&
-          (answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1)) {
+          (answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1)) {
         actions.push('T032')
       }
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if ((answers['sector-business-area'].indexOf('agriculture-farm') !== -1 ||
           answers['sector-business-area'].indexOf('food-drink-tobacco') !== -1) &&
-          answers['business-activity'].indexOf('export-to-eu') !== -1) {
+          answers['business-activity-eu'].indexOf('export-to-eu') !== -1) {
         actions.push('T033')
       }
     }
@@ -394,12 +425,12 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if ((answers['sector-business-area'].indexOf('animal-ex-food') !== -1 ||
           answers['sector-business-area'].indexOf('fish-inc-wholesale') !== -1 ||
           answers['sector-business-area'].indexOf('food-drink-tobacco') !== -1 ||
           answers['sector-business-area'].indexOf('agriculture-farm') !== -1) &&
-          answers['business-activity'].indexOf('export-to-eu') !== -1) {
+          answers['business-activity-eu'].indexOf('export-to-eu') !== -1) {
         actions.push('T035')
       }
     }
@@ -414,12 +445,12 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if ((answers['sector-business-area'].indexOf('animal-ex-food') !== -1 ||
           answers['sector-business-area'].indexOf('fish-inc-wholesale') !== -1 ||
           answers['sector-business-area'].indexOf('food-drink-tobacco') !== -1 ||
           answers['sector-business-area'].indexOf('agriculture-farm') !== -1) &&
-          answers['business-activity'].indexOf('export-to-eu') !== -1) {
+          answers['business-activity-eu'].indexOf('export-to-eu') !== -1) {
         actions.push('T038')
       }
     }
@@ -492,9 +523,9 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined &&
+    if (answers['business-activity-eu'] !== undefined &&
         answers['sector-business-area'] !== undefined) {
-      if (answers['business-activity'].indexOf('haulage-goods-across-eu-borders') !== -1 ||
+      if (answers['business-activity-eu'].indexOf('haulage-goods-across-eu-borders') !== -1 ||
           answers['sector-business-area'].indexOf('road-passenger-freight') !== -1) {
         actions.push('T065')
       }
@@ -508,19 +539,19 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined &&
+    if (answers['business-activity-eu'] !== undefined &&
         answers['sector-business-area'] !== undefined) {
-      if (answers['business-activity'].indexOf('import-from-eu') !== -1 ||
-          answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('haulage-goods-across-eu-borders') !== -1 ||
+      if (answers['business-activity-eu'].indexOf('import-from-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('haulage-goods-across-eu-borders') !== -1 ||
           answers['sector-business-area'].indexOf('road-passenger-freight') !== -1) {
         actions.push('T071')
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('haulage-goods-across-eu-borders') !== -1) {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('haulage-goods-across-eu-borders') !== -1) {
         actions.push('T075')
       }
     }
@@ -576,9 +607,9 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if (answers['sector-business-area'].indexOf('chemical') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1) {
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1) {
         actions.push('T088')
       }
     }
@@ -609,32 +640,32 @@ exports.find = (answers) => {
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if ((answers['sector-business-area'].indexOf('chemical') !== -1 ||
           answers['sector-business-area'].indexOf('non-metal-material') !== -1 ||
           answers['sector-business-area'].indexOf('pharma') !== -1) &&
-          (answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1)) {
+          (answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1)) {
         actions.push('T093')
       }
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if (answers['sector-business-area'].indexOf('environment') !== -1 &&
-          (answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1)) {
+          (answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1)) {
         actions.push('T096')
       }
     }
 
     if (answers['sector-business-area'] !== undefined &&
-        answers['business-activity'] !== undefined) {
+        answers['business-activity-eu'] !== undefined) {
       if (answers['sector-business-area'].indexOf('animal-ex-food') !== -1 ||
           answers['sector-business-area'].indexOf('fish-inc-wholesale') !== -1 ||
           answers['sector-business-area'].indexOf('forestry') !== -1 ||
-          answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1) {
+          answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1) {
         actions.push('T097')
       }
     }
@@ -645,9 +676,9 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('export-to-eu') !== -1 ||
-          answers['business-activity'].indexOf('import-from-eu') !== -1) {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('export-to-eu') !== -1 ||
+          answers['business-activity-eu'].indexOf('import-from-eu') !== -1) {
         actions.push('T099')
       }
     }
@@ -673,14 +704,14 @@ exports.find = (answers) => {
     }
 
     if (answers['business-uk-or-eu'] !== undefined) {
-      if (answers['business-uk-or-eu'] === 'owns-operates-business-organisation-eu' ||
-          answers['business-uk-or-eu'] === 'owns-operates-business-organisation-uk') {
+      if (answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-eu') !== -1 ||
+          answers['business-uk-or-eu'].indexOf('owns-operates-business-organisation-row') !== -1) {
         actions.push('T102')
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('import-from-eu') !== -1) {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('import-from-eu') !== -1) {
         actions.push('T103')
       }
     }
@@ -694,8 +725,8 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('export-to-row') !== -1) {
+    if (answers['business-activity-row'] !== undefined) {
+      if (answers['business-activity-row'].indexOf('export-to-row') !== -1) {
         actions.push('T106')
       }
     }
@@ -706,21 +737,165 @@ exports.find = (answers) => {
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('move-goods-ni') !== -1) {
+    if (answers['business-activity-ni'] !== undefined) {
+      if (answers['business-activity-ni'] === 'business-activity-ni-yes') {
         actions.push('T108')
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('export-to-eu') !== -1) {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('export-to-eu') !== -1) {
         actions.push('T109')
       }
     }
 
-    if (answers['business-activity'] !== undefined) {
-      if (answers['business-activity'].indexOf('import-from-eu') !== -1) {
+    if (answers['business-activity-eu'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('import-from-eu') !== -1) {
         actions.push('T110')
+      }
+    }
+
+    if (answers['eu-domain'] !== undefined) {
+      if (answers['eu-domain'] === 'eu-domain') {
+        actions.push('T111')
+      }
+    }
+
+    if (answers['business-activity-eu'] !== undefined &&
+        answers['sector-business-area'] !== undefined) {
+      if (answers['business-activity-eu'].indexOf('import-from-eu') !== -1 &&
+          (answers['sector-business-area'].indexOf('animal-ex-food') !== -1 ||
+          answers['sector-business-area'].indexOf('agriculture-farm') !== -1 ||
+          answers['sector-business-area'].indexOf('food-drink-tobacco') !== -1)) {
+        actions.push('T112')
+      }
+    }
+
+    if (answers['business-uk-or-eu'] !== undefined) {
+      if (answers['business-uk-or-eu'] === 'owns-operates-business-organisation-uk') {
+        actions.push('T113')
+      }
+    }
+
+    if (answers['business-activity-row'] !== undefined) {
+      if (answers['business-activity-row'].indexOf('export-to-row') !== -1 ||
+          answers['business-activity-row'].indexOf('trade-developing') !== -1) {
+        actions.push('T114')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('chemical') !== -1) {
+        actions.push('T115')
+        actions.push('T116')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('accommodation') !== -1) {
+        actions.push('R001')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('charity') !== -1) {
+        actions.push('R002')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('education') !== -1) {
+        actions.push('R003')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('gamble') !== -1) {
+        actions.push('R004')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('install-service-repair') !== -1) {
+        actions.push('R005')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('justice-including-prisons') !== -1) {
+        actions.push('R006')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('personal-service') !== -1) {
+        actions.push('R009')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('public-administration') !== -1) {
+        actions.push('R010')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('rail-passenger-freight') !== -1) {
+        actions.push('R011')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('real-estate') !== -1) {
+        actions.push('R012')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('research') !== -1) {
+        actions.push('R013')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('restaurants-catering') !== -1) {
+        actions.push('R014')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('retail-wholesale-x-food-drink-motors') !== -1) {
+        actions.push('R015')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('sell-defence-contracts') !== -1) {
+        actions.push('R016')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('trade-developing') !== -1) {
+        actions.push('R017')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('vet') !== -1) {
+        actions.push('R018')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('voluntary') !== -1) {
+        actions.push('R020')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('warehouse-pipeline') !== -1) {
+        actions.push('R021')
       }
     }
   }

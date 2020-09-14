@@ -529,7 +529,6 @@ actions:
   priority: 5
   title: Register to use the open general export licence to export 'dual use' nuclear
     goods from the UK
-  title_url: https://www.gov.uk/guidance/exporting-nuclear-related-items-from-1-january-2021
   consequence: You will not be able to export 'dual use' nuclear goods from the UK
     if you have not registered.
   guidance_prompt: More information
@@ -596,7 +595,6 @@ actions:
   priority: 8
   title: Check if you need to change your contract to keep accessing personal data
     from the EU, Norway, Iceland or Liechtenstein
-  title_url: https://www.gov.uk/guidance/using-personal-data-after-brexit#what-you-need-to-do-before-a-no-deal-brexit
   consequence: You may not be able to access personal data from the EU without the
     right arrangements in place.
   guidance_prompt: More information
@@ -678,7 +676,7 @@ actions:
     do not follow the right rules.
   guidance_prompt: More information
   guidance_link_text: Importing and exporting plants and plant products from 2021
-  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-if-theres-no-withdrawal-deal
+  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-from-1-january-2021
   criteria:
   - all_of:
     - any_of:
@@ -1088,7 +1086,7 @@ actions:
   lead_time: It takes up to 7 days to get the certificate
   guidance_prompt: More information
   guidance_link_text: Importing and exporting plants and plant products from 2021
-  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-if-theres-no-withdrawal-deal
+  guidance_url: https://www.gov.uk/guidance/importing-and-exporting-plants-and-plant-products-from-1-january-2021
   criteria:
   - any_of:
     - agriculture-farm
@@ -1289,7 +1287,7 @@ actions:
     do not pay the correct tariff.
   guidance_prompt: More information
   guidance_link_text: Check UK trade tariffs from 1 January 2021
-  guidance_url: https://www.gov.uk/check-tariffs-1-january-2021
+  guidance_url: https://www.gov.uk/guidance/uk-tariffs-from-1-january-2021
   criteria:
   - import-from-eu
   audience: business
@@ -1440,3 +1438,289 @@ actions:
   criteria:
   - import-from-eu
   audience: business
+- id: T111
+  priority: 6
+  title: Check if you need to replace your .eu domain name
+  title_url: https://www.gov.uk/guidance/eu-domain-names-what-you-need-to-do-to-get-ready-for-brexit
+  consequence: You may not be able to hold, register or renew a .eu domain name from 1 January 2021.
+  criteria:
+  - eu-domain
+  audience: business
+- id: T112
+  priority: 8
+  title: Register for the UK’s new Import of Products, Animals, Food and Feed System (IPAFFS)
+  title_url: https://www.gov.uk/guidance/importing-animals-animal-products-and-high-risk-food-and-feed-not-of-animal-origin-from-1-january-2021
+  consequence: You will not be able to import using the TRACES system from 1 January 2021.
+  criteria:
+  - all_of:
+    - import-from-eu
+    - any_of:
+      - animal-ex-food
+      - agriculture-farm
+      - food-drink-tobacco
+  audience: business
+- id: T113
+  priority: 2
+  title: Check the rules for reporting unfair trade practices using the UK's new trade remedies service
+  title_url: https://www.gov.uk/guidance/applying-for-a-trade-remedies-investigation
+  consequence: You risk being affected if imported goods are dumped on the UK market or are benefiting from subsidies – or if there is a sudden increase in imports to the UK of a certain product.
+  criteria:
+  - owns-operates-business-organisation-uk
+  audience: business
+- id: T114
+  priority: 2
+  title: Check if there's a trade agreement with any non-EU country you're planning to trade with from 1 January 2021
+  title_url: https://www.gov.uk/guidance/uk-trade-agreements-with-non-eu-countries
+  consequence: You risk disruption to your trading arrangements and unexpected costs.
+  criteria:
+  - any_of:
+    - trade-developing
+    - export-to-row
+  audience: business
+- id: T115
+  priority: 1
+  title: Register with HSE to find out when guidance on the duties for classifying, labelling and packaging chemicals for the GB market is available
+  title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
+  consequence: You must make sure chemicals are classified, labelled and packaged according to GB regulations.
+  criteria:
+  - chemical
+  audience: business
+- id: T116
+  priority: 1
+  title: Register with HSE to find out when guidance on processes for biocidal active substance approval and product authorisation is available
+  title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
+  consequence: You may have delays in getting access to the right materials to continue with your work.
+  criteria:
+  - chemical
+  audience: business
+- id: R001
+  priority: 100
+  title: Currently, there are no new rules to prepare for if you work in accommodation
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - accommodation
+  audience: business
+- id: R002
+  priority: 101
+  title: Currently, there are no new rules to prepare for if you work in the charity
+    sector
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - charity
+  audience: business
+- id: R003
+  priority: 102
+  title: Currently, there are no new rules to prepare for if you work in education
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - education
+  audience: business
+- id: R004
+  priority: 103
+  title: Currently, there are no new rules to prepare for if you work in the gambling
+    sector
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - gamble
+  audience: business
+- id: R005
+  priority: 104
+  title: Currently, there are no new rules to prepare for if you work in installation,
+    servicing and repair
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - install-service-repair
+  audience: business
+- id: R006
+  priority: 105
+  title: Currently, there are no new rules to prepare for if you work in the justice
+    system (including prisons)
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - justice-including-prisons
+  audience: business
+- id: R007
+  priority: 106
+  title: Currently, there are no new rules to prepare for if you drive in the EU using
+    a UK licence
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - living-driving-eu
+  audience: citizen
+  grouping_criteria:
+  - visiting-eu
+- id: R008
+  priority: 107
+  title: Currently, there are no new rules to prepare for if you plan to move to or
+    visit the EU for more than 90 days
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - move-to-eu
+  audience: citizen
+  grouping_criteria:
+  - living-eu
+- id: R009
+  priority: 108
+  title: Currently, there are no new rules to prepare for if you work in personal
+    services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - personal-service
+  audience: business
+- id: R010
+  priority: 109
+  title: Currently, there are no new rules to prepare for if you work in public administration
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - public-administration
+  audience: business
+- id: R011
+  priority: 110
+  title: Currently, there are no new rules to prepare for if you work in rail freight
+    and passenger services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - rail-passenger-freight
+  audience: business
+- id: R012
+  priority: 111
+  title: Currently, there are no new rules to prepare for if you work in real estate
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - real-estate
+  audience: business
+- id: R013
+  priority: 112
+  title: Currently, there are no new rules to prepare for if you work in research
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - research
+  audience: business
+- id: R014
+  priority: 113
+  title: Currently, there are no new rules to prepare for if you work in restaurants,
+    bars and catering
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - restaurants-catering
+  audience: business
+- id: R015
+  priority: 114
+  title: Currently, there are no new rules to prepare for if you work in retail and
+    wholesale (excluding food, drink and motors)
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - retail-wholesale-x-food-drink-motors
+  audience: business
+- id: R016
+  priority: 115
+  title: Currently, there are no new rules to prepare for if you have defence contracts
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - sell-defence-contracts
+  audience: business
+- id: R017
+  priority: 116
+  title: Currently, there are no new rules to prepare for if your business trades
+    with developing countries
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - trade-developing
+  audience: business
+- id: R018
+  priority: 117
+  title: Currently, there are no new rules to prepare for if you work in veterinary
+    services
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - vet
+  audience: business
+- id: R019
+  priority: 118
+  title: Currently, there are no new rules to prepare for if you plan to travel to
+    the rest of the world
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - visiting-row
+  audience: citizen
+- id: R020
+  priority: 119
+  title: Currently, there are no new rules to prepare for if you work for voluntary
+    and community organisations
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - voluntary
+  audience: business
+- id: R021
+  priority: 120
+  title: Currently, there are no new rules to prepare for if you work in warehousing,
+    services and pipelines
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - warehouse-pipeline
+  audience: business
+- id: R022
+  priority: 121
+  title: Currently, there are no new rules to prepare for if you are employed in Ireland
+  guidance_prompt: This may change
+  guidance_link_text: Subscribe to updates about changes that may affect you
+  guidance_url: https://www.gov.uk/transition-check/email-signup
+  criteria:
+  - working-ie
+  audience: citizen
+  grouping_criteria:
+  - working-eu
+- id: R023
+  priority: 122
+  title: You do not need to stockpile medication
+  consequence: Continue to take medication as directed by your doctor or health professional.
+  guidance_prompt: More information
+  guidance_link_text: Supply of prescribed medicines from 1 January 2021
+  guidance_url: https://www.gov.uk/
+  criteria:
+  - living-uk
+  audience: citizen
+  grouping_criteria:
+  - living-uk

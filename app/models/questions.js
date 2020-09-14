@@ -19,33 +19,32 @@ exports.question = function (questionId, answerValue) {
 
   const question = this.findQuestionById(questionId)
 
-  if (answerValue !== undefined) {
-    question.options.forEach((option) => {
-      if (question.type === 'multiple_grouped') {
-        option.options.forEach((option) => {
-          if (answerValue.indexOf(option.value) !== -1) {
-            option.checked = true
-          } else {
-            option.checked = false
-          }
-        })
-      } else {
-        if (question.type === 'single') {
-          if (option.value === answerValue) {
-            option.checked = true
-          } else {
-            option.checked = false
-          }
+  question.options.forEach((option) => {
+    if (question.type === 'multiple_grouped') {
+      option.options.forEach((option) => {
+        if (answerValue !== undefined && answerValue.indexOf(option.value) !== -1) {
+          option.checked = true
+        } else {
+          option.checked = false
         }
-        if (question.type === 'multiple') {
-          if (answerValue.indexOf(option.value) !== -1) {
-            option.checked = true
-          } else {
-            option.checked = false
-          }
+      })
+    } else {
+      if (question.type === 'single') {
+        if (answerValue !== undefined && option.value === answerValue) {
+          option.checked = true
+        } else {
+          option.checked = false
         }
       }
-    })
-  }
+      if (question.type === 'multiple') {
+        if (answerValue !== undefined && answerValue.indexOf(option.value) !== -1) {
+          option.checked = true
+        } else {
+          option.checked = false
+        }
+      }
+    }
+  })
+
   return question
 }

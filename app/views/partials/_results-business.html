@@ -34,14 +34,21 @@
                 },
                 consequence: {
                   text: action.consequence
-                },
+                } if action.consequence | length,
+                exception: {
+                  text: action.exception
+                } if action.exception | length,
+                leadTime: {
+                  text: action.lead_time
+                } if action.lead_time | length,
                 guidance: {
                   prompt: {
                     text: action.guidance_prompt + ':'
                   } if action.guidance_prompt,
                   href: action.guidance_url,
                   text: action.guidance_link_text
-                }
+                },
+                classes: "app-action-reassurance" if action.id in ["R001","R002","R003","R004","R005","R006","R009","R010","R011","R012","R013","R014","R015","R016","R017","R018","R020","R021"]
               }) }}
 
             {% endif -%}
