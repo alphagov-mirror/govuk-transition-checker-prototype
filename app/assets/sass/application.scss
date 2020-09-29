@@ -38,12 +38,17 @@ $govuk-assets-path: '/govuk/assets/';
   background-color: govuk-colour('red');
 }
 
-.brexit-checker__action--reassurance {
-  border-left: govuk-spacing(1) solid govuk-colour('mid-grey');
-  padding-left: govuk-spacing(2)
+.brexit-checker__action--urgent {
+  background-color: govuk-colour('light-grey');
+  padding: govuk-spacing(5) govuk-spacing(5) 0 govuk-spacing(5);
+  border-left: $govuk-border-width solid $dark-blue;
 }
 
-.app-action-reassurance {
-  background-color: govuk-colour('light-grey');
-  padding: govuk-spacing(5) govuk-spacing(5) 0 govuk-spacing(5)
+.brexit-checker__action--urgent-tag {
+  background-color: $dark-blue;
+  margin-bottom: govuk-spacing(2);
+}
+
+.brexit-checker__content-wrapper--no-border-bottom {
+  border-bottom: 0 !important;
 }
