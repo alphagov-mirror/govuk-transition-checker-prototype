@@ -1,0 +1,23 @@
+{% set days = date | date('YYYY-MM-DD') | dateDiff('2021-01-01', 'days') %}
+<div class="transition-countdown govuk-grid-row">
+  <div class="govuk-grid-column-one-half transition-countdown__countdown">
+    <p class="transition-countdown__countdown-days-left govuk-!-margin-bottom-0">{{ days }}</p>
+    <p class="transition-countdown__countdown-days-text">{{ 'day' if (days == 1) else 'days' }} to go</p>
+  </div>
+  <div class="govuk-grid-column-one-half transition-countdown__traffic-lights">
+    <ul class="govuk-list landing-page__take-action-traffic-lights">
+      <li>
+        <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-red.svg">
+        <span class="landing-page__take-action-traffic-lists-text">Check</span>
+      </li>
+      <li>
+        <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-amber.svg">
+        <span class="landing-page__take-action-traffic-lists-text">Change</span>
+      </li>
+      <li>
+        <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-green.svg">
+        <span class="landing-page__take-action-traffic-lists-text">Go</span>
+      </li>
+    </ul>
+  </div>
+</div>
