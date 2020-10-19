@@ -1,46 +1,25 @@
-<div class="landing-page__section landing-page__section--light-grey">
+<div class="landing-page__section landing-page__section--light-grey landing-page__section--border-bottom-red">
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">
-          Take action
+          Make sure you’re ready
         </h2>
-      </div>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-govspeak" data-module="govspeak">
-          <p>Answer a few questions to get a personalised list of actions for you, your family, and your business. Then sign up for emails to get updates when things change.</p>
-        </div>
-        <div class="landing-page__take-action-button">
-          {{ govukButton({
-            href: "/nationality",
-            text: "Start now",
-            isStartButton: true
-          }) }}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <p>Your business, family, and personal circumstances will be affected. Answer a few questions to get a personalised list of actions. You can also sign up for emails to get updates for what you need to do.</p>
+            <div class="landing-page__take-action-button">
+              {{ govukButton({
+                href: "/nationality",
+                text: "Start now",
+                isStartButton: true
+              }) }}
+            </div>
+          </div>
         </div>
       </div>
       <div class="govuk-grid-column-one-third">
-        <ul class="govuk-list landing-page__take-action-traffic-lights">
-          <li>
-            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-red.svg">
-            <span class="landing-page__take-action-traffic-lists-text">
-              Check
-            </span>
-          </li>
-          <li>
-            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-amber.svg">
-            <span class="landing-page__take-action-traffic-lists-text">
-              Change
-            </span>
-          </li>
-          <li>
-            <img class="landing-page__take-action-traffic-lists-icon" alt="" src="/public/images/take-action-green.svg">
-            <span class="landing-page__take-action-traffic-lists-text">
-              Go
-            </span>
-          </li>
-        </ul>
+        {% include "./_transition-countdown.html" %}
       </div>
     </div>
   </div>

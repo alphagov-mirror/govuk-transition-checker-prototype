@@ -3,6 +3,7 @@ $dark-blue: #0055D2;
 $dark-blue-shadow: #020659;
 $transparent: rgba(0,0,0,0);
 $header-breakpoint: 960px;
+$green: #00703C;
 
 .large-paragraph {
   @include govuk-font($size: 19);
@@ -106,7 +107,7 @@ $header-breakpoint: 960px;
 
 .landing-page__take-action-button {
   .govuk-button {
-    background-color: $dark-blue;
+    background-color: $green;
     box-shadow: 0 2px 0 $dark-blue-shadow;
   }
 }

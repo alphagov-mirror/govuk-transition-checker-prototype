@@ -1,16 +1,23 @@
-{% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
-<div class="brexit-checker__action {{- ' ' + params.classes if params.classes }}">
-  <div class="brexit-checker__content-wrapper">
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+<div class="brexit-checker__action {{- ' brexit-checker__action--urgent' if params.urgent }} {{- ' ' + params.classes if params.classes }}">
+  <div class="brexit-checker__content-wrapper {{- ' brexit-checker__content-wrapper--no-border-bottom' if params.urgent }}">
+
+    {{- govukTag({
+      text: "URGENT",
+      classes: "brexit-checker__action--urgent-tag"
+    }) if params.urgent -}}
+
     {% if params.heading.href %}
-      <p class="brexit-checker__action_title">
+      <h4 class="govuk-heading-s brexit-checker__action_title">
         <a class="govuk-link" href="{{ params.heading.href }}">
           {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
         </a>
-      </p>
+      </h4>
     {% else %}
-      <p class="brexit-checker__action_title">
+      <h4 class="govuk-heading-s brexit-checker__action_title">
         {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
-      </p>
+      </h4>
     {% endif %}
     {%- if params.leadTime %}
       {{ govukInsetText({

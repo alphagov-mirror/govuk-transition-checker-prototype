@@ -31,9 +31,8 @@
 
               {%- for action in actions %}
 
-                <!-- {{action.id}} -->
-
                 {{ appCheckerAction({
+                  urgent: true if action.priority >= 8,
                   heading: {
                     href: action.title_url,
                     text: action.title
@@ -53,9 +52,12 @@
                     } if action.guidance_prompt,
                     href: action.guidance_url,
                     text: action.guidance_link_text
-                  },
-                  classes: "app-action-reassurance" if action.id in ["R007","R008","R019","R022","R023","S039"]
+                  }
                 }) }}
+
+                {% if action.priority >= 8 and loop.length > 1 %}
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                {% endif %}
 
               {% endfor -%}
 

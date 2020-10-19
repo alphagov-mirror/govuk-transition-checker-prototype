@@ -412,7 +412,7 @@ actions:
   grouping_criteria:
   - visiting-uk
 - id: T006
-  priority: 8
+  priority: 5
   title: Check if your employees need a visa or work permit and that they meet professional
     requirements for the country they’re going to
   consequence: You or your employees might not be able to enter or work in some countries.
@@ -426,7 +426,7 @@ actions:
     - provide-services-do-business-in-eu
   audience: business
 - id: T007
-  priority: 8
+  priority: 2
   title: Check if you need to change how you do accounting and reporting
   consequence: You risk breaching reporting requirements in the EU, Norway, Iceland
     or Liechtenstein if you do not make any changes you need to.
@@ -515,7 +515,7 @@ actions:
   - aero-space
   audience: business
 - id: T016
-  priority: 5
+  priority: 2
   title: Find out how to comply with the new UK nuclear safeguards arrangements
   consequence: All operators in the UK civil nuclear sector will need to comply with
     the new domestic safeguards regime.
@@ -592,7 +592,7 @@ actions:
     - oil-gas-coal
   audience: business
 - id: T022
-  priority: 8
+  priority: 6
   title: Check if you need to change your contract to keep accessing personal data
     from the EU, Norway, Iceland or Liechtenstein
   consequence: You may not be able to access personal data from the EU without the
@@ -608,7 +608,7 @@ actions:
     - personal-eu-org-provide
   audience: business
 - id: T023
-  priority: 8
+  priority: 5
   title: Check the rules you need to follow if you're a broadcaster or provider of
     video-on-demand services in the UK or the EU
   consequence: You risk not being able to broadcast or provide video-on-demand services
@@ -704,7 +704,7 @@ actions:
       - food-drink-tobacco
   audience: business
 - id: T034
-  priority: 8
+  priority: 6
   title: Check how to register or label food or drink with a protected name
   consequence: You risk your geographical indicator name not being protected if you
     do not register correctly.
@@ -718,7 +718,7 @@ actions:
     - food-drink-tobacco
   audience: business
 - id: T035
-  priority: 8
+  priority: 6
   title: Register as an approved food establishment to export food to the EU
   title_url: https://www.food.gov.uk/business-guidance/applying-for-approval-of-a-food-establishment
   consequence: You will not be able to export food to the EU if you do not register.
@@ -736,7 +736,7 @@ actions:
     - export-to-eu
   audience: business
 - id: T036
-  priority: 8
+  priority: 6
   title: Check how to label food if you're selling it in the UK or EU
   consequence: You risk not being able to sell goods in the EU if they're labelled
     incorrectly.
@@ -751,7 +751,7 @@ actions:
     - agriculture-farm
   audience: business
 - id: T038
-  priority: 8
+  priority: 5
   title: Check if you can export organic food to the EU, and how to label and trade
     it
   consequence: You risk not being able to sell your food as organic in the EU.
@@ -782,7 +782,7 @@ actions:
     - agriculture-farm
   audience: business
 - id: T045
-  priority: 5
+  priority: 6
   title: Print 'GB', 'GBR' or '826' on each egg you're exporting to the EU for people
     to eat
   consequence: You risk your eggs being delayed or rejected when they reach the EU
@@ -794,7 +794,7 @@ actions:
   - agriculture-farm
   audience: business
 - id: T046
-  priority: 5
+  priority: 6
   title: Check how to mark hatching eggs and boxes of chicks that you're exporting
     to the EU
   consequence: You risk your eggs or chicks being delayed or rejected when they reach
@@ -806,7 +806,7 @@ actions:
   - agriculture-farm
   audience: business
 - id: T047
-  priority: 5
+  priority: 6
   title: Get a certificate to export poultry meat to the EU if the meat is printed
     with a farming method
   consequence: If your meat is printed with a farming method, such as 'free range',
@@ -820,7 +820,7 @@ actions:
   - agriculture-farm
   audience: business
 - id: T050
-  priority: 8
+  priority: 7
   title: Get an International Maritime Organisation (IMO) number if your fishing boat
     is 12 metres or longer
   title_url: https://imonumbers.ihs.com/
@@ -893,7 +893,7 @@ actions:
     - telecoms
   audience: business
 - id: T059
-  priority: 5
+  priority: 6
   title: Check whether any wood packaging you use meets ISPM15 international standards
   consequence: You may not be able to export using wood packaging that is not ISPM15
     certified.
@@ -919,7 +919,7 @@ actions:
     - road-passenger-freight
   audience: business
 - id: T065
-  priority: 5
+  priority: 7
   title: Check what documents you need to transport goods through the EU if you’re
     a haulier
   consequence: You will not be able to transport goods through the EU without the
@@ -1008,7 +1008,7 @@ actions:
   - road-passenger-freight
   audience: business
 - id: T080
-  priority: 5
+  priority: 2
   title: Disclose your designs if you want unregistered protection in the UK and EU
   consequence: If you do not do this you’ll only have protection where you first showed
     your design, either the UK or the EU.
@@ -1124,7 +1124,7 @@ actions:
     - sports
   audience: business
 - id: T090
-  priority: 5
+  priority: 8
   title: Export animals or products of animal origin (POAO) through the right EU border
     inspection post and prepare the right documents
   consequence: You risk your animals or products being delayed or rejected when they
@@ -1139,7 +1139,7 @@ actions:
   - animal-ex-food
   audience: business
 - id: T091
-  priority: 5
+  priority: 3
   title: Check guidance on the Kimberly Process Certification Scheme for trading rough
     diamonds
   consequence: You will not be able to export rough diamonds from 1 January 2021 unless
@@ -1182,7 +1182,7 @@ actions:
       - import-from-eu
   audience: business
 - id: T096
-  priority: 1
+  priority: 2
   title: Check the rules on moving waste between the UK and the EU
   consequence: You risk your waste shipments being delayed or rejected if you do not
     follow the right rules.
@@ -1223,7 +1223,7 @@ actions:
   - chemical
   audience: business
 - id: T099
-  priority: 8
+  priority: 9
   title: Decide how you want to make customs declarations and whether you need to
     get someone to deal with customs for you
   consequence: You risk not being able to import or export goods if you do not get
@@ -1237,7 +1237,7 @@ actions:
     - export-to-eu
   audience: business
 - id: T100
-  priority: 5
+  priority: 3
   title: Apply for a licence to export cultural objects
   consequence: You might not be able to take items such as works of art and historical
     objects out of the UK without the correct licence.
@@ -1387,7 +1387,7 @@ actions:
   grouping_criteria:
   - living-eu
 - id: T106
-  priority: 8
+  priority: 7
   title: Check the rules, tax and duty rates for exporting to the rest of the world
   consequence: You risk not being able to export your goods if you do not follow the
     rules.
@@ -1398,7 +1398,7 @@ actions:
   - export-to-row
   audience: business
 - id: T107
-  priority: 3
+  priority: 1
   title: Apply for Horizon 2020 funding
   consequence: You may miss out on Horizon 2020 funding opportunities if you do not
     apply.
@@ -1439,7 +1439,7 @@ actions:
   - import-from-eu
   audience: business
 - id: T111
-  priority: 6
+  priority: 2
   title: Check if you need to replace your .eu domain name
   title_url: https://www.gov.uk/guidance/eu-domain-names-what-you-need-to-do-to-get-ready-for-brexit
   consequence: You may not be able to hold, register or renew a .eu domain name from 1 January 2021.
@@ -1447,7 +1447,7 @@ actions:
   - eu-domain
   audience: business
 - id: T112
-  priority: 8
+  priority: 9
   title: Register for the UK’s new Import of Products, Animals, Food and Feed System (IPAFFS)
   title_url: https://www.gov.uk/guidance/importing-animals-animal-products-and-high-risk-food-and-feed-not-of-animal-origin-from-1-january-2021
   consequence: You will not be able to import using the TRACES system from 1 January 2021.
@@ -1460,7 +1460,7 @@ actions:
       - food-drink-tobacco
   audience: business
 - id: T113
-  priority: 2
+  priority: 1
   title: Check the rules for reporting unfair trade practices using the UK's new trade remedies service
   title_url: https://www.gov.uk/guidance/applying-for-a-trade-remedies-investigation
   consequence: You risk being affected if imported goods are dumped on the UK market or are benefiting from subsidies – or if there is a sudden increase in imports to the UK of a certain product.
@@ -1468,7 +1468,7 @@ actions:
   - owns-operates-business-organisation-uk
   audience: business
 - id: T114
-  priority: 2
+  priority: 1
   title: Check if there's a trade agreement with any non-EU country you're planning to trade with from 1 January 2021
   title_url: https://www.gov.uk/guidance/uk-trade-agreements-with-non-eu-countries
   consequence: You risk disruption to your trading arrangements and unexpected costs.
@@ -1478,7 +1478,7 @@ actions:
     - export-to-row
   audience: business
 - id: T115
-  priority: 1
+  priority: 2
   title: Register with HSE to find out when guidance on the duties for classifying, labelling and packaging chemicals for the GB market is available
   title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
   consequence: You must make sure chemicals are classified, labelled and packaged according to GB regulations.
@@ -1486,15 +1486,55 @@ actions:
   - chemical
   audience: business
 - id: T116
-  priority: 1
+  priority: 2
   title: Register with HSE to find out when guidance on processes for biocidal active substance approval and product authorisation is available
   title_url: https://www.hse.gov.uk/brexit/chemicals-brexit-guidance.htm
   consequence: You may have delays in getting access to the right materials to continue with your work.
   criteria:
   - chemical
   audience: business
+- id: T117
+  priority: 3
+  title: Contact your regulator if you are a UK lawyer working permanently in the
+    EU, Norway, Iceland or Liechtenstein
+  consequence: You risk not being able to continue providing legal services in the
+    same way if you do not meet new requirements.
+  guidance_prompt: More information
+  guidance_link_text: UK laywers practising in the EU, Norway, Iceland or Liechtenstein
+    from 1 January 2021
+  guidance_url: https://www.gov.uk/government/publications/uk-lawyers-practising-in-the-eu-norway-iceland-or-liechtenstein-from-1-january-2021/uk-lawyers-practising-in-the-eu-norway-iceland-or-liechtenstein-after-1-january-2021
+  criteria:
+  - all_of:
+    - working-eu
+    - legal-service
+  audience: business
+- id: T118
+  priority: 4
+  title: Check the rules for providing online services to the EU, Norway, Iceland
+    or Liechtenstein
+  consequence: You may be breaking the law if you do not follow the rules in the country
+    you provide online services to.
+  guidance_prompt: More information
+  guidance_link_text: The eCommerce Directive after the transition period
+  guidance_url: https://www.gov.uk/guidance/ecommerce-directive-what-online-service-providers-in-the-uk-should-do-to-get-ready-for-brexit
+  criteria:
+  - export-to-eu
+  audience: business
+- id: T119
+  priority: 3
+  title: Check if you need to update your copyright licenses to satellite broadcast
+    to the EU
+  consequence: You risk breaking copyright rules if you do not have the right permissions.
+  guidance_prompt: More information
+  guidance_link_text: Changes to copyright law from 1 January 2021
+  guidance_url: https://www.gov.uk/guidance/changes-to-copyright-law-after-the-transition-period
+  criteria:
+  - any_of:
+    - ip-copyright
+    - media
+  audience: business
 - id: R001
-  priority: 100
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in accommodation
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1503,7 +1543,7 @@ actions:
   - accommodation
   audience: business
 - id: R002
-  priority: 101
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in the charity
     sector
   guidance_prompt: This may change
@@ -1513,7 +1553,7 @@ actions:
   - charity
   audience: business
 - id: R003
-  priority: 102
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in education
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1522,7 +1562,7 @@ actions:
   - education
   audience: business
 - id: R004
-  priority: 103
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in the gambling
     sector
   guidance_prompt: This may change
@@ -1532,7 +1572,7 @@ actions:
   - gamble
   audience: business
 - id: R005
-  priority: 104
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in installation,
     servicing and repair
   guidance_prompt: This may change
@@ -1542,7 +1582,7 @@ actions:
   - install-service-repair
   audience: business
 - id: R006
-  priority: 105
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in the justice
     system (including prisons)
   guidance_prompt: This may change
@@ -1552,7 +1592,7 @@ actions:
   - justice-including-prisons
   audience: business
 - id: R007
-  priority: 106
+  priority: 1
   title: Currently, there are no new rules to prepare for if you drive in the EU using
     a UK licence
   guidance_prompt: This may change
@@ -1564,7 +1604,7 @@ actions:
   grouping_criteria:
   - visiting-eu
 - id: R008
-  priority: 107
+  priority: 1
   title: Currently, there are no new rules to prepare for if you plan to move to or
     visit the EU for more than 90 days
   guidance_prompt: This may change
@@ -1576,7 +1616,7 @@ actions:
   grouping_criteria:
   - living-eu
 - id: R009
-  priority: 108
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in personal
     services
   guidance_prompt: This may change
@@ -1586,7 +1626,7 @@ actions:
   - personal-service
   audience: business
 - id: R010
-  priority: 109
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in public administration
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1595,7 +1635,7 @@ actions:
   - public-administration
   audience: business
 - id: R011
-  priority: 110
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in rail freight
     and passenger services
   guidance_prompt: This may change
@@ -1605,7 +1645,7 @@ actions:
   - rail-passenger-freight
   audience: business
 - id: R012
-  priority: 111
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in real estate
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1614,7 +1654,7 @@ actions:
   - real-estate
   audience: business
 - id: R013
-  priority: 112
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in research
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1623,7 +1663,7 @@ actions:
   - research
   audience: business
 - id: R014
-  priority: 113
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in restaurants,
     bars and catering
   guidance_prompt: This may change
@@ -1633,7 +1673,7 @@ actions:
   - restaurants-catering
   audience: business
 - id: R015
-  priority: 114
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in retail and
     wholesale (excluding food, drink and motors)
   guidance_prompt: This may change
@@ -1643,7 +1683,7 @@ actions:
   - retail-wholesale-x-food-drink-motors
   audience: business
 - id: R016
-  priority: 115
+  priority: 1
   title: Currently, there are no new rules to prepare for if you have defence contracts
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1652,7 +1692,7 @@ actions:
   - sell-defence-contracts
   audience: business
 - id: R017
-  priority: 116
+  priority: 1
   title: Currently, there are no new rules to prepare for if your business trades
     with developing countries
   guidance_prompt: This may change
@@ -1662,7 +1702,7 @@ actions:
   - trade-developing
   audience: business
 - id: R018
-  priority: 117
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in veterinary
     services
   guidance_prompt: This may change
@@ -1672,7 +1712,7 @@ actions:
   - vet
   audience: business
 - id: R019
-  priority: 118
+  priority: 1
   title: Currently, there are no new rules to prepare for if you plan to travel to
     the rest of the world
   guidance_prompt: This may change
@@ -1682,7 +1722,7 @@ actions:
   - visiting-row
   audience: citizen
 - id: R020
-  priority: 119
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work for voluntary
     and community organisations
   guidance_prompt: This may change
@@ -1692,7 +1732,7 @@ actions:
   - voluntary
   audience: business
 - id: R021
-  priority: 120
+  priority: 1
   title: Currently, there are no new rules to prepare for if you work in warehousing,
     services and pipelines
   guidance_prompt: This may change
@@ -1702,7 +1742,7 @@ actions:
   - warehouse-pipeline
   audience: business
 - id: R022
-  priority: 121
+  priority: 1
   title: Currently, there are no new rules to prepare for if you are employed in Ireland
   guidance_prompt: This may change
   guidance_link_text: Subscribe to updates about changes that may affect you
@@ -1713,7 +1753,7 @@ actions:
   grouping_criteria:
   - working-eu
 - id: R023
-  priority: 122
+  priority: 1
   title: You do not need to stockpile medication
   consequence: Continue to take medication as directed by your doctor or health professional.
   guidance_prompt: More information

@@ -28,6 +28,7 @@
             {%- if action.id in rules %}
 
               {{ appCheckerAction({
+                urgent: true if action.priority >= 8,
                 heading: {
                   href: action.title_url,
                   text: action.title
@@ -47,9 +48,12 @@
                   } if action.guidance_prompt,
                   href: action.guidance_url,
                   text: action.guidance_link_text
-                },
-                classes: "app-action-reassurance" if action.id in ["R001","R002","R003","R004","R005","R006","R009","R010","R011","R012","R013","R014","R015","R016","R017","R018","R020","R021"]
+                }
               }) }}
+
+              {% if action.priority >= 8 and loop.length > 1 %}
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+              {% endif %}
 
             {% endif -%}
 

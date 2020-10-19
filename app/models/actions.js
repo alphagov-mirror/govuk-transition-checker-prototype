@@ -22,7 +22,7 @@ exports.findActionById = (actionId) => {
 exports.findActionsByAudience = (audience) => {
   const actions = this.find().filter(obj => obj.audience === audience)
   // actions.sort((a,b) => a.grouping_criteria[0] - b.grouping_criteria[0])
-  // sort((a,b) => a.priority - b.priority).
+  actions.sort((a,b) => b.priority - a.priority)
   return actions
 }
 
@@ -41,6 +41,8 @@ exports.findCitizenActionsByAnswers = (answers, rules) => {
       actions.push(action)
     }
   })
+
+  actions.sort((a,b) => b.priority - a.priority)
 
   Groups.find().forEach((group) => {
     results[group.key] = actions.filter(obj => obj.audience === 'citizen' && obj.grouping_criteria.includes(group.key))

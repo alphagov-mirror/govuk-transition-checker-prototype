@@ -791,6 +791,29 @@ exports.find = (answers) => {
       }
     }
 
+    if (answers.employment !== undefined &&
+        answers['sector-business-area'] !== undefined) {
+      if (answers.employment === 'working-eu' &&
+          answers['sector-business-area'].indexOf('legal-service') !== -1) {
+        actions.push('T117')
+      }
+    }
+
+    if (answers['business-activity-row'] !== undefined) {
+      if (answers['business-activity-row'].indexOf('export-to-eu') !== -1) {
+        actions.push('T118')
+      }
+    }
+
+    if (answers['sector-business-area'] !== undefined &&
+        answers['intellectual-property'] !== undefined) {
+      if (answers['sector-business-area'].indexOf('media') !== -1 ||
+          ((answers['intellectual-property'] === 'ip' &&
+          answers['intellectual-property-options'].indexOf('ip-copyright') !== -1))) {
+        actions.push('T119')
+      }
+    }
+
     if (answers['sector-business-area'] !== undefined) {
       if (answers['sector-business-area'].indexOf('accommodation') !== -1) {
         actions.push('R001')
