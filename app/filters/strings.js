@@ -78,6 +78,27 @@ filters.sentenceCase = (input) => {
   }
 }
 
+/*
+  ====================================================================
+  split
+  --------------------------------------------------------------------
+  Divide a string into an ordered list of substrings in an array
+  ====================================================================
+
+  Usage:
+
+  {% set myArray = split('The quick brown fox.', ' ') %}
+
+*/
+
+filters.split = (input, separator = '') => {
+  if (!input) {
+    return ''// avoid printing false to client
+  }
+
+  return input.toString().split(separator)
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------
