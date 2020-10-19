@@ -1,4 +1,4 @@
-<header class="landing-page__header--with-bg-image govuk-!-padding-bottom-9">
+<!-- <header class="landing-page__header--with-bg-image govuk-!-padding-bottom-9">
   <div class="landing-page__header-text-block">
     <div class="govuk-width-container landing-page_header-text-container">
       <div class="govuk-grid-row">
@@ -41,6 +41,64 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</header> -->
+
+<header class="landing-page__header--with-bg-image">
+  <div class="landing-page__header-text-block">
+    <div class="govuk-width-container landing-page_header-text-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukPubTranslationNavigation({
+            items: [{
+              href: '#',
+              text: 'English',
+              locale: 'en',
+              active: true
+            }, {
+              href: '#',
+              text: 'Cymraeg',
+              locale: 'cy'
+            }],
+            attributes: {
+              'aria-label': 'Translations',
+              'role': 'navigation'
+            }
+          }) }}
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="landing-page__page_title">
+            The UK transition:<br>time is running out
+          </h1>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds landing-page__intro">
+          <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak">
+            <p class="govuk-body-l"><span class="landing-page__intro-highlight">There are new rules</span> for businesses and citizens from 1 January 2021.</p>
+          </div>
+        </div>
+      </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="landing-page__countdown">
+              <div class="landing-page__countdown-number-wrapper">
+                <div class="landing-page__countdown-number">
+                  7
+                </div>
+              </div>
+              <div class="landing-page__countdown-number-wrapper">
+                <div class="landing-page__countdown-number">
+                  4
+                </div>
+              </div>
+              <p class="govuk-body landing-page__countdown-text">days to go</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </header>
