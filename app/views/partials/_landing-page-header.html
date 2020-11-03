@@ -1,10 +1,9 @@
-<header class="landing-page__header--with-bg-image govuk-!-padding-bottom-9">
+<header class="landing-page__header--with-bg-image">
   <div class="landing-page__header-text-block">
     <div class="govuk-width-container landing-page_header-text-container">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukPubTranslationNavigation({
-            inverse: true,
             items: [{
               href: '#',
               text: 'English',
@@ -25,22 +24,22 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="landing-page__page_title">
-            The transition period ends in December
+            The UK transition:<br>time is running out
           </h1>
-        </div>
-        <div class="govuk-grid-column-two-thirds landing-page__intro">
-          <div class="govuk-govspeak" data-module="govspeak">
-            <p class="govuk-body-l">The UK has left the EU, and the transition period after Brexit comes to an end this year. Check the new rules from January 2021 and take action now.</p>
-          </div>
         </div>
       </div>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <div class="landing-page__header-arrow-container">
-            <img class="landing-page__header-arrow" alt="" src="/public/images/white-arrow.svg">
+        <div class="govuk-grid-column-two-thirds landing-page__intro">
+          <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak">
+            <p class="govuk-body-l"><span class="landing-page__intro-highlight">There are new rules</span> for businesses and citizens from 1 January 2021.</p>
           </div>
         </div>
       </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {% include "./_countdown.html" %}
+          </div>
+        </div>
     </div>
   </div>
 </header>

@@ -1,25 +1,23 @@
-<div class="landing-page__section landing-page__section--light-grey landing-page__section--border-bottom-red">
+<div class="landing-page__section landing-page__section--light-grey">
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
         <h2 class="govuk-heading-l">
           Make sure you’re ready
         </h2>
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-            <p>Your business, family, and personal circumstances will be affected. Answer a few questions to get a personalised list of actions. You can also sign up for emails to get updates for what you need to do.</p>
-            <div class="landing-page__take-action-button">
-              {{ govukButton({
-                href: "/nationality",
-                text: "Start now",
-                isStartButton: true
-              }) }}
-            </div>
+          <div class="govuk-grid-column-two-thirds">
+            <p class="take_action_test_class">Your business, family, and personal circumstances will be affected. Answer a few questions to get a personalised list of actions. You can also sign up for emails to get updates for what you need to do.</p>
+            {{ govukButton({
+              href: "/nationality",
+              text: "Start now",
+              isStartButton: true
+            }) }}
+          </div>
+          <div class="govuk-grid-column-one-third">
+            {% include "./_check-change-go.html" %}
           </div>
         </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        {% include "./_transition-countdown.html" %}
       </div>
     </div>
   </div>

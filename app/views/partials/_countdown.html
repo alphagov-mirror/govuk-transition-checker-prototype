@@ -1,0 +1,20 @@
+{% set days = date | date('YYYY-MM-DD') | dateDiff('2021-01-01', 'days') %}
+{% set days = 0 if days <= 0 else days %}
+<div class="landing-page__countdown">
+  {%- if days >= 1 %}
+    {%- for num in days | split('') %}
+      <div class="landing-page__countdown-number-wrapper">
+        <div class="landing-page__countdown-number">
+          {{- num -}}
+        </div>
+      </div>
+    {% endfor -%}
+  {% else %}
+    <div class="landing-page__countdown-number-wrapper">
+      <div class="landing-page__countdown-number">
+        {{- days -}}
+      </div>
+    </div>
+  {% endif -%}
+  <p class="govuk-body landing-page__countdown-text">days to go</p>
+</div>
