@@ -1,6 +1,6 @@
+---
 applications:
-  - name: govuk-transition-checker
+  - name: govuk-transition-checker-prototype
+    memory: 128M
     buildpacks:
       - nodejs_buildpack
-    env:
-      USERNAME: betademo
